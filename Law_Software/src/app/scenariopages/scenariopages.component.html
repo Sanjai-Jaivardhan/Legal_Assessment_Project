@@ -1,0 +1,102 @@
+<!-- HTML: legal-case-simulator.component.html -->
+<nav class="navbar">
+  <div class="container">
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#case-library">Case Library</a>
+    <a class="nav-link" href="#dashboard">Dashboard</a>
+    <a class="nav-link" href="#Aboutus">Aboutus</a>
+    <a class="nav-link" href="#help">Help </a>
+  </div>
+</nav>
+<div class="container">
+
+   <section class="welcome-section" id="home">
+
+    <div class="welcome-content">
+
+      <div class="welcome-text">
+        <h1>Master the Art of Legal Expertise</h1>
+        <p>
+          Explore simulated legal cases and sharpen your analytical skills in a
+          dynamic, real-world-inspired environment.
+        </p>
+
+        <a class="cta-button" href="#case-library">Explore Case Library</a>
+      </div>
+    </div>
+    <div class="welcome-image">
+      <img
+        src="https://img.freepik.com/free-vector/graduated-lawyer-concept-illustration_114360-16442.jpg?t=st=1735220094~exp=1735223694~hmac=2d07366618b68f7bff0592fd7c850c6a3ac0707ba414079fe66f9f82216e381e&w=740"
+        alt="Graduated Lawyer Concept">
+    </div>
+  </section> 
+  <section class="section" id="case-library">
+    <h2 class="section-title">Scenario cases</h2>
+    <p class="section-subtitle"><i>Step into the Shoes of a Lawyer – Solve Cases, Build Solutions</i></p>
+    <div class="card-grid">
+      <!-- multiple dynamic card -->
+        <div class="card" *ngFor="let case of sdetails">
+          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
+          <h3 class="card-title">{{ case.title }}</h3>
+          <p class="card-text">{{ case.abstract }}</p>
+          <button mat-raised-button color="" >View full</button>
+        </div>
+        <div class="card" *ngFor="let case of sdetails">
+          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
+          <h3 class="card-title">{{ case.title }}</h3>
+          <p class="card-text">{{ case.abstract }}</p>
+          <button mat-raised-button color="" >View full</button>
+        </div>
+        <div class="card" *ngFor="let case of sdetails">
+          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
+          <h3 class="card-title">{{ case.title }}</h3>
+          <p class="card-text">{{ case.abstract }}</p>
+          <button mat-raised-button color="" >View full</button>
+        </div>
+    </div>
+  </section>
+  
+</div>
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- About Section -->
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>
+        Explore realistic legal case simulations and refine your expertise in an engaging and professional environment.
+      </p>
+    </div>
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#case-library">Case Library</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#help">Help & Support</a></li>
+      </ul>
+    </div>
+    <!-- Contact Info -->
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p><i class="fas fa-envelope"></i> supportlegalcasesim.com</p>
+      <p><i class="fas fa-phone"></i> 8765674398</p>
+      <p><i class="fas fa-map-marker-alt"></i> 406 Legal St., Law City,India</p>
+    </div>
+    <!-- Social Media -->
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>2024 Legal Case Simulator. All rights reserved.</p>
+  </div>
+</footer>

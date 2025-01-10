@@ -1,0 +1,73 @@
+<!-- 
+
+<mat-card>
+  <form (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username:</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        aria-label="Username"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password:</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        aria-label="Password"
+        required
+      >
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">SUBMIT</button>
+  </form>
+</mat-card> -->
+
+<div class="container">
+  <div class="left-side">
+    <img src="your-image.jpg" alt="Legal Simulation Image" class="left-image">
+    <div class="content">
+      <h1>Legal Simulation</h1>
+      <p>Explore legal scenarios and enhance your skills.</p>
+    </div>
+  </div>
+
+  <mat-card class="login-card">
+    <div class="icon-container">
+      <!-- Optionally place an icon here -->
+    </div>
+    <h2 class="title">Login to your Account</h2>
+    <p class="subtitle">Access your legal simulation dashboard</p>
+    <form (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Username:</mat-label>
+       
+        <input matInput type="text" id="ip1"[(ngModel)]="username" name="username" aria-label="Username" required />
+      </mat-form-field>
+      <br>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password:</mat-label>
+        <input matInput type="password" [(ngModel)]="password" name="password" aria-label="Password" required />
+      </mat-form-field>
+      <br>
+
+      <button mat-raised-button type="submit" color="primary" class="submit-button">
+        SUBMIT
+      </button>
+      <button mat-stroked-button color="warn">Warn</button>
+      <br>
+    </form>
+    <div class="register">
+      <span>Not Registered Yet?</span>
+      <a href="#" class="create-account">Create an account</a>
+    </div>
+  </mat-card>
+</div>
