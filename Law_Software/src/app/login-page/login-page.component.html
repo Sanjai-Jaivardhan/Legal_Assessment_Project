@@ -28,41 +28,83 @@
 
     <button mat-raised-button type="submit">SUBMIT</button>
   </form>
-</mat-card> -->
+</mat-card>  -->
+
+<mat-toolbar color="primary">
+  <div class="flex">
+    <h1 class="main-title">Legal Case Scenario Simulation</h1>
+  </div>
+
+  <div class="nav-links">
+    <a mat-button href="#">Home</a>
+    <a mat-button href="#">Features</a>
+    <a mat-button href="#">About</a>
+    <a mat-button href="#">Contact</a>
+  </div>
+</mat-toolbar>
+
+<div class="content-container">
+  <div class="left-sides">
+    <h1 class="title">Empower Your Learning Journey</h1>
+    <p><i>Join our platform to enhance your legal skills with realistic simulations and expert feedback.</i></p>
+    </div>
+</div>
 
 <div class="container">
-  <div class="left-side">
-    <img src="your-image.jpg" alt="Legal Simulation Image" class="left-image">
-    <div class="content">
+  
+
+   <div class="left-side">
+    <img
+    src="https://img.freepik.com/free-vector/graduated-lawyer-concept-illustration_114360-16442.jpg?t=st=1735220094~exp=1735223694~hmac=2d07366618b68f7bff0592fd7c850c6a3ac0707ba414079fe66f9f82216e381e&w=740"
+    alt="Graduated Lawyer Concept">
+    <!-- <div class="content">
       <h1>Legal Simulation</h1>
       <p>Explore legal scenarios and enhance your skills.</p>
-    </div>
+    </div> -->
   </div>
 
   <mat-card class="login-card">
-    <div class="icon-container">
-      <!-- Optionally place an icon here -->
-    </div>
-    <h2 class="title">Login to your Account</h2>
-    <p class="subtitle">Access your legal simulation dashboard</p>
+   <div class="left-side">
+    <!-- <img
+    src="https://img.freepik.com/free-vector/graduated-lawyer-concept-illustration_114360-16442.jpg?t=st=1735220094~exp=1735223694~hmac=2d07366618b68f7bff0592fd7c850c6a3ac0707ba414079fe66f9f82216e381e&w=740"
+    alt="Graduated Lawyer Concept"> -->
+    <!-- <div class="content">
+      <h1>Legal Simulation</h1>
+      <p>Explore legal scenarios and enhance your skills.</p>
+    </div> -->
+  </div>
+
+    <h2 class="title">Welcome back!</h2>
+    <p class="subtitle">Login to your account</p>
     <form (ngSubmit)="login()" class="login-form">
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Username:</mat-label>
+     
+       <input
+        matInput
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        aria-label="Username"
+        required
+      >
+    </mat-form-field>
        
-        <input matInput type="text" id="ip1"[(ngModel)]="username" name="username" aria-label="Username" required />
-      </mat-form-field>
       <br>
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Password:</mat-label>
-        <input matInput type="password" [(ngModel)]="password" name="password" aria-label="Password" required />
-      </mat-form-field>
+         <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        aria-label="Password"
+        required
+      ></mat-form-field>
       <br>
-
-      <button mat-raised-button type="submit" color="primary" class="submit-button">
-        SUBMIT
-      </button>
-      <button mat-stroked-button color="warn">Warn</button>
+      
+      <button mat-stroked-button color="warn">Submit </button>
       <br>
     </form>
     <div class="register">
@@ -71,3 +113,5 @@
     </div>
   </mat-card>
 </div>
+
+

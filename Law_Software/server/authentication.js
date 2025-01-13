@@ -9,20 +9,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Enable CORS for all origins
 
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'Legal_Assessment',
-    password: 'Sanjai@jaivardhan18',
-    port: 5432,
-});
 // const pool = new Pool({
 //     user: 'postgres',
 //     host: 'localhost',
 //     database: 'Legal_Assessment',
-//     password: 'root123',
+//     password: 'Sanjai@jaivardhan18',
 //     port: 5432,
 // });
+const pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'Legal_Assessment',
+    password: 'root123',
+    port: 5432,
+});
 
 const secretKey = '8cf04fefd57e544e73bc8f6bf49b28dd25e5475c1d75b001436cc68c151c2429a28fe0c636048c39a78559fd4e0a0c8b4b7fdb93f308a8b4e34e92599ed3a8c0';
 

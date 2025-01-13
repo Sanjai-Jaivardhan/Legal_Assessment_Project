@@ -3,6 +3,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
+
+
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthService } from '../authservice.service';
 @Component({
   selector: 'app-login-page',
@@ -11,6 +16,8 @@ import { AuthService } from '../authservice.service';
     MatCardModule,
     MatInputModule,
     CommonModule,
+    MatToolbarModule,
+    MatIconModule,
     FormsModule // Required for [(ngModel)]
   ],
   templateUrl: './login-page.component.html',

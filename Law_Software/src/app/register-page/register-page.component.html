@@ -1,4 +1,4 @@
-<p>register-page works!</p>
+<!-- <p>register-page works!</p>
 <h2>Register</h2>
 <form (ngSubmit)="register()">
   <label for="username">Username:</label>
@@ -6,4 +6,123 @@
   <label for="password">Password:</label>
   <input type="password" id="password" [(ngModel)]="password" name="password" required>
   <button type="submit">Register</button>
-</form>
+</form> -->
+
+
+<!-- 
+
+<mat-card>
+  <form (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username:</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        aria-label="Username"
+        required
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password:</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        aria-label="Password"
+        required
+      >
+    </mat-form-field>
+
+    <button mat-raised-button type="submit">SUBMIT</button>
+  </form>
+</mat-card>  -->
+
+<mat-toolbar color="primary">
+  <div class="flex">
+    <h1 class="main-title">Legal Case Scenario Simulation</h1>
+  </div>
+
+  <div class="nav-links">
+    <a mat-button href="#">Home</a>
+    <a mat-button href="#">Features</a>
+    <a mat-button href="#">About</a>
+    <a mat-button href="#">Contact</a>
+  </div>
+</mat-toolbar>
+
+<div class="content-container">
+  <div class="left-sides">
+    <h1 class="title">Empower Your Learning Journey</h1>
+    <p><i>Join our platform to enhance your legal skills with realistic simulations and expert feedback.</i></p>
+    </div>
+</div>
+
+<div class="container">
+  
+
+   <div class="left-side">
+    <img
+    src="https://img.freepik.com/free-vector/graduated-lawyer-concept-illustration_114360-16442.jpg?t=st=1735220094~exp=1735223694~hmac=2d07366618b68f7bff0592fd7c850c6a3ac0707ba414079fe66f9f82216e381e&w=740"
+    alt="Graduated Lawyer Concept">
+    <!-- <div class="content">
+      <h1>Legal Simulation</h1>
+      <p>Explore legal scenarios and enhance your skills.</p>
+    </div> -->
+  </div>
+
+  <mat-card class="login-card">
+   <div class="left-side">
+    <!-- <img
+    src="https://img.freepik.com/free-vector/graduated-lawyer-concept-illustration_114360-16442.jpg?t=st=1735220094~exp=1735223694~hmac=2d07366618b68f7bff0592fd7c850c6a3ac0707ba414079fe66f9f82216e381e&w=740"
+    alt="Graduated Lawyer Concept"> -->
+    <!-- <div class="content">
+      <h1>Legal Simulation</h1>
+      <p>Explore legal scenarios and enhance your skills.</p>
+    </div> -->
+  </div>
+
+  <h2 class="title">Create an Account</h2>
+  <p class="subtitle">Join us today and start your journey!</p>
+   
+    <form (ngSubmit)="register()">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Username:</mat-label>
+     
+       <input
+        matInput
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        aria-label="Username"
+        required
+      >
+    </mat-form-field>
+       
+      <br>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Password:</mat-label>
+         <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        aria-label="Password"
+        required
+      ></mat-form-field>
+      <br>
+      <button type="submit">Register</button>
+      
+      <br>
+    </form>
+    <div class="register">
+      <span>Already signed in?</span>
+      <a href="#" class="create-account">Login in</a>
+    </div>
+  </mat-card>
+</div>
+

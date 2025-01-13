@@ -3,9 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { ScenarioDescriptionComponent } from './scenario-description/scenario-description.component';
 import { ScenariopagesComponent } from './scenariopages/scenariopages.component';
 
-import { LoginPageComponent } from './login-page/login-page.component';
+
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 @Component({
   selector: 'app-root',
   standalone: true,

@@ -1,91 +1,221 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-
+/* General Container */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #000; /* Black background */
-  }
+  display: flex;
+  height: 90vh;
+  margin-top: -40px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  // background-color:#be0f0f;
+  margin-left:86px;
+  margin-right:86px;
+}
+
+
+.flex{
+  color:#be0f0f;
+}
+
+
+.main-title {
+  font-size: 25px; 
+  color: #f8f3f3; 
+  margin: 0; 
+  display: flex;
+  margin-left:25px;
+  align-items: center;
+}
+
+/* Styling for the mat-toolbar */
+mat-toolbar {
+
+  background-color:red;
+  padding: 2.8rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+  color: #333; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  align-items: center; 
+}
+
+/* Styling for each navigation link */
+.nav-links a {
+  margin-left: 60px; 
+  margin-right:20px;
+  color: #fcf9f9; /* Default text color for links */
+  text-decoration: none;
+  font-size: 24px; /* Font size for the links */
+  font-weight: 500; /* Slightly bold links */
+}
+
+
+.nav-links a:hover {
+  color: #e53935; /* Change color on hover to match title color */
+  text-decoration: underline; /* Add underline effect on hover */
+}
+
+
+
+.left-sides {
+  width: 100%;
+  padding-top:40px;
+  // background-color:#f0d3bb;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  margin-left:54px;
+
+}
+.left-sides,title{
+  font-size:28px;
+}
+
+
+// .letf-sides,button{
+//   color:rgb(255, 255, 255);
+//   background-color:rgb(236, 84, 84);
+//   margin-top:12px;
+//   padding:10px;
+//   font-size:20px;
+//   margin-bottom:50px;
+//   border-radius:16px;
+// }
+.left-sides,p{
+  font-size:25px; 
+}
+
+img {
+  width: 75%;
+  height: 10%;
+  margin-top:-20px;
+  margin-right:2px;
+  margin-left:42px;
+  border-radius: 10px;
+
+}
+
+.content {
+  margin-top: 20px;
+}
+
+.content h1 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.content p {
+  font-size: 1.2rem;
+  margin-top: 1px;
+}
+
+/* Right Side (Login Card) */
+.login-card {
+  max-width: 500px;
+  width: 90%;
+  padding: 1px;
+  margin-right:78px;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Title and Subtitle */
+.title {
+  font-size: 38px;
+  margin-top:30px;
+  font-weight: 600;
+  color:  #020202;  /* Neutral black for the title */
+}
+.subtitle{
+  font-size: 23px;
+  margin-top:-16px;
+  margin-bottom:60px;
+  color:rgb(106, 102, 102);
+
+}
+.left-sides,i {
+  font-size: 25px;
+  margin-top:2px;
+  font-family: italic;
+  color: #090808; /* Neutral gray for the subtitle */
+
+}
+
+mat-form-field{
+  width:70%;
+  border-radius:40px;
   
-  .left-side {
-    flex: 1;
-    display: flex;
+
+
+}
+
+
+
+button {
+  width: 70%;
+  font-size: 18px;
+  margin-top: 14px;
+  background-color: #e21e1e; 
+  color: #fff;
+  border-radius: 20px;
+
+  padding: 10px 0;
+  border: none;
+}
+
+button:hover {
+  background-color: #414852; 
+}
+
+/* Register Section */
+.register {
+  margin-top: 30px;
+  margin-bottom:30px;
+}
+
+.register span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.create-account {
+  color: #667384;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-  
-  .left-image {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .content {
-    color: #fff; 
-    text-align: center;
-  }
-  
-  .login-card {
-    flex: 1;
-    background-color: #fff; /* White background */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .icon-container {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .title {
-    color: #000; /* Black text */
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .subtitle {
-    color: #666; /* Gray text */
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .form-field {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .submit-button {
-    background-color: #c00; /* Red button */
-    color: #fff;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .register {
-    text-align: center;
-    color: #666;
-  }
-  
-  .create-account {
-    color: #c00; /* Red link */
-    text-decoration: none;
+    padding: 20px;
   }
 
-  #ip1{
-    width: 100px;
-    height:100px;
+  .left-side,
+  .login-card {
+    width: 80%;
   }
+
+  .left-image {
+    max-width: 70%;
+  }
+}
+
+
+.login-card,left-side{
+
+  // background-color: #000;
+
+
+  width:100%;
+  padding-bottom:20px;
+}
