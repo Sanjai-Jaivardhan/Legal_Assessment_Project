@@ -1,6 +1,6 @@
 <div class="upperbox">
 
-  <button id="startbt" mat-flat-button color="warn" (click)="onButtonClick($event)">START</button>
+  <button id="startbt" mat-flat-button color="warn" (click)="onStartScenario($event)">START</button>
 </div>
 <div class="parent">
   <div class="childa">
@@ -10,64 +10,39 @@
   <div class="childb">
     <!-- This is for the Client Details -->
     <mat-accordion>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
+          <h1>Client Details</h1>
+        </mat-expansion-panel-header>
+        <div class="innerMostBox">
+          <div class="Picture">
 
-        </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Client Details
-          </mat-panel-title>
-          <mat-panel-description>
-            <!-- {{panelOpenState ? 'open' : 'closed'}} -->
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Full Client Details</p>
+          </div>
+          <div class="Clientchild">
+
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
 
 
     <!-- This for the Background Exxpansion -->
     <mat-accordion>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel>
         <mat-expansion-panel-header>
-
+          <h1>Background Details</h1>
         </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Background Details
-          </mat-panel-title>
-          <mat-panel-description>
-            <!-- {{panelOpenState ? 'open' : 'closed'}} -->
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>Other Details</p>
+        <p>This is the background details</p>
       </mat-expansion-panel>
     </mat-accordion>
     <!-- //This is for the Other details expansion -->
-    <mat-accordion>
-      <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
 
-        </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-accordion>
+      <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            Other Details
-          </mat-panel-title>
-          <mat-panel-description>
-            <!-- {{panelOpenState ? 'open' : 'closed'}} -->
-          </mat-panel-description>
+          <h1>Other Details</h1>
         </mat-expansion-panel-header>
-        <p>Client Details</p>
+        <p>This is the other details</p>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

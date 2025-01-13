@@ -1,6 +1,7 @@
 .upperbox{
     border: 2px black solid;
-    height:10%
+    height:10%;
+    border-bottom: 0px;
     
 }
 #startbt{
@@ -14,19 +15,43 @@
 .parent{
     display: flex;
     justify-content: space-around;
-    border:2px solid black;
+    // border:2px solid black;
+
     height:1000px;
 }
 .childa{
     display: flex;
-    border:2px solid red;
+    border:2px solid black;
     width:50%;
     height: 100%;
+    border-right: 0px;
 }
 .childb{
     // display: flex;
-    border:2px solid blue;
+    border:2px solid black;
     justify-content: end;
     width:50%;
     height:100%;
+}
+
+h1{
+    font-family:Rubik Vinyl
+}
+.Picture{
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    background-color: pink;
+}
+.Clientchild{
+
+    width:300px;
+    height:300px;
+    border: 2px solid black;
+    //background-color: pink;
+}
+.innerMostBox{
+    display: flex;
+    justify-content: space-around;
+
 }

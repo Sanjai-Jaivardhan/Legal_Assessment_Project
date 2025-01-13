@@ -14,7 +14,8 @@ import { timestamp } from 'rxjs';
 export class ScenarioDescriptionComponent {
   panelOpenState = false;
   title='An unexpeccted chaos'
-  onButtonClick(event: Event): void {
+  
+  onStartScenario(event: Event): void {
     const buttonId = (event.currentTarget as HTMLElement).id;
     const eventTime = Date.now() - performance.now() + event.timeStamp;
     console.log('Button ID:', buttonId);
