@@ -1,10 +1,15 @@
-<div class="upperbox">
-
+<div class="upperbox" *ngFor="let detail of allDetails">
+  <h1>{{ detail.scenario_title }}</h1> <!-- For scenario details -->
+  
   <button id="startbt" mat-flat-button color="warn" (click)="onStartScenario($event)">START</button>
 </div>
 <div class="parent">
   <div class="childa">
-    <h1>{{title}}</h1>
+    <div *ngFor="let detail of allDetails"> 
+      <p>{{ detail.individual_scenario_description }}</p> <!-- For client details -->
+    </div>
+    
+    
 
   </div>
   <div class="childb">
@@ -19,7 +24,15 @@
 
           </div>
           <div class="Clientchild">
-
+            <div *ngFor="let details of allDetails">
+            <p>Name: {{details.client_name}}</p>
+            <p>Age: {{details.client_age}}</p>
+            <p>Wife: {{details.wife}}</p>
+            <p>Wife Age:{{details.wife_age}}</p>
+            <p>Mother: {{details.mother}}</p>
+            <p>Mother Age:{{details.mother_age}}</p>
+            <p></p>
+            </div>
           </div>
         </div>
       </mat-expansion-panel>

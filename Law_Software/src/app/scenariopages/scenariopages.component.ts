@@ -33,7 +33,7 @@ export class ScenariopagesComponent {
   ngOnInit():void{
     this.detailservice.scenariodetails().subscribe((data:any)=>{
       this.sdetails=data
-      console.log(this.sdetails)
+      //console.log(this.sdetails)
     })
   }
 

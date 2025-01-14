@@ -16,4 +16,8 @@ export class DetailService {
   scenariodetails():Observable<any>{
     return this.http.get<any>(`${this.api}/individualscenario`)
   }
+
+  allDetails(scenarioId: string): Observable<any> {
+    return this.http.get<any>(`${this.api}/allscenario/${scenarioId}`);
+  }
 }
