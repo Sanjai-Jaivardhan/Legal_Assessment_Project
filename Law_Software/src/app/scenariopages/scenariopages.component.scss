@@ -259,23 +259,23 @@ body {
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card-image {
-  height: 180px;
+  height: 220px;
   background-size: cover;
   background-position: center;
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 1rem;
   color: #000000;
 }
 
 .card-text {
-  font-size: 1.3rem;
+  font-size: 1.0rem;
   margin: 0 1rem 1rem;
   color: #555;
   flex-grow: 1; /* Pushes the button to the bottom */
@@ -293,7 +293,7 @@ button {
 }
 
 button:hover {
-  background-color: #ffd700;
+  background-color: #535352;
 }
 
 /* Footer Styles */
@@ -319,7 +319,7 @@ button:hover {
 .footer-section h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ffd700;
+  color: #fefdfa;
 }
 
 .footer-section p, .footer-section ul {

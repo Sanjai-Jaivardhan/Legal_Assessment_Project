@@ -36,23 +36,25 @@
     <div class="card-grid">
       <!-- multiple dynamic card -->
         <div class="card" *ngFor="let case of sdetails">
-          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
+          <div class="card-image" [ngStyle]="{'background-image': 'url(assets/images/criminal-img.webp)'}"></div>
+         
           <h3 class="card-title">{{ case.title }}</h3>
           <p class="card-text">{{ case.abstract }}</p>
-          <button mat-raised-button color="" >View full</button>
+          <button mat-raised-button color (click)="openDialog()">View full</button>
         </div>
         <div class="card" *ngFor="let case of sdetails">
-          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
-          <h3 class="card-title">{{ case.title }}</h3>
+          <div class="card-image" [ngStyle]="{'background-image': 'url(assets/images/criminal-img.webp)'}"></div>
+        <h3 class="card-title">{{ case.title }}</h3>
           <p class="card-text">{{ case.abstract }}</p>
-          <button mat-raised-button color="" >View full</button>
+          <button mat-raised-button color (click)="openDialog()">View full</button>
         </div>
         <div class="card" *ngFor="let case of sdetails">
-          <div class="card-image" [ngStyle]="{'background-image': 'url(' + case.image + ')'}"></div>
+          <div class="card-image" [ngStyle]="{'background-image': 'url(assets/images/criminal-img.webp)'}"></div>
           <h3 class="card-title">{{ case.title }}</h3>
           <p class="card-text">{{ case.abstract }}</p>
-          <button mat-raised-button color="" >View full</button>
+          <button mat-raised-button color (click)="openDialog()">View full</button>
         </div>
+        
     </div>
   </section>
   

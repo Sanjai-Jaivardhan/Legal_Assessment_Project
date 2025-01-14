@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog,MatDialogModule } from '@angular/material/dialog';
 import { ScenarioDescriptionComponent } from '../scenario-description/scenario-description.component';
 import { DetailService } from '../detail.service';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,7 @@ export interface Scenario_Details{
 @Component({
   selector: 'app-scenariopages',
   standalone: true,
-  imports: [ CommonModule,ScenarioDescriptionComponent],
+  imports: [ CommonModule,MatDialogModule,ScenarioDescriptionComponent],
   templateUrl: './scenariopages.component.html',
   styleUrls: ['./scenariopages.component.scss']
 })
@@ -35,21 +35,22 @@ export class ScenariopagesComponent {
       this.sdetails=data
       //console.log(this.sdetails)
     })
+
   }
 
-  
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(ScenarioDescriptionComponent, {
-  //     width: '300px',
-  //     data: { exampleData: 'This is passed data' } // Optional data
-  //   });
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ScenarioDescriptionComponent, {
+      width: '1000px',
+      height:'700px',
+      data: { exampleData: 'This is passed data' } // Optional data
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('Dialog closed with result:', result);
-  //   });
-  // }
-
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+    });
+  }
+}
   
   // cases = [
   //   {
@@ -87,4 +88,3 @@ export class ScenariopagesComponent {
 
 
 
-}
