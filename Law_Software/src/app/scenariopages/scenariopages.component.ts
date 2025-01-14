@@ -61,7 +61,7 @@ export class ScenariopagesComponent implements OnInit, OnDestroy {
 
   checkToken(): void {
     if (!localStorage.getItem('token')) {
-      // Token is not present, redirect to login
+      
       this.router.navigate(['/login']);
     }
   }
