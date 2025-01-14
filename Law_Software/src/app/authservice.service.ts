@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router:Router) {}
 
   // Register a new user
   register(user: { username: string; password: string }): Observable<any> {
@@ -48,5 +48,13 @@ export class AuthService {
   // Check if the user is logged in
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  checkLoginStatus(): void {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Token is not present, navigate to login
+      this.router.navigate(['/login']);
+    }
   }
 }
