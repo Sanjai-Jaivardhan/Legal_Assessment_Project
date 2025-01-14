@@ -1,43 +1,70 @@
-import { Component } from '@angular/core';
-import { MatDialog,MatDialogModule } from '@angular/material/dialog';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ScenarioDescriptionComponent } from '../scenario-description/scenario-description.component';
 import { DetailService } from '../detail.service';
 import { CommonModule } from '@angular/common';
-
-
-
-
-export interface Scenario_Details{
-    scenario_id: string;
-    tag: string;
-    small_title: string;
-    title: string;
-    abstract: string;
-    description: string;
-    duration: string;
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../authservice.service';
+import { LogoutPageComponent } from '../logout-page/logout-page.component';
+export interface Scenario_Details {
+  scenario_id: string;
+  tag: string;
+  small_title: string;
+  title: string;
+  abstract: string;
+  description: string;
+  duration: string;
 }
 
 @Component({
   selector: 'app-scenariopages',
   standalone: true,
-  imports: [ CommonModule,MatDialogModule,ScenarioDescriptionComponent],
+  imports: [CommonModule, MatDialogModule, ScenarioDescriptionComponent, RouterModule,LogoutPageComponent],
   templateUrl: './scenariopages.component.html',
   styleUrls: ['./scenariopages.component.scss']
 })
-export class ScenariopagesComponent {
-  sdetails:any
-  constructor(private detailservice:DetailService, public dialog: MatDialog){
+export class ScenariopagesComponent implements OnInit, OnDestroy {
+  sdetails: any;
+  private tokenCheckInterval: any;
 
+  constructor(
+    private detailservice: DetailService,
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    // Initial check when the component loads
+    this.checkToken();
+
+    // Set up a polling mechanism to check the token status periodically
+    this.tokenCheckInterval = setInterval(() => {
+      this.checkToken();
+    }, 1000); // Check every 1 second (adjust as needed)
+
+    // Fetch the scenario details
+    this.detailservice.scenariodetails().subscribe((data: any) => {
+      this.sdetails = data;
+    });
+
+    // Checking login status with authService
+    this.authService.checkLoginStatus();
   }
 
-  ngOnInit():void{
-    this.detailservice.scenariodetails().subscribe((data:any)=>{
-      this.sdetails=data
-      //console.log(this.sdetails)
-    })
-
+  ngOnDestroy(): void {
+    // Clear the interval when the component is destroyed
+    if (this.tokenCheckInterval) {
+      clearInterval(this.tokenCheckInterval);
+    }
   }
 
+  checkToken(): void {
+    if (!localStorage.getItem('token')) {
+      
+      this.router.navigate(['/login']);
+    }
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ScenarioDescriptionComponent, {
@@ -51,40 +78,3 @@ export class ScenariopagesComponent {
     });
   }
 }
-  
-  // cases = [
-  //   {
-  //     title: 'Civil Case: Property Dispute',
-  //     description: 'A property dispute has arisen between two neighbors over the boundary line of their properties. The plaintiff claims that the defendant has encroached on their land.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/XYEFnIFeEEWYAiGjWNM6bFEcYaU3ckJZRuT8pL50Il98IseTA.jpg'
-  //   },
-  //   {
-  //     title: 'Corporate Case: Contract Breach',
-  //     description: 'A major corporation is suing a supplier for breach of contract. The corporation claims that the supplier failed to deliver goods as per the agreed schedule.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/AN1UfoR8KYRmKK22r54e0rwx3L1Q8s94zc5CVafvp0vvjw6nA.jpg'
-  //   },
-  //   {
-  //     title: 'Criminal Case: Theft',
-  //     description: 'A small business owner has accused an employee of theft. The owner claims that the employee was caught on camera stealing merchandise.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/UCfzgfjP2CpYUUdr3ToWtY6achKuRJfU2OT56RX3YA1tjw6nA.jpg'
-  //   },
-  //   {
-  //     title: 'Civil Case: Property Dispute',
-  //     description: 'A property dispute has arisen between two neighbors over the boundary line of their properties. The plaintiff claims that the defendant has encroached on their land.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/XYEFnIFeEEWYAiGjWNM6bFEcYaU3ckJZRuT8pL50Il98IseTA.jpg'
-  //   },
-  //   {
-  //     title: 'Corporate Case: Contract Breach',
-  //     description: 'A major corporation is suing a supplier for breach of contract. The corporation claims that the supplier failed to deliver goods as per the agreed schedule.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/AN1UfoR8KYRmKK22r54e0rwx3L1Q8s94zc5CVafvp0vvjw6nA.jpg'
-  //   },
-  //   {
-  //     title: 'Criminal Case: Theft',
-  //     description: 'A small business owner has accused an employee of theft. The owner claims that the employee was caught on camera stealing merchandise.',
-  //     image: 'https://storage.googleapis.com/a1aa/image/UCfzgfjP2CpYUUdr3ToWtY6achKuRJfU2OT56RX3YA1tjw6nA.jpg'
-  //   }
-  // ];
-
-
-
-
