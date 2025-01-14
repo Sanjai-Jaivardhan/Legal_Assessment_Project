@@ -1,57 +1,157 @@
-.upperbox{
-    border: 2px black solid;
-    height:10%;
-    border-bottom: 0px;
+// .upperbox{
+//     border: 2px black solid;
+//     height:10%;
+//     border-bottom: 0px;
     
-}
-#startbt{
-    margin-left: 900px;
-     margin-top:1%;
-    border: 2px black solid;
-    padding:1.5%;
-    font-size: large;
-    border-radius: 5px;
-}
-.parent{
-    display: flex;
-    justify-content: space-around;
-    // border:2px solid black;
+// }
+// #startbt{
+//     margin-left: 900px;
+//      margin-top:1%;
+//     border: 2px black solid;
+//     padding:1.5%;
+//     font-size: large;
+//     border-radius: 5px;
+// }
+// .parent{
+//     display: flex;
+//     justify-content: space-around;
+//     // border:2px solid black;
 
-    height:1000px;
-}
-.childa{
+//     height:1000px;
+// }
+// .childa{
+//     display: flex;
+//     border:2px solid black;
+//     width:50%;
+//     height: 100%;
+//     border-right: 0px;
+// }
+// .childb{
+//     // display: flex;
+//     border:2px solid black;
+//     justify-content: end;
+//     width:50%;
+//     height:100%;
+// }
+
+// h1{
+//     font-family:Rubik Vinyl
+// }
+// .Picture{
+//     width:250px;
+//     height:250px;
+//     border-radius: 50%;
+//     background-color: pink;
+// }
+// .Clientchild{
+
+//     width:300px;
+//     height:300px;
+//     border: 2px solid black;
+//     //background-color: pink;
+// }
+// .innerMostBox{
+//     display: flex;
+//     justify-content: space-around;
+
+// }
+/* Ensure the entire content sticks to the screen */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 90%;
+    width: 90%;
+    overflow: hidden; 
+  }
+  
+  .parent {
     display: flex;
-    border:2px solid black;
-    width:50%;
+    flex-direction: row;
+    gap: 16px;
     height: 100%;
-    border-right: 0px;
-}
-.childb{
-    // display: flex;
-    border:2px solid black;
-    justify-content: end;
-    width:50%;
-    height:100%;
-}
-
-h1{
-    font-family:Rubik Vinyl
-}
-.Picture{
-    width:250px;
-    height:250px;
-    border-radius: 50%;
-    background-color: pink;
-}
-.Clientchild{
-
-    width:300px;
-    height:300px;
-    border: 2px solid black;
-    //background-color: pink;
-}
-.innerMostBox{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    overflow: hidden;
+  }
+  
+  /* Left and Right Columns */
+  .childa, .childb {
+    flex: 1;
     display: flex;
-    justify-content: space-around;
-
+    flex-direction: column;
+    overflow-y: auto; /* Allow inner scroll if content overflows */
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust accordion responsiveness */
+  mat-accordion {
+    width: 100%;
+  }
+  
+  /* Inner content layout */
+  .innerMostBox {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .Picture {
+    width: 100px;
+    height: 100px;
+    background-color: #eaeaea; /* Placeholder for the picture */
+  }
+  
+  .Clientchild {
+    flex: 1;
+  }
+  
+  /* Sticky header */
+  .upperbox {
+    // position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 16px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Button and Typography */
+  #startbt {
+    margin-left: 1160px;
+    font-size: 19px;
+    border-radius: 20px;
+    padding: 21px;
+    margin-top: -55px;
+    background-color: #ee4f00; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2), 0px 1px 3px rgba(0, 0, 0, 0.12); 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+#startbt:hover {
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15); /* Slightly raised on hover */
+    transform: translateY(-2px); /* Subtle upward movement */
+}
+
+#startbt:active {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Pressed button effect */
+    transform: translateY(1px); /* Slight downward movement */
+}
+
+  
+  h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    text-align:center;
+    margin-top:10px;
+  }
+  

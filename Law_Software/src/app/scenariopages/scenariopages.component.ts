@@ -41,8 +41,8 @@ export class ScenariopagesComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ScenarioDescriptionComponent, {
-      width: '1000px',
-      height:'700px',
+      width: '1400px',
+      height:'680px',
       data: { exampleData: 'This is passed data' } // Optional data
     });
 
