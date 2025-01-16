@@ -81,6 +81,7 @@ body {
   .welcome-section {
     flex-direction: column;
     text-align: center;
+    flex-wrap: wrap;
   }
 
   .welcome-content {
@@ -387,3 +388,25 @@ button:hover {
 }
 
 
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 2.5rem; /* Smaller font size for the title */
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 10px 15px; /* Adjust padding */
+  }
+
+  .navbar .nav-link {
+    font-size: 1.2rem; /* Slightly smaller text */
+  }
+
+  .card-title {
+    font-size: 1rem; /* Adjust card title font size */
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem; /* Smaller footer text */
+  }
+}

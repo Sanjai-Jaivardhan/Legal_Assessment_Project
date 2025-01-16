@@ -6,6 +6,7 @@
 <div class="parent">
   <div class="childa">
     <div *ngFor="let detail of allDetails"> 
+      <h1>Detailed Description </h1>
       <p>{{ detail.individual_scenario_description }}</p> <!-- For client details -->
     </div>
     
@@ -25,12 +26,12 @@
           </div>
           <div class="Clientchild">
             <div *ngFor="let details of allDetails">
-            <p>Name: {{details.client_name}}</p>
-            <p>Age: {{details.client_age}}</p>
-            <p>Wife: {{details.wife}}</p>
-            <p>Wife Age:{{details.wife_age}}</p>
-            <p>Mother: {{details.mother}}</p>
-            <p>Mother Age:{{details.mother_age}}</p>
+            <p><b>Name:</b> {{details.client_name}}</p>
+            <p><b>Age:</b> {{details.client_age}}</p>
+            <p><b>Wife</b>: {{details.wife}}</p>
+            <p><b>Wife Age:</b>{{details.wife_age}}</p>
+            <p><b>Mother:</b> {{details.mother}}</p>
+            <p><b>Mother Age:</b>{{details.mother_age}}</p>
             <p></p>
             </div>
           </div>
@@ -40,6 +41,7 @@
 
 
     <!-- This for the Background Exxpansion -->
+     <div class="background">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -48,8 +50,9 @@
         <p>This is the background details</p>
       </mat-expansion-panel>
     </mat-accordion>
+  </div>
     <!-- //This is for the Other details expansion -->
-
+ <div class="OtherDetails">
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -59,5 +62,5 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
- 
+
 </div>

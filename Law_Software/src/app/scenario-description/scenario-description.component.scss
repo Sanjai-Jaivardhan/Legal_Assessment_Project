@@ -61,6 +61,7 @@ body, html {
     padding: 0;
     height: 90%;
     width: 90%;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: hidden; 
   }
   
@@ -72,6 +73,7 @@ body, html {
     width: 100%;
     box-sizing: border-box;
     padding: 16px;
+    // background-color: rgb(230, 75, 75);
     overflow: hidden;
   }
   
@@ -80,8 +82,12 @@ body, html {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: white;
     overflow-y: auto; /* Allow inner scroll if content overflows */
     padding: 16px;
+    transition: box-shadow 0.4s ease, transform 0.3s ease;
+    text-align: justify;
+    font-size: 17px;
     box-sizing: border-box;
   }
   
@@ -106,6 +112,7 @@ body, html {
   
   .Clientchild {
     flex: 1;
+    font-size:15px;
   }
   
   /* Sticky header */
@@ -148,10 +155,117 @@ body, html {
 }
 
   
-  h1 {
+  .upperbox h1 {
     font-size: 1.8rem;
     margin: 0;
     text-align:center;
+    color:black;
     margin-top:10px;
   }
-  
+ 
+  .background ,h1{
+    font-size:18px;
+    color:rgb(214, 43, 43);
+
+  }
+  .Picture {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+.childa h1{
+  font-size:24px;
+  color:rgb(214, 43, 43);
+}
+.Clientchild p{
+  font-size: 16px;
+  font-weight: 300px;
+}
+
+.childa:hover {
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15); /* Slightly raised on hover */
+  transform: translateY(-2px); /* Subtle upward movement */
+}
+
+.childa:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Pressed button effect */
+  transform: translateY(1px); /* Slight downward movement */
+}
+.childb:hover {
+  // box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15); /* Slightly raised on hover */
+  transform: translateY(-2px); /* Subtle upward movement */
+}
+
+.childb:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Pressed button effect */
+  transform: translateY(1px); /* Slight downward movement */
+}
+
+
+@media (max-width: 768px) {
+  .parent {
+      flex-direction: column; /* Stack the columns */
+      padding: 8px;
+  }
+
+  .childa, .childb {
+      flex: 1;
+      margin-bottom: 16px; /* Add some space between columns */
+      width: 100%;
+      padding: 8px;
+  }
+
+  #startbt {
+      margin-left: 50%;
+      margin-top: 10px;
+      transform: translateX(-50%);
+  }
+
+  .upperbox {
+      padding: 8px;
+      font-size: 1.2rem;
+  }
+
+  .Picture {
+      width: 100px;
+      height: 100px;
+  }
+
+  .Clientchild {
+      font-size: 14px;
+  }
+}
+
+/* For even smaller devices like mobile phones */
+@media (max-width: 480px) {
+  .parent {
+      padding: 4px;
+  }
+
+  .childa, .childb {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  #startbt {
+      font-size: 16px;
+      padding: 15px;
+  }
+
+  .upperbox h1 {
+      font-size: 1.5rem;
+  }
+
+  .Picture {
+      width: 90px;
+      height: 90px;
+  }
+
+  .Clientchild p {
+      font-size: 14px;
+  }
+}
