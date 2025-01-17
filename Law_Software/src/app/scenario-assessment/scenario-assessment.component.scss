@@ -1,0 +1,93 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar {
+    background-color: rgb(27, 25, 25);
+    padding: 0.7rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    flex-wrap: wrap;
+    // position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  .mat-toolbar{
+      background-color: black;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center; 
+  }
+  
+  /* Styling for each navigation link */
+  .nav-links a {
+    margin-left: 60px; 
+    margin-right:20px;
+    color: #fcf9f9; /* Default text color for links */
+    text-decoration: none;
+    font-size: 24px; /* Font size for the links */
+    font-weight: 500; /* Slightly bold links */
+  }
+  
+  
+  .nav-links a:hover {
+    color: #e53935; /* Change color on hover to match title color */
+    // text-decoration: underline; /* Add underline effect on hover */
+  }
+  
+  
+  .flex {
+    color:rgb(205, 57, 57);
+    font-size: 29px;
+  }
+  .main-title{
+    font-size:29px;
+    border-color: white;
+  }
+  .main-title:hover{
+    color: #fbfbfb;
+   
+  }
+  
+  mat-toolbar {
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    color: #333; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  
+  .card-hover {
+    background-color: #ffffff; /* White background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+  }
+ 
+  .home{
+    width:200px;
+  }
+  .mat-grid-title{
+    width:20px;
+  }
+  img{
+    width:50%;
+    height:90%;
+  }

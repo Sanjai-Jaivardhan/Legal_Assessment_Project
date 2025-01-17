@@ -7,6 +7,7 @@ import { ScenariopagesComponent } from './scenariopages/scenariopages.component'
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ScenarioAssessmentComponent } from './scenario-assessment/scenario-assessment.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,6 +16,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     LogoutPageComponent,
     RegisterPageComponent,
     ScenarioDescriptionComponent,
+ScenarioAssessmentComponent,
     ScenariopagesComponent
   ],
   templateUrl: './app.component.html',

@@ -1,0 +1,59 @@
+
+<div class="navbar">
+    <mat-toolbar>
+        <div class="flex">
+            <h1 class="main-title">Legal Case Scenario Simulation</h1>
+        </div>
+          <div class="nav-links">
+            <a mat-button href="#">Judicial</a>
+            <a mat-button href="#">Administrative</a>
+            <a mat-button href="#">Division of courts</a>
+            <a mat-button href="#">Digital</a>
+            <a mat-button href="#">Client</a>
+          </div>
+      </mat-toolbar>
+    </div>
+
+<mat-grid-list cols="4" rowHeight="190px">
+    <!-- Home -->
+     <div class="home">
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#aed581'">
+            Home
+          </mat-grid-tile>
+        
+     </div>
+    <!-- Court -->
+    <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'#81d4fa'">
+      Administrative
+    </mat-grid-tile>
+  
+    <!-- Digital -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#ffcc80'">
+      Calendar
+    </mat-grid-tile>
+  
+    <!-- Judge -->
+    <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="'grey'">
+      Court
+      <img src="courtimage.png" alt="court">
+    </mat-grid-tile>
+  
+    <!-- Wet -->
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'#80cbc4'">
+      
+    </mat-grid-tile>
+  
+    <!-- Calendar -->
+    <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'#e6ee9c'">
+      User
+    </mat-grid-tile>
+  
+    <!-- Court (Bottom Extension) -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'pink'">
+        Digital
+    </mat-grid-tile>
+   
+    <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightgreen'">
+        Judge Profiles
+    </mat-grid-tile>
+  </mat-grid-list><p>scenario-assessment works!</p>
