@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LawyeraccessComponent } from './lawyeraccess.component';
+import { ScenarioChatbotComponent } from './scenario-chatbot.component';
 
-describe('LawyeraccessComponent', () => {
-  let component: LawyeraccessComponent;
-  let fixture: ComponentFixture<LawyeraccessComponent>;
+describe('ScenarioChatbotComponent', () => {
+  let component: ScenarioChatbotComponent;
+  let fixture: ComponentFixture<ScenarioChatbotComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LawyeraccessComponent]
+      imports: [ScenarioChatbotComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LawyeraccessComponent);
+    fixture = TestBed.createComponent(ScenarioChatbotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

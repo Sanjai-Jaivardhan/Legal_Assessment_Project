@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ScenarioDescriptionComponent } from './scenario-description/scenario-description.component';
 import { ScenariopagesComponent } from './scenariopages/scenariopages.component';
 
-
+import { ScenarioChatbotComponent } from './scenario-chatbot/scenario-chatbot.component';
 import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -15,6 +15,7 @@ import { ScenarioAssessmentComponent } from './scenario-assessment/scenario-asse
     LoginPageComponent,
     LogoutPageComponent,
     RegisterPageComponent,
+    ScenarioChatbotComponent,
     ScenarioDescriptionComponent,
 ScenarioAssessmentComponent,
     ScenariopagesComponent

@@ -63,7 +63,7 @@
   }
   
   
-  .card-hover {
+  .calendar-card {
     background-color: #ffffff; /* White background */
     display: flex;
     justify-content: center;
@@ -84,10 +84,77 @@
   .home{
     width:200px;
   }
-  .mat-grid-title{
-    width:20px;
-  }
+  
   img{
     width:50%;
     height:90%;
   }
+
+/* Profile Card Styles */
+.profile-card {
+  padding: 16px;
+  border-radius: 8px;
+  width:300px;
+  height:auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgb(14, 14, 14);
+}
+.profile-card:hover {
+  box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(252, 251, 251, 0.15); /* Slightly raised on hover */
+  transform: translateY(-2px); /* Subtle upward movement */
+}
+
+.profile-card:active {
+  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2); /* Pressed button effect */
+  transform: translateY(1px); /* Slight downward movement */
+}
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Spacing between image and details */
+}
+
+/* Circular Profile Picture */
+.Picture {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  margin-left:34px;
+  background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4); /* Optional shadow */
+}
+
+/* Profile Details */
+.profile-details h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight:100px;
+
+}
+
+.profile-details h1 {
+  margin: 8px 0 16px;
+  font-size: 29px;
+  color: #ffffff;
+  font-weight: 300px;
+
+}
+
+button[mat-raised-button] {
+  font-size: 18px;
+  margin-top:30px;
+  margin-left:40px;
+}
+.profile-card h2{
+  color:rgb(241, 234, 234);
+  text-align:center;
+  font-size: 35px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top:2px;
+
+}

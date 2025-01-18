@@ -14,7 +14,7 @@
       </mat-toolbar>
     </div>
 <!-- //gutterSize="10px"  -->
-<mat-grid-list cols="4" rowHeight="190px" style="width:auto" gutterSize="5px" >
+<mat-grid-list cols="4" rowHeight="190px"  >
     <!-- Home -->
      <div class="home">
         <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#aed581'">
@@ -27,10 +27,36 @@
       Administrative
     </mat-grid-tile>
   
-    <!-- Digital -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'#ffcc80'">
-      Calendar
+    <!--calender -->
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <mat-card class="calendar-card">
+        <mat-card-header>
+          <mat-card-title>Calendar</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" title="Please select a date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+        
+          <div class="ad-section">
+            <h4>Material Ad</h4>
+            <p>This is an advertisement related to the calendar feature.</p>
+          </div>
+          <div class="description">
+            <p>
+              Use the calendar to select your preferred date for planning your schedule effectively.
+            </p>
+          </div>
+        </mat-card-actions>
+      </mat-card>
     </mat-grid-tile>
+    
   
     <!-- Judge -->
     <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'grey'">
@@ -46,10 +72,30 @@
       
     </mat-grid-tile>
   
-    <!-- Calendar -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'#e6ee9c'">
-      User
+    <!-- User -->
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <mat-card class="profile-card">
+        <h2>Client</h2>
+        <mat-card-content>
+          <div class="profile-container">
+            <!-- Profile Image -->
+            <div class="Picture"></div>
+           
+            <!-- Name and Details -->
+            <div class="profile-details">
+              <!-- <h1>Client Details</h1>
+              <h3>Somasundaram</h3> -->
+            
+            </div>
+          </div>
+          <!-- Chatbot Button -->
+          <div class="chatbot-button">
+            <button mat-raised-button color="warn" (click)="openChatbotDialog()">Open Chatbot</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </mat-grid-tile>
+    
   
     <!-- Court (Bottom Extension) -->
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'pink'">  
