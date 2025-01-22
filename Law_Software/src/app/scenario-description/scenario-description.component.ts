@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { timestamp } from 'rxjs';
 import { DetailService } from '../detail.service';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-scenario-description',
   standalone: true,

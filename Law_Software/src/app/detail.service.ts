@@ -20,4 +20,10 @@ export class DetailService {
   allDetails(scenarioId: string): Observable<any> {
     return this.http.get<any>(`${this.api}/allscenario/${scenarioId}`);
   }
+
+  sendTrackData(data: any) {
+    const apiUrl = 'http://localhost:1000/client-bot-assess'; // Replace with your actual API URL
+    return this.http.post(apiUrl, data);
+  }
+  
 }

@@ -94,6 +94,42 @@ app.get('/allscenario/:scenario_id', async (req, res) => {
     }
 });
 
+app.post('/api/client-bot-assess', async (req, res) => {
+    const {
+      track_id,
+      track_time,
+      track_date,
+      chat_button_id,
+      chat_id,
+      chat_values,
+    } = req.body;
+  
+    try {
+      const query = `
+        INSERT INTO client_track_assess 
+        (track_id, track_time, track_date, chat_button_id, chat_id, chat_values)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING *;
+      `;
+  
+      const values = [track_id, track_time, track_date, chat_button_id, chat_id, chat_values];
+      const result = await pool.query(query, values);
+  
+      res.status(201).json({
+        success: true,
+        message: 'Data inserted successfully',
+        data: result.rows[0],
+      });
+    } catch (error) {
+      console.error('Error inserting data:', error.message);
+      res.status(500).json({
+        success: false,
+        message: 'Error inserting data',
+        error: error.message,
+      });
+    }
+  });
+
 app.listen(port,()=>{
     console.log(`server is running on port ${port}`)
 })
