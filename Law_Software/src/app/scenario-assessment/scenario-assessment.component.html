@@ -14,60 +14,21 @@
       </mat-toolbar>
     </div>
 <!-- //gutterSize="10px"  -->
-<mat-grid-list cols="4" rowHeight="184px"  >
+<mat-grid-list cols="4" rowHeight="184px">
     <!-- Home -->
      <div class="home">
        
           <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-      
-            <div class="judge-profiles-container">
-              <!-- Profile 1 -->
-              <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
-                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-                <div class="title">Judge 1</div>  <!-- Title below the image -->
-              </div>
-              <!-- Profile 2 -->
-              <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
-                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-                <div class="title">Judge 2</div>  <!-- Title below the image -->
-              </div>
-              <!-- Profile 3 -->
-              <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
-                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-                <div class="title">Judge 3</div>  <!-- Title below the image -->
-              </div>
-            </div>
-   
     
           </mat-grid-tile>   
      </div>
     <!-- Court -->
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
       
-      <div class="judge-profiles-description">
-        <div id="description-box">
-          <p>Hover over a judge profile to see the description here.</p>
-        </div>
-      </div>
+      
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-      <div class="judge-profiles-container">
-        <!-- Profile 1 -->
-        <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
-          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-          <div class="title">Judge 1</div>  <!-- Title below the image -->
-        </div>
-        <!-- Profile 2 -->
-        <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
-          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-          <div class="title">Judge 2</div>  <!-- Title below the image -->
-        </div>
-        <!-- Profile 3 -->
-        <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
-          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-          <div class="title">Judge 3</div>  <!-- Title below the image -->
-        </div>
-      </div>
+      
 
     </mat-grid-tile>
   
@@ -115,14 +76,7 @@
     <!-- Court -->
      
             
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
-      
-            
-        
-    </mat-grid-tile>
- 
-    <!-- Wet -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
       <div class="courtcard" (mouseenter)="hoverCard()" (mouseleave)="unhoverCard()">
         <!-- Profile Container -->
         <div class="profile-container">
@@ -158,13 +112,17 @@
           </div>
         </div>
         </div>
+            
+        
+    </mat-grid-tile>
+ 
+    <!-- Wet -->
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
+      
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
-      <mat-card class="card">
-       <h2 style="color:beige">Court officers</h2>
-        
-      </mat-card>
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
+     
     </mat-grid-tile>
   
     <!-- User -->
@@ -208,28 +166,32 @@
 
    <!-- //judges -->
    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-    <div class="judge-profiles-description">
-      <div id="description-box">
-        <p>Hover over a judge profile to see the description here.</p>
+    <div class="judge-profiles-container">
+      <!-- Profile 1 -->
+      <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
+        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="title">Judge 1</div>  <!-- Title below the image -->
+      </div>
+      <!-- Profile 2 -->
+      <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
+        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="title">Judge 2</div>  <!-- Title below the image -->
+      </div>
+      <!-- Profile 3 -->
+      <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
+        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="title">Judge 3</div>  <!-- Title below the image -->
       </div>
     </div>
    
   </mat-grid-tile>
+
   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-    <div class="digital-circle-section">
-      <!-- Title for Digital Section -->
-      <h1 class="digitaltitle">Digital</h1>
-  
-      <!-- Square 1 - Digital eCourt Services -->
-      <div class="digital-square">
-        <span class="square-label">eCourt Services</span>
+    <div class="judge-profiles-description">
+      <div id="description-box">
+        <p>Hover over a judge profile to see the description here.</p>
       </div>
-  
-      <!-- Square 2 - Digital Judgment DB -->
-      <div class="digital-square">
-        <span class="square-label">Judgment DB</span>
       </div>
-    </div>
   </mat-grid-tile>
 
 <!-- Description Box -->
