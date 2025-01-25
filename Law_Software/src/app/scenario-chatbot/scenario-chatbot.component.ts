@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({
@@ -15,5 +17,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './scenario-chatbot.component.scss'
 })
 export class ScenarioChatbotComponent {
- 
+
+
+  
+  
 }
