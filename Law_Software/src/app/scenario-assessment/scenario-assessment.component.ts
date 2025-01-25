@@ -40,6 +40,7 @@ export interface Tile {
 })
 export class ScenarioAssessmentComponent {
   constructor(public dialog: MatDialog,private trackService:DetailService) {}
+
   tiles: Tile[] = [
     { text: 'Home', color: '#aed581', cols: 1, rows: 1 },
     { text: 'Court', color: '#81d4fa', cols: 2, rows: 1 },
@@ -49,6 +50,14 @@ export class ScenarioAssessmentComponent {
     { text: 'Calendar', color: '#e6ee9c', cols: 1, rows: 3 },
     { text: 'Court', color: '#bcaaa4', cols: 3, rows: 1 }, 
   ];
+
+  courtDetails:any[]=[]
+
+  ngOnInit(){
+    this.trackService.courtDetails().subscribe((data)=>{
+      this.courtDetails=data
+    })
+  }
   addTrack(trackData: {
     track_id: string;
     track_time: string;
@@ -77,6 +86,8 @@ export class ScenarioAssessmentComponent {
       }
     );
   }
+ 
+ 
   openChatbotDialog(event: Event): void {
     const buttonId = (event.currentTarget as HTMLElement).id;
     const eventTime = Date.now() - performance.now() + event.timeStamp;
