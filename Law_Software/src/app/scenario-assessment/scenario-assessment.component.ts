@@ -124,5 +124,18 @@ export class ScenarioAssessmentComponent {
     console.log('Correct Event Time:', new Date(eventTime).toString());
   }
 
-  
+  showDescription(arg:any){
+    
+  }
+  hideDescription(){
+
+  } 
+  unhoverCard(){
+
+  }
+  hoverCard(){
+  }
+  selected(){
+
+  }
 }
