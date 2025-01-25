@@ -14,62 +14,157 @@
       </mat-toolbar>
     </div>
 <!-- //gutterSize="10px"  -->
-<mat-grid-list cols="4" rowHeight="190px"  >
+<mat-grid-list cols="4" rowHeight="184px"  >
     <!-- Home -->
      <div class="home">
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#aed581'">
-            Home
-          </mat-grid-tile>
-        
+       
+          <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      
+            <div class="judge-profiles-container">
+              <!-- Profile 1 -->
+              <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
+                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+                <div class="title">Judge 1</div>  <!-- Title below the image -->
+              </div>
+              <!-- Profile 2 -->
+              <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
+                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+                <div class="title">Judge 2</div>  <!-- Title below the image -->
+              </div>
+              <!-- Profile 3 -->
+              <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
+                <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+                <div class="title">Judge 3</div>  <!-- Title below the image -->
+              </div>
+            </div>
+   
+    
+          </mat-grid-tile>   
      </div>
     <!-- Court -->
-    <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'#81d4fa'">
-      Administrative
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      
+      <div class="judge-profiles-description">
+        <div id="description-box">
+          <p>Hover over a judge profile to see the description here.</p>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      <div class="judge-profiles-container">
+        <!-- Profile 1 -->
+        <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
+          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+          <div class="title">Judge 1</div>  <!-- Title below the image -->
+        </div>
+        <!-- Profile 2 -->
+        <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
+          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+          <div class="title">Judge 2</div>  <!-- Title below the image -->
+        </div>
+        <!-- Profile 3 -->
+        <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
+          <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+          <div class="title">Judge 3</div>  <!-- Title below the image -->
+        </div>
+      </div>
+
     </mat-grid-tile>
   
     <!--calender -->
+
+      <!-- Main Grid Tile with Calendar, Image, and Content -->
+      <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+        <div class="calendar-container" style="display: flex; flex-direction: column; align-items: center;">
+          <!-- Calendar and Image Section -->
+          <div class="calendar-image-section" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px;">
+            <mat-card class="calendar-card" style="flex: 1; margin-right: 24px;">
+              <mat-card-header class="calendar-title">
+                <mat-card-title><b>CALENDAR</b></mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-card class="demo-inline-calendar-card">
+                  <mat-calendar [(selected)]="selected"></mat-calendar>
+                </mat-card>
+                <p>Selected date: {{selected()}}</p>
+              
+                <!-- <div class="calendar-description" style="text-align: center; padding: 10px;">
+                  <p>
+                    As a legal professional, you need to stay organized. Use this calendar to easily select your preferred date to schedule appointments, deadlines, or meetings.
+                  </p>
+                </div> -->
+                <!-- <div class="image-container" style="flex: 0.5; text-align: center;">
+                  <img
+                    src="assets/images/calendar-icon.png"
+                    alt="Calendar Icon"
+                    style="max-width: 30%; height: 40%;"
+                  />
+                </div> -->
+                <!-- <div class="calendar-description" style="text-align: center; padding: 0px;">
+                  <p>
+                    As a legal professional, you need to stay organized. Use this calendar .
+                  </p>
+                </div>     -->
+              </mat-card-content>    
+            </mat-card>
+          </div>
+          <!-- Calendar Content Below -->      
+        </div>
+      </mat-grid-tile>
+ 
+    <!-- Court -->
+     
+            
     <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
-      <mat-card class="calendar-card">
-        <mat-card-header>
-          <mat-card-title>Calendar</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-form-field>
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY" title="Please select a date">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
+      
+            
         
-          <div class="ad-section">
-            <h4>Material Ad</h4>
-            <p>This is an advertisement related to the calendar feature.</p>
-          </div>
-          <div class="description">
-            <p>
-              Use the calendar to select your preferred date for planning your schedule effectively.
-            </p>
-          </div>
-        </mat-card-actions>
-      </mat-card>
     </mat-grid-tile>
-    
-  
-    <!-- Judge -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'grey'">
-      Court
-      <img src="courtimage.png" alt="court">
-    </mat-grid-tile>
-  
+ 
     <!-- Wet -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'#80cbc9'">
-      
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <div class="courtcard" (mouseenter)="hoverCard()" (mouseleave)="unhoverCard()">
+        <!-- Profile Container -->
+        <div class="profile-container">
+          <div class="courtimage"></div>
+        </div>
+    
+        <!-- Two-line Description -->
+        <div class="court-description">
+          <p>This court specializes in Civil, Criminal, Family, and Tribunal cases.</p>
+        </div>
+    
+        <!-- Circle Section -->
+        <div class="circle-section">
+          <!-- Circle 1 -->
+          <div class="circle-item">
+            <div class="circle"></div>
+            <p class="circle-title">Civil Court</p>
+          </div>
+          <!-- Circle 2 -->
+          <div class="circle-item">
+            <div class="circle"></div>
+            <p class="circle-title">Criminal Court</p>
+          </div>
+          <!-- Circle 3 -->
+          <div class="circle-item">
+            <div class="circle"></div>
+            <p class="circle-title">Family Court</p>
+          </div>
+          <!-- Circle 4 -->
+          <div class="circle-item">
+            <div class="circle"></div>
+            <p class="circle-title">Tribunal Court</p>
+          </div>
+        </div>
+        </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'#80cbc4'">
-      
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <mat-card class="card">
+       <h2 style="color:beige">Court officers</h2>
+        
+      </mat-card>
     </mat-grid-tile>
   
     <!-- User -->
@@ -78,14 +173,9 @@
         <h2>Client</h2>
         <mat-card-content>
           <div class="profile-container">
-            <!-- Profile Image -->
-            <div class="Picture"></div>
-           
-            <!-- Name and Details -->
-            <div class="profile-details">
-              <!-- <h1>Client Details</h1>
-              <h3>Somasundaram</h3> -->
-            
+            <div class="Picture">
+            </div>
+            <div class="profile-details">  
             </div>
           </div>
           <!-- Chatbot Button -->
@@ -96,13 +186,53 @@
       </mat-card>
     </mat-grid-tile>
     
-  
-    <!-- Court (Bottom Extension) -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'pink'">  
-        Digital
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      <div class="digital-circle-section">
+        <!-- Title for Digital Section -->
+        <h1 class="digitaltitle">Digital</h1>
+    
+        <!-- Square 1 - Digital eCourt Services -->
+        <div class="digital-square">
+          <span class="square-label">eCourt Services</span>
+        </div>
+    
+        <!-- Square 2 - Digital Judgment DB -->
+        <div class="digital-square">
+          <span class="square-label">Judgment DB</span>
+        </div>
+      </div>
     </mat-grid-tile>
+    
+    <!-- digital (Bottom Extension) -->
+    
+
+   <!-- //judges -->
+   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+    <div class="judge-profiles-description">
+      <div id="description-box">
+        <p>Hover over a judge profile to see the description here.</p>
+      </div>
+    </div>
    
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'lightgreen'">
-        Judge Profiles
-    </mat-grid-tile>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+    <div class="digital-circle-section">
+      <!-- Title for Digital Section -->
+      <h1 class="digitaltitle">Digital</h1>
+  
+      <!-- Square 1 - Digital eCourt Services -->
+      <div class="digital-square">
+        <span class="square-label">eCourt Services</span>
+      </div>
+  
+      <!-- Square 2 - Digital Judgment DB -->
+      <div class="digital-square">
+        <span class="square-label">Judgment DB</span>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+<!-- Description Box -->
+
+
   </mat-grid-list>

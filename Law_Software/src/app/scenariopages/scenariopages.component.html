@@ -44,7 +44,7 @@
           <button mat-raised-button color (click)="openDialog()">View full</button>
         </div>
         <div class="card" *ngFor="let case of sdetails">
-          <div class="card-image" [ngStyle]="{'background-image': 'url(assets/images/criminal-img.webp)'}"></div>
+          <div class="card-image" [ngStyle]="{'background-image': 'url(assets/images/civil.webp)'}"></div>
         <h3 class="card-title">{{ case.title }}</h3>
           <p class="card-text">{{ case.abstract }}</p>
           <button mat-raised-button color (click)="openDialog()">View full</button>
@@ -65,12 +65,7 @@
 <footer class="footer">
   <div class="footer-container">
     <!-- About Section -->
-    <div class="footer-section about">
-      <h3>About Us</h3>
-      <p>
-        Explore realistic legal case simulations and refine your expertise in an engaging and professional environment.
-      </p>
-    </div>
+    
     <!-- Quick Links -->
     <div class="footer-section links">
       <h3>Quick Links</h3>
@@ -82,15 +77,21 @@
         <li><a href="#help">Help & Support</a></li>
       </ul>
     </div>
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>
+        Explore realistic legal case simulations and refine your expertise in an engaging and professional environment.
+      </p>
+    </div>
     <!-- Contact Info -->
     <div class="footer-section contact">
       <h3>Contact Us</h3>
       <p><i class="fas fa-envelope"></i> supportlegalcasesim.com</p>
       <p><i class="fas fa-phone"></i> 8765674398</p>
-      <p><i class="fas fa-map-marker-alt"></i> 406 Legal St., Law City,India</p>
+      <p><i class="fas fa-map-marker-alt"></i> 406 Legal St., Gandhipuram,India</p>
     </div>
     <!-- Social Media -->
-    <div class="footer-section social">
+    <!-- <div class="footer-section social">
       <h3>Follow Us</h3>
       <div class="social-links">
         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -99,7 +100,7 @@
         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
       
-    </div>
+    </div> -->
   </div>
   <div class="footer-bottom">
     <p>2024 Legal Case Simulator. All rights reserved.</p>
