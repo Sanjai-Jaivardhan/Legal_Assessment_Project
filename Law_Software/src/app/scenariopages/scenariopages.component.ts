@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ScenarioDescriptionComponent } from '../scenario-description/scenario-description.component';
 import { DetailService } from '../detail.service';
@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../authservice.service';
 import { LogoutPageComponent } from '../logout-page/logout-page.component';
+import { isPlatformBrowser } from '@angular/common';
+
 export interface Scenario_Details {
   scenario_id: string;
   tag: string;
@@ -24,24 +26,27 @@ export interface Scenario_Details {
   styleUrls: ['./scenariopages.component.scss']
 })
 export class ScenariopagesComponent implements OnInit, OnDestroy {
-  sdetails: any;
+  sdetails: any[] = [];
   private tokenCheckInterval: any;
 
   constructor(
     private detailservice: DetailService,
     private authService: AuthService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-    // Initial check when the component loads
-    this.checkToken();
-
-    // Set up a polling mechanism to check the token status periodically
-    this.tokenCheckInterval = setInterval(() => {
+    if (isPlatformBrowser(this.platformId)) {
+      // Initial check when the component loads
       this.checkToken();
-    }, 1000); // Check every 1 second (adjust as needed)
+
+      // Set up a polling mechanism to check the token status periodically
+      // this.tokenCheckInterval = setInterval(() => {
+      //   this.checkToken();
+      // }, 1000); // Check every 1 second (adjust as needed)
+    }
 
     // Fetch the scenario details
     this.detailservice.scenariodetails().subscribe((data: any) => {
@@ -50,6 +55,8 @@ export class ScenariopagesComponent implements OnInit, OnDestroy {
 
     // Checking login status with authService
     this.authService.checkLoginStatus();
+
+    console.log(this.sdetails[0].title);
   }
 
   ngOnDestroy(): void {
@@ -60,9 +67,11 @@ export class ScenariopagesComponent implements OnInit, OnDestroy {
   }
 
   checkToken(): void {
-    if (!localStorage.getItem('token')) {
-      
-      this.router.navigate(['/login']);
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        this.router.navigate(['/login']);
+      }
     }
   }
 

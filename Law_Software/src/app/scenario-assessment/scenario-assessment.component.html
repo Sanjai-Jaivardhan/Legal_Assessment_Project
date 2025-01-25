@@ -17,12 +17,12 @@
 <!-- //gutterSize="10px"  -->
 <mat-grid-list cols="4" rowHeight="184px">
     <!-- Home -->
-     <div class="home">
-       
-          <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'pink'">
-    
-          </mat-grid-tile>   
-     </div>
+     <!-- <div class="home"> -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#aed581'">
+            Home
+          </mat-grid-tile>
+        
+     <!-- </div> -->
     <!-- Court -->
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'yellow'">
       
@@ -127,7 +127,7 @@
     </mat-grid-tile>
   
     <!-- User -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
       <mat-card class="profile-card">
         <h2>Client</h2>
         <mat-card-content>
@@ -139,7 +139,7 @@
           </div>
           <!-- Chatbot Button -->
           <div class="chatbot-button">
-            <button mat-raised-button color="warn" (click)="openChatbotDialog()">Open Chatbot</button>
+            <button mat-raised-button color="warn" id="openChatbotButton" (click)="openChatbotDialog($event)">Open Chatbot</button>
           </div>
         </mat-card-content>
       </mat-card>

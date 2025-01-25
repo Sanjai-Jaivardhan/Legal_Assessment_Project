@@ -4,6 +4,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { timestamp } from 'rxjs';
 import { DetailService } from '../detail.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-scenario-description',
   standalone: true,
@@ -19,7 +22,11 @@ export class ScenarioDescriptionComponent {
   title='An unexpeccted chaos';
   allDetails:any
   scenarioId='S1_id100'
-  constructor(private detailService:DetailService){
+  constructor(
+    private detailService:DetailService,
+    private router: Router,
+    private dialogRef: MatDialogRef<ScenarioDescriptionComponent>
+  ){
 
   }
 
@@ -33,6 +40,8 @@ export class ScenarioDescriptionComponent {
   onStartScenario(event: Event): void {
     const buttonId = (event.currentTarget as HTMLElement).id;
     const eventTime = Date.now() - performance.now() + event.timeStamp;
+    this.dialogRef.close();
+    this.router.navigate(['/assessment']);
     console.log('Button ID:', buttonId);
     console.log("Event Type:",new Date(event.timeStamp))
     console.log('Correct Event Time:', new Date(eventTime).toString());

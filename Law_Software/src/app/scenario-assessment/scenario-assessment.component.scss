@@ -1,112 +1,133 @@
-
 .example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  .navbar {
-    background-color: rgb(27, 25, 25);
-    padding: 0.7rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    flex-wrap: wrap;
-    // position: sticky; /* Make the navbar sticky */
-    top: 0; /* Stick to the top */
-    z-index: 1000; /* Ensure it stays above other content */
-  }
-  .mat-toolbar{
-      background-color: black;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center; 
-  }
-  
-  /* Styling for each navigation link */
-  .nav-links a {
-    margin-left: 60px; 
-    margin-right:20px;
-    color: #fcf9f9; /* Default text color for links */
-    text-decoration: none;
-    font-size: 24px; /* Font size for the links */
-    font-weight: 500; /* Slightly bold links */
-  }
-  
-  
-  .nav-links a:hover {
-    color: #e53935; /* Change color on hover to match title color */
-    // text-decoration: underline; /* Add underline effect on hover */
-  }
-  
-  
-  .flex {
-    color:rgb(205, 57, 57);
-    font-size: 29px;
-  }
-  .main-title{
-    font-size:29px;
-    border-color: white;
-  }
-  .main-title:hover{
-    color: #fbfbfb;
-   
-  }
-  
-  mat-toolbar {
+  flex: 1 1 auto;
+}
 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
-    color: #333; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-  }
-  
-  
-  .calendar-card {
-    background-color: #ffffff; /* White background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-    cursor: pointer; /* Pointer cursor on hover */
-  }
-  
-  .card-hover:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
-  }
- 
-  .home{
-    width:200px;
-  }
-  
-  img{
-    width:50%;
-    height:90%;
-  }
+.navbar {
+  background-color: rgb(27, 25, 25);
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+  // position: sticky; /* Make the navbar sticky */
+  top: 0;
+  /* Stick to the top */
+  z-index: 1000;
+  /* Ensure it stays above other content */
+}
+
+.mat-toolbar {
+  background-color: black;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for each navigation link */
+.nav-links a {
+  margin-left: 60px;
+  margin-right: 20px;
+  color: #fcf9f9;
+  /* Default text color for links */
+  text-decoration: none;
+  font-size: 24px;
+  /* Font size for the links */
+  font-weight: 500;
+  /* Slightly bold links */
+}
+
+
+.nav-links a:hover {
+  color: #e53935;
+  /* Change color on hover to match title color */
+  // text-decoration: underline; /* Add underline effect on hover */
+}
+
+
+.flex {
+  color: rgb(205, 57, 57);
+  font-size: 29px;
+}
+
+.main-title {
+  font-size: 29px;
+  border-color: white;
+}
+
+.main-title:hover {
+  color: #fbfbfb;
+
+}
+
+mat-toolbar {
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.calendar-card {
+  background-color: #ffffff;
+  /* White background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+  border-radius: 8px;
+  /* Rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth hover effect */
+  cursor: pointer;
+  /* Pointer cursor on hover */
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  /* More prominent shadow on hover */
+}
+
+.home {
+  width: 200px;
+}
+
+img {
+  width: 50%;
+  height: 90%;
+}
 
 /* Profile Card Styles */
 .profile-card {
   padding: 4px;
   border-radius: 16px;
-  width:300px;
-  height:auto;
+  width: 300px;
+  height: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   background-color: rgb(14, 14, 14);
 }
+
 .profile-card:hover {
-  box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(252, 251, 251, 0.15); /* Slightly raised on hover */
-  transform: translateY(-2px); /* Subtle upward movement */
+  box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(252, 251, 251, 0.15);
+  /* Slightly raised on hover */
+  transform: translateY(-2px);
+  /* Subtle upward movement */
 }
 
 .profile-card:active {
-  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2); /* Pressed button effect */
-  transform: translateY(1px); /* Slight downward movement */
+  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2);
+  /* Pressed button effect */
+  transform: translateY(1px);
+  /* Slight downward movement */
 }
 
 /* Profile Container */
@@ -120,372 +141,449 @@
 .Picture {
   width: 170px;
   height: 170px;
+  border: 5px solid white;
   border-radius: 50%;
-  margin-left:30px;
-  background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
+  margin-left: 30px;
+  background-image: url('/assets/images/picture-profile45man.jpeg');
+  /* Path to your image */
   background-size: cover;
   background-position: center;
-  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4); /* Optional shadow */
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
+  /* Optional shadow */
+
 }
 
 /* Profile Details */
-
-
-button[mat-raised-button] {
-  font-size: 18px;
-  margin-top:30px;
-  margin-left:40px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.profile-card h2{
-  color:rgb(241, 234, 234);
-  text-align:center;
-  font-size: 35px;
-  
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top:2px;
-
-}
-//calendar
-.calendar-card{
-
-  border-radius: 8px;
-  width: 300px;
-  height:250px;
-  margin-left:40px;
-  margin-top:15px;
-  margin-bottom:10px;
-  height:auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  background-color: rgb(255, 255, 255);
-}
-.calendar-card:hover {
-  box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15); /* Slightly raised on hover */
-  transform: translateY(-2px); /* Subtle upward movement */
-}
-
-.calendar-card:active {
-  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2); /* Pressed button effect */
-  transform: translateY(1px); /* Slight downward movement */
-}
-
-.calendar-title{
-  color:rgb(12, 12, 12);
-  margin-bottom:15px;
-  font-size: 24px;
-}
-
-.calendar-description{
-  color:rgb(233, 46, 46);
-  text-align:left;
-  margin-bottom: 4px;
-}
-
-// .Picture-judge{
-//   width: 80px;
-//   height: 80px;
-//   border-radius: 50%;
-//   margin-left:20px;
-//   align-items: flex-start;
-//   justify-content: left;
-//   background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
-//   background-size: cover;
-//   background-position: center;
-//   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
-// }
-// .profile-container {
-//   display: flex;
-//   align-items: center;
-//   gap: 16px; /* Spacing between image and details */
-// }
-
-
-/* Styling for the profile image (circular with shadow) */
-// .Picture-judge {
-//   width: 100px;
-//   gap:50px;
-//   height: 100px;
-//   border-radius: 50%;
-//   margin-left:10px;
-//   margin-right:20px;
-//   justify-content: left;
-//   background-size: cover;
-//   background-position: center;
-//   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
-//   cursor: pointer; /* Makes the image clickable */
-//   transition: transform 0.3s ease; /* Zoom effect on hover */
-// }
-
-// /* Hover effect on the profile image */
-// .Picture-judge:hover {
-//   transform: scale(1.1); /* Zoom effect on hover */
-// }
-
-// /* Profile container for image and title */
-// .profile-container {
-//   display: flex;
-//   align-items: center;
-//   gap: 16px; /* Space between image and title */
-//   cursor: pointer;
-// }
-
-// /* Title for each profile */
-// .profile-container .title {
-//   font-weight: bold;
-//   text-align: center;
-//   margin-top: 5px;
-// }
-
-// /* Description box (appears on the right side) */
-// #description-box {
-//   text-align: center;
-//   padding: 20px;
-//   // border: 1px solid #ccc;
-//   background-color: #f9f9f9;
-//   margin-left: 20px; /* Space for the description */
-// }
-.judge-profiles-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;  /* Space between the profile items */
-  justify-content: flex-start;  /* Align to the left */
-}
-
-.profile-container {
-  display: flex;
-  flex-direction: column;  /* Stack image and title vertically */
-  align-items: center;     /* Center the title below the image */
-  text-align: center;      /* Center the title text */
-}
-
-.Picture-judge {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid #e53935; 
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 8px;      /* Space between image and title */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Optional, for shadow effect */
-}
-.Picture-judge:hover {
-  box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15); /* Slightly raised on hover */
-  transform: translateY(-2px); /* Subtle upward movement */
-}
-
-.profile-card:active {
-  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2); /* Pressed button effect */
-  transform: translateY(1px); /* Slight downward movement */
-}
-
-.title {
-  font-size: 14px;
-  font-weight: bold;
-  color: #262424;  /* Adjust the title color */
-}
-.demo-inline-calendar-card {
-  width: 200px;
-}
-.judgecard {
-  background-color: #000000;
-  border-radius: 8px;
-  width:400px;
-  height:auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-
-}
-
-
-.judge-profiles-container {
-  display: flex;
-  
-  gap: 23px;  /* Space between the profiles */
-  justify-content: flex-start;  /* Align the profiles to the left */
-  align-items: center; /* Vertically center the profiles */
-}
-
-.profile-container {
-  display: flex;
-  flex-direction: column;  /* Stack image and title vertically */
-  align-items: center;     /* Center the title below the image */
-  text-align: center;      /* Center the title text */
-}
-
-.judge-profiles-description{
-  background-color: #ffffff;
-  border-radius: 8px;
-  width:400px;
-  height:150px;
-  // border: 3px solid #121212;
- padding: 5px;
-  font-weight: 600;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color:rgb(13, 13, 13);
-  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Card Styles */
-.courtcard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  border-radius: 28px;
-  width: 500px;
-  height: auto;
-  background-color: rgb(12, 12, 12);
-  
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer; /* Indicates interactivity */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.courtcard.hovered {
-  transform: translateY(-10px); /* Transform on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
-}
-.courtcard:active {
-  box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2); /* Pressed button effect */
-  transform: translateY(1px); /* Slight downward movement */
-}
-
-/* Circle Section */
-.circle-section {
-  display: flex;
+.profile-details h3 {
   margin-top: 10px;
-  align-items: center;
-  justify-content: center;
-  gap: 20px; /* Space between circles */
-}
-
-.circle {
-  width: 60px;
-  height: 60px;
-  background-image: url('/assets/images/gavel-image.jpeg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  margin-left:16px;
-  border: 3px solid #e53935;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  cursor: pointer; /* Pointer cursor for interactivity */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.circle:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Active Circle */
-.circle.active {
-  border-color: #4caf50; /* Highlight active circle */
-}
-.court-description {
-  margin: 8px 0;
-  font-size: 14px;
-  text-align: center;
-  color: #f1ecec;
-  margin-top:-42px;
-  margin-bottom: -2px;
-
-}
-.circle-section {
-  display: flex;
-  justify-content: center;
-  gap: 10px; /* Space between circle items */
-  margin-top: 5px;
-}
-
-.circle-item {
-  text-align: center; /* Center align the circle and title */
-}
-
-.circle {
-  width: 50px;
-  height: 50px;
-  background-color: #ccc; /* Default circle color */
-  border-radius: 50%;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  cursor: pointer;
-}
-
-.circle:hover {
-  transform: translateY(-10px); /* Move circle up on hover */
-  background-color: #90caf9; /* Light blue color on hover */
-}
-
-.circle-title {
-  margin-top: 8px; /* Space between circle and title */
-  font-size: 14px;
-  color: #f9f8f8;
-  font-weight: 500; /* Slightly bold title for emphasis */
-}
-
-/* Description Styles */
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 100px;
+  border: 10px solid white;
 
 
-.court-description.active {
-  opacity: 1; /* Show description for active circle */
-}
+  button[mat-raised-button] {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-left: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
-.courtimage {
-  width: 300px;
-  height: 300px;
-  background-image: url('/assets/images/courtimage.png');
-  background-size: cover;
-  background-position: center;
-  margin-top: -62px;
-}
+  .profile-card h2 {
+    color: rgb(241, 234, 234);
+    text-align: center;
+    font-size: 35px;
 
-//digital 
-.digital-circle-section {
-  display: flex;
-/* Stack title and squares vertically */
-  align-items: center;    /* Center title and squares horizontally */
-  justify-content: center; /* Center them vertically in the container */
-  gap: 20px;              /* Space between title and squares */
-  margin-top: 30px;        /* Add space from the top */
-}
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2px;
 
-.digital-square {
-  width: 120px;  /* Square size */
-  height: 120px;
-  background-color: rgb(12, 12, 12);
-  border: 6px solid #f01d1d; /* Teal background color for the "Digital" theme */
-  border-radius: 70px;  /* Rounded corners to make it look like a square */
-  display: flex;
-  align-items: center;  /* Vertically center text */
-  justify-content: center;  /* Horizontally center text */
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Optional shadow for the squares */
-  cursor: pointer;  /* Pointer cursor for interactivity */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  }
 
-.digital-square:hover {
-  transform: scale(1.1);  /* Slight zoom on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);  /* Slightly larger shadow */
-}
+  //calendar
+  .calendar-card {
 
-.square-label {
-  font-size: 12px;  /* Smaller font size */
-  text-transform: uppercase;  /* Make the text uppercase */
-  line-height: 1.2;  /* Adjust line height for better spacing */
-}
+    border-radius: 8px;
+    width: 300px;
+    height: 250px;
+    margin-left: 40px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+  }
 
-.digitaltitle {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px; /* Space below the title */
-}
-.card{
-  background-color: #d84545;
-  width:400px;
-  height:400px;
-  border-radius:45px;
+  .calendar-card:hover {
+    box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15);
+    /* Slightly raised on hover */
+    transform: translateY(-2px);
+    /* Subtle upward movement */
+  }
+
+  .calendar-card:active {
+    box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2);
+    /* Pressed button effect */
+    transform: translateY(1px);
+    /* Slight downward movement */
+  }
+
+  .calendar-title {
+    color: rgb(12, 12, 12);
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+
+  .calendar-description {
+    color: rgb(233, 46, 46);
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  // .Picture-judge{
+  //   width: 80px;
+  //   height: 80px;
+  //   border-radius: 50%;
+  //   margin-left:20px;
+  //   align-items: flex-start;
+  //   justify-content: left;
+  //   background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
+  //   background-size: cover;
+  //   background-position: center;
+  //   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
+  // }
+  // .profile-container {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 16px; /* Spacing between image and details */
+  // }
+
+
+  /* Styling for the profile image (circular with shadow) */
+  // .Picture-judge {
+  //   width: 100px;
+  //   gap:50px;
+  //   height: 100px;
+  //   border-radius: 50%;
+  //   margin-left:10px;
+  //   margin-right:20px;
+  //   justify-content: left;
+  //   background-size: cover;
+  //   background-position: center;
+  //   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
+  //   cursor: pointer; /* Makes the image clickable */
+  //   transition: transform 0.3s ease; /* Zoom effect on hover */
+  // }
+
+  // /* Hover effect on the profile image */
+  // .Picture-judge:hover {
+  //   transform: scale(1.1); /* Zoom effect on hover */
+  // }
+
+  // /* Profile container for image and title */
+  // .profile-container {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 16px; /* Space between image and title */
+  //   cursor: pointer;
+  // }
+
+  // /* Title for each profile */
+  // .profile-container .title {
+  //   font-weight: bold;
+  //   text-align: center;
+  //   margin-top: 5px;
+  // }
+
+  // /* Description box (appears on the right side) */
+  // #description-box {
+  //   text-align: center;
+  //   padding: 20px;
+  //   // border: 1px solid #ccc;
+  //   background-color: #f9f9f9;
+  //   margin-left: 20px; /* Space for the description */
+  // }
+  .judge-profiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Space between the profile items */
+    justify-content: flex-start;
+    /* Align to the left */
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack image and title vertically */
+    align-items: center;
+    /* Center the title below the image */
+    text-align: center;
+    /* Center the title text */
+  }
+
+  .Picture-judge {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #e53935;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 8px;
+    /* Space between image and title */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional, for shadow effect */
+  }
+
+  .Picture-judge:hover {
+    box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15);
+    /* Slightly raised on hover */
+    transform: translateY(-2px);
+    /* Subtle upward movement */
+  }
+
+  .profile-card:active {
+    box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2);
+    /* Pressed button effect */
+    transform: translateY(1px);
+    /* Slight downward movement */
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #262424;
+    /* Adjust the title color */
+  }
+
+  .demo-inline-calendar-card {
+    width: 200px;
+  }
+
+  .judgecard {
+    background-color: #000000;
+    border-radius: 8px;
+    width: 400px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+  }
+
+
+  .judge-profiles-container {
+    display: flex;
+
+    gap: 23px;
+    /* Space between the profiles */
+    justify-content: flex-start;
+    /* Align the profiles to the left */
+    align-items: center;
+    /* Vertically center the profiles */
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack image and title vertically */
+    align-items: center;
+    /* Center the title below the image */
+    text-align: center;
+    /* Center the title text */
+  }
+
+  .judge-profiles-description {
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 400px;
+    height: 150px;
+    // border: 3px solid #121212;
+    padding: 5px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(13, 13, 13);
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Card Styles */
+  .courtcard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 28px;
+    width: 500px;
+    height: auto;
+    background-color: rgb(12, 12, 12);
+
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    /* Indicates interactivity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .courtcard.hovered {
+    transform: translateY(-10px);
+    /* Transform on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Slightly larger shadow */
+  }
+
+  .courtcard:active {
+    box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2);
+    /* Pressed button effect */
+    transform: translateY(1px);
+    /* Slight downward movement */
+  }
+
+  /* Circle Section */
+  .circle-section {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* Space between circles */
+  }
+
+  .circle {
+    width: 60px;
+    height: 60px;
+    background-image: url('/assets/images/gavel-image.jpeg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-left: 16px;
+    border: 3px solid #e53935;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    /* Pointer cursor for interactivity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .circle:hover {
+    transform: scale(1.1);
+    /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Active Circle */
+  .circle.active {
+    border-color: #4caf50;
+    /* Highlight active circle */
+  }
+
+  .court-description {
+    margin: 8px 0;
+    font-size: 14px;
+    text-align: center;
+    color: #f1ecec;
+    margin-top: -42px;
+    margin-bottom: -2px;
+
+  }
+
+  .circle-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Space between circle items */
+    margin-top: 5px;
+  }
+
+  .circle-item {
+    text-align: center;
+    /* Center align the circle and title */
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    /* Default circle color */
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .circle:hover {
+    transform: translateY(-10px);
+    /* Move circle up on hover */
+    background-color: #90caf9;
+    /* Light blue color on hover */
+  }
+
+  .circle-title {
+    margin-top: 8px;
+    /* Space between circle and title */
+    font-size: 14px;
+    color: #f9f8f8;
+    font-weight: 500;
+    /* Slightly bold title for emphasis */
+  }
+
+  /* Description Styles */
+
+
+  .court-description.active {
+    opacity: 1;
+    /* Show description for active circle */
+  }
+
+  .courtimage {
+    width: 300px;
+    height: 300px;
+    background-image: url('/assets/images/courtimage.png');
+    background-size: cover;
+    background-position: center;
+    margin-top: -62px;
+  }
+
+  //digital 
+  .digital-circle-section {
+    display: flex;
+    /* Stack title and squares vertically */
+    align-items: center;
+    /* Center title and squares horizontally */
+    justify-content: center;
+    /* Center them vertically in the container */
+    gap: 20px;
+    /* Space between title and squares */
+    margin-top: 30px;
+    /* Add space from the top */
+  }
+
+  .digital-square {
+    width: 120px;
+    /* Square size */
+    height: 120px;
+    background-color: rgb(12, 12, 12);
+    border: 6px solid #f01d1d;
+    /* Teal background color for the "Digital" theme */
+    border-radius: 70px;
+    /* Rounded corners to make it look like a square */
+    display: flex;
+    align-items: center;
+    /* Vertically center text */
+    justify-content: center;
+    /* Horizontally center text */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Optional shadow for the squares */
+    cursor: pointer;
+    /* Pointer cursor for interactivity */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .digital-square:hover {
+    transform: scale(1.1);
+    /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    /* Slightly larger shadow */
+  }
+
+  .square-label {
+    font-size: 12px;
+    /* Smaller font size */
+    text-transform: uppercase;
+    /* Make the text uppercase */
+    line-height: 1.2;
+    /* Adjust line height for better spacing */
+  }
+
+  .digitaltitle {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    /* Space below the title */
+  }
+
+  .card {
+    background-color: #d84545;
+    width: 400px;
+    height: 400px;
+    border-radius: 45px;
+  }
 }

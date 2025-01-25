@@ -11,7 +11,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { ScenarioChatbotComponent } from '../scenario-chatbot/scenario-chatbot.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import { DetailService } from '../detail.service';
 export interface Tile {
   text: string;
   color: string;
@@ -39,9 +39,8 @@ export interface Tile {
   styleUrls: ['./scenario-assessment.component.scss'] // Fixed typo here
 })
 export class ScenarioAssessmentComponent {
-  constructor(public dialog: MatDialog) {}
-  selected = model<Date | null>(null);
-  
+  constructor(public dialog: MatDialog,private trackService:DetailService) {}
+
   tiles: Tile[] = [
     { text: 'Home', color: '#aed581', cols: 1, rows: 1 },
     { text: 'Court', color: '#81d4fa', cols: 2, rows: 1 },
@@ -52,56 +51,78 @@ export class ScenarioAssessmentComponent {
     { text: 'Court', color: '#bcaaa4', cols: 3, rows: 1 }
   ];
 
-  openChatbotDialog() {
+  courtDetails:any[]=[]
+
+  ngOnInit(){
+    this.trackService.courtDetails().subscribe((data)=>{
+      this.courtDetails=data
+    })
+  }
+  addTrack(trackData: {
+    track_id: string;
+    track_time: string;
+    track_date: string;
+    chat_button_id: string;
+    chat_id: string;
+    chat_values: string;
+  }): void {
+    this.callServiceToAddTrack(trackData);
+  }
+
+  private callServiceToAddTrack(trackData: {
+    track_id: string;
+    track_time: string;
+    track_date: string;
+    chat_button_id: string;
+    chat_id: string;
+    chat_values: string;
+  }): void {
+    this.trackService.sendTrackData(trackData).subscribe(
+      (response) => {
+        console.log('Tracking data added successfully:', response);
+      },
+      (error) => {
+        console.error('Error while adding tracking data:', error);
+      }
+    );
+  }
+ 
+ 
+  openChatbotDialog(event: Event): void {
+    const buttonId = (event.currentTarget as HTMLElement).id;
+    const eventTime = Date.now() - performance.now() + event.timeStamp;
+
+    const trackData = {
+      track_id: '100', // Example static ID
+      track_time: new Date(eventTime).toISOString(),
+      track_date: new Date(eventTime).toISOString().split('T')[0],
+      chat_button_id: buttonId,
+      chat_id: 'chat_456',
+      chat_values: 'Chatbot opened',
+    };
+
+    this.addTrack(trackData);
+
     const dialogRef = this.dialog.open(ScenarioChatbotComponent, {
       width: '800px',
       height: '600px',
-      data: { message: 'How can I help you today?' }
+      data: { message: 'How can I help you today?' },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Chatbot dialog closed', result);
     });
   }
+
   
-  // Function to show the description when a judge profile is hovered
-  showDescription(judgeNumber: number): void {
-    const descriptionText: { [key: number]: string } = {
-      1: 'Justice Arun Kumar Mishra: A prominent figure in constitutional law, Justice Mishra is known for his landmark judgments on fundamental rights and state governance issues.',
-    2: 'Justice Indira Banerjee: With expertise in commercial and civil law, Justice Banerjee has presided over significant cases related to property disputes and corporate governance.',
-    3: 'Justice N. V. Ramana: Specializing in criminal law, Justice Ramana has been instrumental in handling high-profile criminal cases, including corruption and organized crime.',
-    
-    };
 
-    // Ensure the judgeNumber is valid before attempting to access the object
-    const description = descriptionText[judgeNumber] || 'No description available.';
-    
-    // Update the description box content dynamically
-    const descriptionElement = document.getElementById('description-box');
-    if (descriptionElement) {
-      descriptionElement.innerHTML = `<p>${description}</p>`;
-    }
+  onDetailCollection(event: Event): void {
+    const buttonId = (event.currentTarget as HTMLElement).id;
+    const eventTime = Date.now() - performance.now() + event.timeStamp;
+    console.log('Button ID:', buttonId);
+    console.log("Event Type:",new Date(event.timeStamp))
+    console.log('Correct Event Time:', new Date(eventTime).toString());
   }
 
-  // Function to reset the description when hover ends
-  hideDescription(): void {
-    const descriptionElement = document.getElementById('description-box');
-    if (descriptionElement) {
-      descriptionElement.innerHTML = `<p>Hover over a judge profile to see the description here.</p>`;
-    }
-  }
-  activeCircle: number | null = null;
-  isHovered: boolean = false;
-
-  showCircleDescription(circleId: number): void {
-    this.activeCircle = this.activeCircle === circleId ? null : circleId; // Toggle description
-  }
-
-  hoverCard(): void {
-    this.isHovered = true;
-  }
-
-  unhoverCard(): void {
-    this.isHovered = false;
-  }
+  
 }

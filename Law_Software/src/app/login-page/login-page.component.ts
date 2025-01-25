@@ -42,19 +42,27 @@ export class LoginPageComponent {
   // }
 
   login() {
-    this.authService.login({ username: this.username, password: this.password }).forEach((response: any) => {
-      localStorage.setItem('token', response.token);
-  
-      // Check if the token exists and navigate
-      if (localStorage.getItem('token')) {
-        this.router.navigate(['/scenarios']); // Replace '/scenarios' with your target route
+    const startTime = new Date();
+    this.authService.login({ username: this.username, password: this.password }).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/scenarios']);
+        console.log(`Login completed in ${new Date().getTime() - startTime.getTime()}ms`);
+      },
+      error: (error) => {
+        console.error('Login failed:', error);
+        console.log(`Login failed after ${new Date().getTime() - startTime.getTime()}ms`);
+        
+        // Handle login failure, e.g., show an error message 
       }
-    }).catch(error => {
-      console.error('Login failed:', error);
-      // Handle login failure, e.g., show an error message
     });
+
+    
   }
+
+  
   
 }
+
 
 
