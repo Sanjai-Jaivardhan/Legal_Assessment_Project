@@ -124,12 +124,24 @@ export class ScenarioAssessmentComponent {
     console.log('Correct Event Time:', new Date(eventTime).toString());
   }
 
-  showDescription(arg:any){
-    
-  }
-  hideDescription(){
+ 
+    description: string = "Hover over a judge profile to see the description here."; // Default message
+  
+    showDescription(judgeNumber: number): void {
+      if (judgeNumber === 1) {
+        this.description = 'Judge John Doe has over 15 years of experience in the tech industry. He is known for his strong leadership and passion for innovation.';
+      } else if (judgeNumber === 2) {
+        this.description = 'Judge Jane Smith is a renowned entrepreneur and venture capitalist. She specializes in helping startups scale and succeed.';
+      } else if (judgeNumber === 3) {
+        this.description = 'Judge Emily Johnson is a leading expert in digital marketing, with a proven track record of successful campaigns for top brands.';
+      }
+    }
+  
+    hideDescription() {
+      this.description = "Hover over a judge profile to see the description here."; // Reset message
+    }
+  
 
-  } 
   unhoverCard(){
 
   }

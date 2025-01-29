@@ -18,18 +18,49 @@
 <mat-grid-list cols="4" rowHeight="184px">
     <!-- Home -->
      <!-- <div class="home"> -->
-        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#aed581'">
-            Home
-          </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+        <mat-card class="law-access-card">
+          <mat-card-header>
+            <mat-card-title>Law Access Details</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Access legal resources, case studies, and judicial guidelines to stay informed about legal proceedings.</p>
+          </mat-card-content>
+          <!-- <mat-card-actions>
+            <button mat-button color="primary">Learn More</button>
+          </mat-card-actions> -->
+        </mat-card>
+      </mat-grid-tile>
+      
         
      <!-- </div> -->
     <!-- Court -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'yellow'">
-      
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      <mat-card class="law-access-card">
+        <mat-card-header>
+          <mat-card-title>Client Documents</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Manage and organize client contracts, agreements, and other documents.</p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button color="primary">Learn More</button>
+        </mat-card-actions> -->
+      </mat-card>
       
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'blue'">
-      
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      <mat-card class="law-access-card">
+        <mat-card-header>
+          <mat-card-title>court filings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Access, upload, and manage court documents and filings for ongoing cases.</p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+          <button mat-button color="primary">Learn More</button>
+        </mat-card-actions> -->
+      </mat-card>
 
     </mat-grid-tile>
   
@@ -118,18 +149,38 @@
     </mat-grid-tile>
  
     <!-- Wet -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <mat-card class="law-access-card">
+        <mat-card-header>
+          <mat-card-title class="centered-title">Registrar/Clerk</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>The registrar or clerk plays a crucial role in managing and maintaining the court’s official records and proceedings. Their responsibilities include:</p>
+         
+          <p>They ensure that the operations of the court system run efficiently and that all legal documents are processed in compliance with applicable rules and regulations.</p>
+        </mat-card-content>
+      </mat-card>
       
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
-     
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+      <mat-card class="law-access-card">
+        <mat-card-header>
+          <mat-card-title class="centered-title">Court Officer</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>The court officer plays a crucial role in ensuring that the court's operations run smoothly, assisting in maintaining security and order during proceedings, and carrying out important duties to support legal processes.</p>
+         
+          <p>The court officer ensures that the courtroom functions efficiently, maintaining the safety of all participants and supporting the judicial process.</p>
+        </mat-card-content>
+      </mat-card>
+      
     </mat-grid-tile>
   
     <!-- User -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'black'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
       <mat-card class="profile-card">
-        <h2>Client</h2>
+        <h2 style="color:white;font-size:28px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-left:100px;">Client</h2>
         <mat-card-content>
           <div class="profile-container">
             <div class="Picture">
@@ -139,13 +190,14 @@
           </div>
           <!-- Chatbot Button -->
           <div class="chatbot-button">
-            <button mat-raised-button color="warn" id="openChatbotButton" (click)="openChatbotDialog($event)">Open Chatbot</button>
+            <button mat-raised-button color="warn" style="margin-left: 70px;"id="openChatbotButton" (click)="openChatbotDialog($event)">Open Chatbot</button>
           </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      
       <div class="digital-circle-section">
         <!-- Title for Digital Section -->
         <h1 class="digitaltitle">Digital</h1>
@@ -166,6 +218,7 @@
     
 
    <!-- //judges -->
+  
    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
     <div class="judge-profiles-container">
       <!-- Profile 1 -->
@@ -184,17 +237,16 @@
         <div class="title">Judge 3</div>  <!-- Title below the image -->
       </div>
     </div>
-   
   </mat-grid-tile>
-
   
   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
     <div class="judge-profiles-description">
       <div id="description-box">
-        <p>Hover over a judge profile to see the description here.</p>
+        <p>{{ description }}</p> <!-- Displaying dynamic description -->
       </div>
-      </div>
+    </div>
   </mat-grid-tile>
+  
 
 <!-- Description Box -->
 
