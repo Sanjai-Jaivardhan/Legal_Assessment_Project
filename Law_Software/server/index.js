@@ -149,6 +149,51 @@ app.post('/api/client-bot-assess', async (req, res) => {
     }
 });
 
+app.post('/api/end-test-assess', async (req, res) => {
+    const {
+        track_id,
+        track_time,
+        track_date,
+        test_id,
+        test_score,
+        test_feedback
+    } = req.body;
+
+    // Input validation
+    if (!track_id || !track_time || !track_date || !test_id || !test_score || !test_feedback) {
+        return res.status(400).json({
+            success: false,
+            message: 'Missing required fields'
+        });
+    }
+
+    try {
+        const query = `
+        INSERT INTO end_test_assess 
+        (track_id, track_time, track_date, test_id, test_score, test_feedback) 
+        VALUES ($1, $2, $3, $4, $5, $6) 
+        RETURNING *;
+        `;
+
+        const values = [track_id, track_time, track_date, test_id, test_score, test_feedback];
+        const result = await pool.query(query, values);
+
+        res.status(201).json({
+            success: true,
+            message: 'End test data inserted successfully',
+            data: result.rows[0],
+        });
+    } catch (error) {
+        console.error('Error inserting end test data:', error.message);
+        res.status(500).json({
+            success: false,
+            message: 'Error inserting end test data',
+            error: error.message,
+        });
+    }
+});
+
+
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })

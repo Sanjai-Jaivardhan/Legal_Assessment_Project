@@ -13,6 +13,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DetailService } from '../detail.service';
 import { RouterModule } from '@angular/router';
+import { EndAssessComponent } from '../end-assess/end-assess.component';
 export interface Tile {
   text: string;
   color: string;
@@ -25,6 +26,7 @@ export interface Tile {
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [
+    EndAssessComponent,
     MatCardModule,
     MatInputModule,
     MatDatepickerModule,

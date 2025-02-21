@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+import { EndAssessComponent } from './end-assess/end-assess.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,7 +27,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ScenarioAssessmentComponent,
     ScenariopagesComponent,
     MatCardModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    EndAssessComponent
   ],
   providers: [provideNativeDateAdapter()], 
   templateUrl: './app.component.html',
