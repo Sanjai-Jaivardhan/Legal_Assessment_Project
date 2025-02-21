@@ -6,6 +6,9 @@ import { ScenariopagesComponent } from './scenariopages/scenariopages.component'
 import { ScenarioDescriptionComponent } from './scenario-description/scenario-description.component';
 import { ScenarioAssessmentComponent } from './scenario-assessment/scenario-assessment.component';
 
+import { AssessJudicialPageComponent } from './assess-judicial-page/assess-judicial-page.component';
+import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
   { path: 'login', component: LoginPageComponent },
@@ -13,6 +16,9 @@ export const routes: Routes = [
   { path: 'scenarios', component:ScenariopagesComponent},
   { path: 'scenarioDescription', component:ScenarioDescriptionComponent},
   { path: 'assessment', component:ScenarioAssessmentComponent},
+  { path:'judicial',component:AssessJudicialPageComponent},
+  { path:'administrative',component:AssessAdministrativePageComponent},
+  { path:'dashboard',component:DashboardPageComponent},
   { path: '**',redirectTo: '/login'}
 ];
 

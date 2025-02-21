@@ -12,6 +12,7 @@ import { ScenarioChatbotComponent } from '../scenario-chatbot/scenario-chatbot.c
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DetailService } from '../detail.service';
+import { RouterModule } from '@angular/router';
 export interface Tile {
   text: string;
   color: string;
@@ -33,7 +34,8 @@ export interface Tile {
     MatIconModule,
     MatDialogModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    RouterModule
   ],
   templateUrl: './scenario-assessment.component.html',
   styleUrls: ['./scenario-assessment.component.scss'] // Fixed typo here
