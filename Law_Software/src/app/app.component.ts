@@ -17,6 +17,7 @@ import { EndAssessComponent } from './end-assess/end-assess.component';
 import { ClerkComponent } from './clerk/clerk.component';
 import { access } from 'fs';
 import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
+import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -33,7 +34,8 @@ import { AssessAdministrativePageComponent } from './assess-administrative-page/
     MatCardModule,
     MatDatepickerModule,
     EndAssessComponent,
-    AssessAdministrativePageComponent
+    AssessAdministrativePageComponent,
+    CourtfilingsComponent
   ],
   providers: [provideNativeDateAdapter()], 
   templateUrl: './app.component.html',

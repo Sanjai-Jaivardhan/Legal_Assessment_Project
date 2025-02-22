@@ -796,3 +796,21 @@ img {
   background-position: center;
   margin-top: -62px;
 }
+
+.custom-button {
+  background-color: red; 
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
