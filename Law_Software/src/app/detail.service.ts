@@ -50,6 +50,9 @@ export class DetailService {
   endTest(data: any): Observable<any> {
     return this.http.post<any>(`${this.api}/api/end-test-assess`, data);
   }
-  
+
+  getTestResults(userId: string): Observable<any> {
+    return this.http.get(`${this.api}/test-results/${userId}`);
+  }
   
 }

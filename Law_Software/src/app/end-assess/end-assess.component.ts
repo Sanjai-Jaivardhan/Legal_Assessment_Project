@@ -27,7 +27,7 @@ export class EndAssessComponent {
         console.log('End test data submitted:', response);
         alert('Test Ended Successfully');
         this.router.navigate(['/scenarios'], { replaceUrl: true }).then(() => {
-          window.history.pushState(null, '', '/scenario'); // Prevent back navigation
+          window.history.pushState(null, '', '/scenarios'); // Prevent back navigation
         });
         
       },

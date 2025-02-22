@@ -193,6 +193,15 @@ app.post('/api/end-test-assess', async (req, res) => {
     }
 });
 
+app.get('/api/test-results/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const result = await pool.query('SELECT * FROM end_test_assess WHERE track_id = $1', [userId]);
+        res.status(200).json(result.rows);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error fetching test results', error: error.message });
+    }
+});
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)

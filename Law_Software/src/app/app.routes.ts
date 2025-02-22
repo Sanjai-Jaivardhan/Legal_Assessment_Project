@@ -9,6 +9,8 @@ import { ScenarioAssessmentComponent } from './scenario-assessment/scenario-asse
 import { AssessJudicialPageComponent } from './assess-judicial-page/assess-judicial-page.component';
 import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { ClerkComponent } from './clerk/clerk.component';
+import { DivOfCourtComponent } from './div-of-court/div-of-court.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
   { path: 'login', component: LoginPageComponent },
@@ -19,6 +21,8 @@ export const routes: Routes = [
   { path:'judicial',component:AssessJudicialPageComponent},
   { path:'administrative',component:AssessAdministrativePageComponent},
   { path:'dashboard',component:DashboardPageComponent},
+  { path:'clerk',component:ClerkComponent},
+  { path:'divisions',component:DivOfCourtComponent},
   { path: '**',redirectTo: '/login'}
 ];
 
