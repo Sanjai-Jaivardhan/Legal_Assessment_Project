@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    color: red;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+header h2 {
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.image-section img {
+    width: 36%;
+    height:25%;
+    max-width: 600px;
+    margin-top: -22px;
+    border-radius: 2px;
+    margin-bottom: -22px;
+}
+
+.card-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.card {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: red;
+}
+
+.upload-section {
+    margin-top: 30px;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.upload-btn:hover {
+    background-color: darkred;
+}

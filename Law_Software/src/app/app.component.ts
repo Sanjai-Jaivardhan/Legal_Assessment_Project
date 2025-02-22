@@ -14,6 +14,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { EndAssessComponent } from './end-assess/end-assess.component';
+import { ClerkComponent } from './clerk/clerk.component';
+import { access } from 'fs';
+import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,9 +29,11 @@ import { EndAssessComponent } from './end-assess/end-assess.component';
     ScenarioDescriptionComponent,
     ScenarioAssessmentComponent,
     ScenariopagesComponent,
+    ClerkComponent,
     MatCardModule,
     MatDatepickerModule,
-    EndAssessComponent
+    EndAssessComponent,
+    AssessAdministrativePageComponent
   ],
   providers: [provideNativeDateAdapter()], 
   templateUrl: './app.component.html',
