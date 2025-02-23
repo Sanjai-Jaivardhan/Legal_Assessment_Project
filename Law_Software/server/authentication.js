@@ -7,7 +7,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors()); // Enable CORS for all origins
+app.use(cors()); 
 
 const pool = new Pool({
     user: 'postgres',
@@ -39,7 +39,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Login Endpoint
+
 app.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -63,7 +63,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Authentication Middleware
+
 const authenticateJWT = (req, res, next) => {
     const token = req.headers.authorization;
 
@@ -80,7 +80,7 @@ const authenticateJWT = (req, res, next) => {
     });
 };
 
-// Logout Endpoint
+
 app.post('/logout', async (req, res) => {
     const token = req.headers.authorization;
 
@@ -91,7 +91,7 @@ app.post('/logout', async (req, res) => {
     try {
         const decoded = jwt.decode(token);
         if (decoded) {
-            const expiration = new Date(decoded.exp * 1000); // Convert to milliseconds
+            const expiration = new Date(decoded.exp * 1000); 
             await pool.query(
                 'INSERT INTO blacklist(token, expiration) VALUES($1, $2)',
                 [token, expiration]
