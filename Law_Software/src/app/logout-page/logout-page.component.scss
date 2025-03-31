@@ -11,3 +11,30 @@ button{
   padding-left: 80px;
   --tw-bg-opacity: 1;
 }
+
+/* Restrict global button styles */
+button {
+  color: inherit; /* Ensures it doesn't force white text everywhere */
+  background: none; /* Prevents unwanted red background globally */
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  margin-right:90px;
+  margin: 0;
+}
+
+/* Apply specific styles to the dashboard logout button */
+.dashboard-logout {
+  background-color: transparent !important;
+  color: white !important;
+  border-radius: 50%;
+  padding: 10px;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+

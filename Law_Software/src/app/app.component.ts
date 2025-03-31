@@ -16,8 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { EndAssessComponent } from './end-assess/end-assess.component';
 import { ClerkComponent } from './clerk/clerk.component';
 import { access } from 'fs';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
 import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -32,6 +34,8 @@ import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
     ScenariopagesComponent,
     ClerkComponent,
     MatCardModule,
+    NgxChartsModule,
+    DashboardPageComponent,
     MatDatepickerModule,
     EndAssessComponent,
     AssessAdministrativePageComponent,

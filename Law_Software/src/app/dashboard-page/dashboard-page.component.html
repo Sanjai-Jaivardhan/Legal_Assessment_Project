@@ -1,0 +1,187 @@
+<mat-sidenav-container class="container">
+    <!-- Sidebar -->
+    <mat-sidenav mode="side" opened class="sidenav">
+      <h2 class="logo">LegalAssess</h2>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard" class="active">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </a>
+        <a mat-list-item routerLink="/cases">
+          <mat-icon>gavel</mat-icon> Cases
+        </a>
+        <a mat-list-item routerLink="/documents">
+          <mat-icon>folder</mat-icon> Assessment
+        </a>
+        <!-- <a mat-list-item routerLink="/compliance">
+          <mat-icon>verified</mat-icon> Compliance
+        </a>
+        <a mat-list-item routerLink="/settings">
+          <mat-icon>settings</mat-icon> Settings
+        </a> -->
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <!-- Main Content -->
+    <mat-sidenav-content class="content">
+        <mat-toolbar class="toolbar">
+            <span class="spacer"></span>
+          
+            <!-- Home Icon -->
+            <button mat-icon-button>
+              <mat-icon>home</mat-icon>
+            </button>
+          
+            <!-- Notifications Icon -->
+            <button mat-icon-button>
+              <mat-icon>notifications</mat-icon>
+            </button>
+          
+            <!-- Profile Section with Dropdown -->
+            <div class="profile-section" [matMenuTriggerFor]="profileMenu">
+              <img src="assets/images/picture-profile.jpeg" alt="Profile" class="profile-img">
+            </div>
+          
+            <mat-menu #profileMenu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>person</mat-icon> Profile
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon> <app-logout-page></app-logout-page>
+
+                  </button>
+            
+                  
+              </mat-menu>
+              
+          </mat-toolbar>
+          
+  
+      <div class="dashboard-content">
+        <!-- Banner -->
+        <div class="banner">
+          <h1>Dashboard</h1>
+          <p>Track and manage all your legal cases and compliance requirements in one place.</p>
+          <!-- <button mat-button class="custom-button">Start New Assessment</button>-->
+        </div> 
+  
+        <!-- Stats Cards -->
+        <div class="case">
+          <h3>Analysis</h3>
+        </div>
+  
+        <div class="stats">
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <h3>Active Cases</h3>
+              <h2>45</h2>
+              <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+              <p>70% completed</p>
+            </mat-card-content>
+          </mat-card>
+  
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <h3>Completed Cases</h3>
+              <h2>120</h2>
+              <p class="increment">+12 this month</p>
+            </mat-card-content>
+          </mat-card>
+  
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <h3>Overdue Tasks</h3>
+              <h2>8</h2>
+              <p class="alert">Requires attention</p>
+            </mat-card-content>
+          </mat-card>
+  
+          <mat-card class="stat-card">
+            <mat-card-content>
+              <h3>Compliance Rate</h3>
+              <h2>92%</h2>
+              <p class="success">On track</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="case">
+            <h3>Case Completion Data</h3>
+          </div>
+        <table mat-table [dataSource]="cases" class="mat-elevation-z8 case-table">
+            <!-- Serial Number Column -->
+            <ng-container matColumnDef="sno">
+              <th mat-header-cell *matHeaderCellDef class="bold-header"> S.No </th>
+              <td mat-cell *matCellDef="let case"> {{case.sno}} </td>
+            </ng-container>
+    
+            <!-- Title Column -->
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef class="bold-header"> Title </th>
+              <td mat-cell *matCellDef="let case"> {{case.title}} </td>
+            </ng-container>
+    
+            <!-- Skill Column -->
+            <ng-container matColumnDef="skill">
+              <th mat-header-cell *matHeaderCellDef class="bold-header"> Skill </th>
+              <td mat-cell *matCellDef="let case"> {{case.skill}} </td>
+            </ng-container>
+    
+            <!-- Completion Column -->
+            <ng-container matColumnDef="completion">
+              <th mat-header-cell *matHeaderCellDef class="bold-header"> Completion </th>
+              <td mat-cell *matCellDef="let case"> {{case.completion}} </td>
+            </ng-container>
+    
+            <!-- Threshold Column -->
+            <ng-container matColumnDef="threshold">
+              <th mat-header-cell *matHeaderCellDef class="bold-header"> Threshold </th>
+              <td mat-cell *matCellDef="let case"> {{case.threshold}} </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        <!-- Recent Cases Table -->
+        <div class="case-completion">
+            <h3>Required Analysis</h3>
+            <div class="chart-container">
+              <!-- Compliance Pie Chart -->
+              <ngx-charts-pie-chart 
+                [results]="complianceStatus" 
+                [view]="[300, 300]" 
+                [customColors]="{Compliant: '#28a745', 'Non-Compliant': '#dc3545'}">
+              </ngx-charts-pie-chart>
+              
+              <!-- KPI Summary Box -->
+              <div class="summary-box">
+                <h4>Compliance Summary</h4>
+                <p><mat-icon color="primary">check_circle</mat-icon> Compliant Cases: <strong>80%</strong></p>
+                <p><mat-icon color="warn">error</mat-icon> Non-Compliant Cases: <strong>20%</strong></p>
+                
+                <!-- Progress Indicator -->
+                <p>Overall Compliance Progress</p>
+                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                
+                <!-- Trend Indicator -->
+                <p class="trend"><mat-icon color="primary">trending_up</mat-icon> +5% improvement from last month</p>
+              </div>
+              <div class="summary-box">
+                <h4>Compliance Summary</h4>
+                <p><mat-icon color="primary">check_circle</mat-icon> Compliant Cases: <strong>80%</strong></p>
+                <p><mat-icon color="warn">error</mat-icon> Non-Compliant Cases: <strong>20%</strong></p>
+                
+                <!-- Progress Indicator -->
+                <p>Overall Compliance Progress</p>
+                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                
+                <!-- Trend Indicator -->
+                <p class="trend"><mat-icon color="primary">trending_up</mat-icon> +5% improvement from last month</p>
+              </div>
+            </div>
+          </div>
+         
+  
+        
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
