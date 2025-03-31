@@ -39,14 +39,16 @@
       </mat-card>
       
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" [routerLink]="'/courtfilings'" >
       <mat-card class="law-access-card">
         <mat-card-header>
           <mat-card-title>court filings</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <p>Access, upload, and manage court documents and filings for ongoing cases.</p>
+         
         </mat-card-content>
+        
       </mat-card>
 
     </mat-grid-tile>
@@ -105,7 +107,7 @@
     </mat-grid-tile>
  
     <!-- Wet -->
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" [routerLink]="'/clerk'">
       <mat-card class="law-access-card">
         <mat-card-header>
           <mat-card-title class="centered-title">Registrar/Clerk</mat-card-title>
@@ -113,13 +115,13 @@
         <mat-card-content>
           <p>The registrar or clerk plays a crucial role in managing and maintaining the court’s official records and proceedings. Their responsibilities include:</p>
           <p>They ensure that the operations of the court system run efficiently and that all legal documents are processed in compliance with applicable rules and regulations.</p>
-          <button mat-button class="custom-button">Access</button>
+          
         </mat-card-content>
       </mat-card>
       
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" >
       <mat-card class="law-access-card">
         <mat-card-header>
           <mat-card-title class="centered-title">Court Officer</mat-card-title>
@@ -127,7 +129,7 @@
         <mat-card-content>
           <p>The court officer plays a crucial role in ensuring that the court's operations run smoothly, assisting in maintaining security and order during proceedings, and carrying out important duties to support legal processes.</p>
           <p>The court officer ensures that the courtroom functions efficiently.</p>
-           <button mat-button class="custom-button">Access</button>
+           
         </mat-card-content>
       </mat-card>
       
@@ -170,7 +172,7 @@
       </div>
     </mat-grid-tile>
     
-    <!-- digital (Bottom Extension) -->
+   
     
 
    <!-- //judges -->
@@ -180,17 +182,17 @@
       <!-- Profile 1 -->
       <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
         <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-        <div class="title">Judge 1</div>  <!-- Title below the image -->
+        <div class="title">Judge 1</div>  
       </div>
       <!-- Profile 2 -->
       <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
         <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-        <div class="title">Judge 2</div>  <!-- Title below the image -->
+        <div class="title">Judge 2</div>  
       </div>
       <!-- Profile 3 -->
       <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
         <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
-        <div class="title">Judge 3</div>  <!-- Title below the image -->
+        <div class="title">Judge 3</div>  
       </div>
     </div>
   </mat-grid-tile>
@@ -198,7 +200,7 @@
   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
     <div class="judge-profiles-description">
       <div id="description-box">
-        <p>{{ description }}</p> <!-- Displaying dynamic description -->
+        <p>{{ description }}</p> 
       </div>
     </div>
   </mat-grid-tile>

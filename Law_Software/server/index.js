@@ -40,7 +40,7 @@ app.get('/individualscenario', async (req, res) => {
 
 app.get('/allscenario/:scenario_id', async (req, res) => {
     const { scenario_id } = req.params;
-    console.log(scenario_id) // Get scenario_id from URL parameter
+    console.log(scenario_id) 
     try {
         const result = await pool.query(`
             SELECT 
@@ -87,7 +87,7 @@ app.get('/allscenario/:scenario_id', async (req, res) => {
                 ON iscn.client_id = icl.client_id
             WHERE 
             scd.scenario_id = $1;
-            `, [scenario_id]);  // Pass the scenario_id as a parameter to the query
+            `, [scenario_id]);
 
         res.status(200).json(result.rows);
     } catch (err) {
