@@ -55,4 +55,7 @@ export class DetailService {
     return this.http.get(`${this.api}/test-results/${userId}`);
   }
   
+  submitClerkDetails(data: any): Observable<any> {
+    return this.http.post(`${this.api}/clerk-details`, data);
+  }
 }

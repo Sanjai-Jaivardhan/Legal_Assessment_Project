@@ -203,6 +203,36 @@ app.get('/api/test-results/:userId', async (req, res) => {
     }
 });
 
+
+//207 is the starting for the "Clerk Page"
+app.post('/clerk-details', async (req, res) => {
+    const data = req.body;
+  
+    const keys = Object.keys(data);
+    const values = Object.values(data);
+  
+    if (keys.length === 0) {
+      return res.status(400).json({ error: 'No data provided' });
+    }
+  
+    const columns = keys.map((key) => `"${key}"`).join(', ');
+    const placeholders = keys.map((_, idx) => `$${idx + 1}`).join(', ');
+  
+    const query = `INSERT INTO clerk_page_details (${columns}) VALUES (${placeholders}) RETURNING *`;
+  
+    try {
+      const result = await pool.query(query, values);
+      res.status(201).json({ success: true, inserted: result.rows[0] });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Database error', details: err.message });
+    }
+});
+
+
+
+
+
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })
