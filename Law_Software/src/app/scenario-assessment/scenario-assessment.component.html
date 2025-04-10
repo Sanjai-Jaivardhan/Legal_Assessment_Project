@@ -8,7 +8,7 @@
             <a mat-button routerLink="/judicial">Judicial</a>
             <a mat-button routerLink="/administrative">Administrative</a>
             <a mat-button routerLink="/divisions">Division of courts</a>
-            <!-- <a mat-button href="#">Digital</a> -->
+            <a mat-button href="#">Digital</a>
             <a mat-button href="#">Client</a>
             <app-end-assess></app-end-assess>
           </div>
@@ -17,28 +17,41 @@
 
 
 <mat-grid-list cols="4" rowHeight="184px">
-      <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-        <mat-card class="law-access-card">
-          <mat-card-header>
-            <mat-card-title>Law Access Details</mat-card-title>
-          </mat-card-header>
+  
+    <!-- First Card -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+      <mat-card class="law-access-card">
+        <div class="card-content-wrapper">
+          
+          <!-- Title and Icon Inline -->
+          <div class="card-header-inline">
+          
+            <mat-card-title>Law Access</mat-card-title>
+          </div>
+    
           <mat-card-content>
             <p>Access legal resources, case studies, and judicial guidelines to stay informed about legal proceedings.</p>
           </mat-card-content>
-          
-        </mat-card>
-      </mat-grid-tile>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  
+    <!-- Second Card -->
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
       <mat-card class="law-access-card">
-        <mat-card-header>
-          <mat-card-title>Client Documents</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Manage and organize client contracts, agreements, and other documents.</p>
-        </mat-card-content>
+        <div class="card-content-wrapper">
+          <div class="card-text">
+            <mat-card-title>Client Documents</mat-card-title>
+            <mat-card-content>
+              <p>Manage and organize client contracts, agreements, and other documents.</p>
+            </mat-card-content>
+          </div>
+        </div>
       </mat-card>
-      
     </mat-grid-tile>
+
+  
+    
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" [routerLink]="'/courtfilings'" >
       <mat-card class="law-access-card">
         <mat-card-header>
@@ -72,15 +85,14 @@
         </div>
       </mat-grid-tile>
   
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
-      <div class="courtcard" (mouseenter)="hoverCard()" (mouseleave)="unhoverCard()">
+
+       <!-- <div class="courtcard" (mouseenter)="hoverCard()" (mouseleave)="unhoverCard()">
         <div class="profile-container">
           <div class="courtimage"></div>
         </div>
         <div class="court-description">
           <p>This court specializes in Civil, Criminal, Family, and Tribunal cases.</p>
         </div>
-
         <div class="circle-section">
           <div class="circle-item">
             <div class="circle"></div>
@@ -90,21 +102,28 @@
             <div class="circle"></div>
             <p class="circle-title">Criminal Court</p>
           </div>
- 
           <div class="circle-item">
             <div class="circle"></div>
             <p class="circle-title">Family Court</p>
-          </div>
-          <!-- Circle 4 -->
-          <div class="circle-item">
+          </div> -->
+        <!-- Circle 4 -->
+           <!-- <div class="circle-item">
             <div class="circle"></div>
-            <p class="circle-title">Tribunal Court</p>
+            <p class="circle-title">Tribunal Court</p> 
           </div>
         </div>
-        </div>
-            
-        
-    </mat-grid-tile>
+      </div>    -->.
+      <!-- <mat-card class="law-access-card">
+        <mat-card-header>
+          <mat-card-title class="centered-title">Court</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="profile-container">
+            <div class="courtimage"></div>
+          </div>
+        </mat-card-content>
+      </mat-card>  
+    </mat-grid-tile> -->
  
     <!-- Wet -->
     <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" [routerLink]="'/clerk'">
@@ -114,12 +133,23 @@
         </mat-card-header>
         <mat-card-content>
           <p>The registrar or clerk plays a crucial role in managing and maintaining the court’s official records and proceedings. Their responsibilities include:</p>
-          <p>They ensure that the operations of the court system run efficiently and that all legal documents are processed in compliance with applicable rules and regulations.</p>
-          
+          <p>They ensure that the operations of the court system run efficiently and that all legal documents are processed in compliance with applicable rules and regulations.</p>       
         </mat-card-content>
-      </mat-card>
-      
+      </mat-card>   
     </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'">
+    <mat-card class="law-access-card">
+      <mat-card-header>
+        <mat-card-title class="centered-title">Court</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="profile-container">
+          <div class="courtimage"></div>
+        </div>
+      </mat-card-content>
+    </mat-card>  
+  </mat-grid-tile>
 
     <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" >
       <mat-card class="law-access-card">
@@ -153,26 +183,21 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-    
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-      
-      <div class="digital-circle-section">
-        <!-- Title for Digital Section -->
-        <h1 class="digitaltitle">Digital</h1>
+      <mat-card class="law-access-card">
+        <h3 class="digital-head">Digital</h3>
     
-        <!-- Square 1 - Digital eCourt Services -->
-        <div class="digital-square" onclick="window.open('https://indiankanoon.org/', '_blank');">
-          <span class="square-label">eCourt Services</span>
+        <div class="circle-container">
+          <div (click)="openLink('https://indiankanoon.org/')" style="background-image: url('assets/ecourt.png');">
+            <span class="circles-label">ECourt Services</span>
+          </div>
+          <div  (click)="openLink('https://doj.gov.in/')" style="background-image: url('assets/judgment.png');">
+            <span class="circles-label">Judgment DB</span>
+          </div>
         </div>
-    
-        <!-- Square 2 - Digital Judgment DB -->
-        <div class="digital-square" onclick="window.open('https://doj.gov.in/', '_blank');" >
-          <span class="square-label">Judgment DB</span>
-        </div>
-      </div>
+        
+      </mat-card>
     </mat-grid-tile>
-    
-   
     
 
    <!-- //judges -->
@@ -181,28 +206,29 @@
     <div class="judge-profiles-container">
       <!-- Profile 1 -->
       <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
-        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="Picture-judge" style="background-image: url('/assets/images/judge.jpg');"></div>
         <div class="title">Judge 1</div>  
       </div>
       <!-- Profile 2 -->
       <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
-        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="Picture-judge" style="background-image: url('/assets/images/judge1.jpeg');"></div>
         <div class="title">Judge 2</div>  
       </div>
       <!-- Profile 3 -->
       <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
-        <div class="Picture-judge" style="background-image: url('/assets/images/picture-profile.jpeg');"></div>
+        <div class="Picture-judge" style="background-image: url('/assets/images/judge2.jpg');"></div>
         <div class="title">Judge 3</div>  
       </div>
     </div>
   </mat-grid-tile>
   
   <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
-    <div class="judge-profiles-description">
+    <mat-card class="law-access-card">
       <div id="description-box">
         <p>{{ description }}</p> 
       </div>
-    </div>
+  
+    </mat-card>
   </mat-grid-tile>
   
 

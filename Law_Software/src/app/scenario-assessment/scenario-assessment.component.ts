@@ -144,7 +144,10 @@ export class ScenarioAssessmentComponent {
     hideDescription() {
       this.description = "Hover over a judge profile to see the description here."; // Reset message
     }
-  
+    openLink(url: string): void {
+      window.open(url, '_blank');
+    }
+    
 
   unhoverCard(){
 
