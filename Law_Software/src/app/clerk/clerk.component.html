@@ -1,74 +1,38 @@
-<h1>
-    This is header
-</h1>
-<div class="container">
-    <!-- <h1>Interaction with Court Clerk</h1> -->
-    
-    <div class="section">
-        <h2>1. Case Filing & Documentation</h2>
-        <p>Advocates submit petitions, suits, and appeals with proper verification.</p>
-        <input type="file" class="input-field">
-        <button class="btn">Submit</button>
-    </div>
-    
-    <div class="section">
-        <h2>2. Case Status & Scheduling</h2>
-        <p>Advocates track case progress and check hearing schedules.</p>
-        <input type="text" class="input-field" placeholder="Enter Case Number">
-        <button class="btn">Check Status</button>
-    </div>
-    
-    <div class="section">
-        <h2>3. Summons & Notices</h2>
-        <p>Issuing legal notices, summons, and warrants to parties involved.</p>
-        <input type="file" class="input-field">
-        <button class="btn">Submit</button>
-    </div>
-    
-    <div class="section">
-        <h2>4. Certified Copies & Judicial Records</h2>
-        <p>Advocates request copies of court orders and past judgments.</p>
-        <input type="text" class="input-field" placeholder="Enter Case Order ID">
-        <button class="btn">Request Copy</button>
-    </div>
-    
-    <div class="section">
-        <h2>5. Payment & Court Fees Processing</h2>
-        <p>Processing court fees, fine receipts, and legal payments.</p>
-        <input type="number" class="input-field" placeholder="Enter Payment Amount">
-        <button class="btn">Proceed to Payment</button>
-    </div>
-    
-    <div class="section">
-        <h2>6. Execution of Court Orders</h2>
-        <p>Issuing orders for financial settlements, bail, and property disputes.</p>
-        <textarea class="input-field" placeholder="Enter Order Details"></textarea>
-        <button class="btn">Submit</button>
-    </div>
-    
-    <div class="section">
-        <h2>7. Assistance in Lok Adalat & ADR</h2>
-        <p>Moving cases to alternative dispute resolution mechanisms.</p>
-        <select class="input-field">
-            <option>Choose Dispute Type</option>
-            <option>Financial Settlement</option>
-            <option>Property Dispute</option>
-            <option>Family Dispute</option>
-        </select>
-        <button class="btn">View</button>
-    </div>
-    
-    <div class="section">
-        <h2>8. Compliance & Procedural Guidance</h2>
-        <p>Clerk guidance for filing accuracy and procedural compliance.</p>
-        <input type="text" class="input-field" placeholder="Enter Your Query">
-        <button class="btn">Submit Query</button>
-    </div>
-    
-    <div class="section">
-        <h2>9. Advocate Training & Knowledge Support</h2>
-        <p>Clerk assists junior advocates in learning court procedures.</p>
-        <input type="date" class="input-field">
-        <button class="btn">Request Training</button>
-    </div>
+<h1 class="main-title"> Court Clerk</h1>
+<div class="definition-container">
+    <mat-card class="definition-card">
+      <h2>Who is a Court Clerk?</h2>
+      <p>
+        A <strong>Court Clerk</strong> is a vital administrative officer in the judicial system. They manage and maintain court records, handle court documentation, assist judges, and ensure legal procedures are followed smoothly.
+      </p>
+    </mat-card>
+  
+    <mat-card class="definition-card">
+      <h2>How Does the Clerk System Work?</h2>
+      <ul>
+        <li>Receives and files petitions, documents, and evidence from advocates.</li>
+        <li>Schedules hearings and manages case calendars.</li>
+       
+      </ul>
+    </mat-card>
+  </div>
+  
+<div class="card-grid">
+  <mat-card class="section" *ngFor="let item of courtSections">
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.description }}</p>
+
+    <ng-container [ngSwitch]="item.inputType">
+      <input *ngSwitchCase="'file'" type="file" class="input-field" (change)="onFileSelected($event)" />
+      <input *ngSwitchCase="'text'" type="text" class="input-field" [placeholder]="item.placeholder" />
+      <input *ngSwitchCase="'number'" type="number" class="input-field" [placeholder]="item.placeholder" />
+      <input *ngSwitchCase="'date'" type="date" class="input-field" />
+      <textarea *ngSwitchCase="'textarea'" class="input-field" [placeholder]="item.placeholder"></textarea>
+      <select *ngSwitchCase="'select'" class="input-field">
+        <option *ngFor="let opt of item.options">{{ opt }}</option>
+      </select>
+    </ng-container>
+
+    <button mat-raised-button color="warn" (click)="uploadFile()">{{ item.buttonText }}</button>
+  </mat-card>
 </div>
