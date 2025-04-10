@@ -203,41 +203,6 @@ app.get('/api/test-results/:userId', async (req, res) => {
     }
 });
 
-//I  am trying this for reward management 
-//date : 29.03.2025
-app.get('/cases', async (req, res) => {
-    try {
-        const casesResult = await pool.query('SELECT * FROM legal_cases');
-        const cases = casesResult.rows;
-
-        const totalCount = cases.length;
-
-        const rewardResult = await pool.query('SELECT reward FROM reward_legal_case WHERE id = 1');
-        let currentReward = rewardResult.rows[0].reward;
-
-        if (totalCount > 5) {
-            currentReward -= 5;
-        } else if (totalCount < 5) {
-            currentReward += 10;
-        } 
-
-        await pool.query('UPDATE reward_legal_case SET reward = $1 WHERE id = 1', [currentReward]);
-
-        res.status(200).json({ 
-            success: true, 
-            total: totalCount, 
-            reward: currentReward, 
-            data: cases 
-        });
-
-    } catch (err) {
-        console.error('Database Error:', err.message);
-        res.status(500).json({ success: false, message: 'Internal Server Error' });
-    }
-});
-
-
-
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
 })
