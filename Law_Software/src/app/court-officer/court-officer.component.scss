@@ -1,0 +1,78 @@
+.officer-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #fefefe;
+    font-family: 'Segoe UI', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f46416;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .search-box {
+    width: 60%;
+    max-width: 400px;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    padding: 0 40px;
+  }
+  
+  .officer-card {
+    width: 250px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .officer-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+  
+  .designation {
+    color: #6a1b9a;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 1024px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  

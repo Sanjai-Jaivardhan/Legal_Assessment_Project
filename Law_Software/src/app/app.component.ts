@@ -21,6 +21,8 @@ import { AssessAdministrativePageComponent } from './assess-administrative-page/
 import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { LawaccessComponent } from './lawaccess/lawaccess.component';
+import { CourtOfficerComponent } from './court-officer/court-officer.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -41,7 +43,9 @@ import { LawaccessComponent } from './lawaccess/lawaccess.component';
     EndAssessComponent,
     AssessAdministrativePageComponent,
     CourtfilingsComponent,
-    LawaccessComponent
+    LawaccessComponent,
+    CourtOfficerComponent,
+    
   ],
   providers: [provideNativeDateAdapter()], 
   templateUrl: './app.component.html',

@@ -1,0 +1,22 @@
+<div class="officer-container">
+    <h2 class="title">Court Officers</h2>
+    <p class="subtitle">Meet our trusted officers dedicated to providing legal support and guidance</p>
+  
+    <input
+      type="text"
+      class="search-box"
+      placeholder="Search by name or designation..."
+      [(ngModel)]="searchText"
+    />
+  
+    <div class="card-grid">
+      <div class="officer-card" *ngFor="let officer of filteredOfficers">
+        <img [src]="officer.image" alt="Profile" class="profile-img" />
+        <h3>{{ officer.name }}</h3>
+        <p class="designation">{{ officer.designation }}</p>
+        <p>ID: {{ officer.id }}</p>
+        <p>Email: {{ officer.email }}</p>
+      </div>
+    </div>
+  </div>
+  
