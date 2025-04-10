@@ -20,6 +20,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AssessAdministrativePageComponent } from './assess-administrative-page/assess-administrative-page.component';
 import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { LawaccessComponent } from './lawaccess/lawaccess.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -39,7 +40,8 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
     MatDatepickerModule,
     EndAssessComponent,
     AssessAdministrativePageComponent,
-    CourtfilingsComponent
+    CourtfilingsComponent,
+    LawaccessComponent
   ],
   providers: [provideNativeDateAdapter()], 
   templateUrl: './app.component.html',

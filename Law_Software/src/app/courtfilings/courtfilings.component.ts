@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { Location } from '@angular/common';
 export interface CourtFiling {
   caseNumber: string;
   caseTitle: string;
@@ -34,6 +34,13 @@ export interface CourtFiling {
 export class CourtfilingsComponent {
   searchText: string = '';
 
+  constructor(private location: Location) {}
+
+  goBack(): void {
+    this.location.back(); // Navigates to the previous page in browser history
+  }
+
+  
   displayedColumns: string[] = ['caseId', 'caseName', 'filingDate', 'status'];
 
   dataSource = new MatTableDataSource( [

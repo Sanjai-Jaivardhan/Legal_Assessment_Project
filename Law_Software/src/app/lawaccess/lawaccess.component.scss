@@ -1,0 +1,130 @@
+.law-access-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 60px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .highlight-message {
+    color: rgb(26, 24, 24);
+    padding: 15px 25px;
+    font-size: 20px;
+    margin-top:-42px;
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+  }
+  
+  /* Wrap cards side by side */
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .law-card {
+    flex: 1 1 30%;
+    max-width: 500px;
+    background-color: #fdfdfd;
+    border-left: 6px solid #b71c1c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 250px;
+  max-width: 32%;
+  }
+  
+  .card-icon img {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .law-card h2 {
+    color: #b71c1c;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .law-card p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .law-card ul {
+    padding-left: 20px;
+    color: #000;
+  }
+  
+  .law-card ul li {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  
+  .testimonial-box {
+    padding: 20px;
+    font-style: italic;
+    font-size: 16px;
+    border-radius: 8px;
+    color: #424242;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+  }
+  
+  .timeline-step {
+    background: #ef9a9a;
+    padding: 10px 15px;
+    border-radius: 8px;
+  }
+  
+  .timeline-arrow {
+    font-size: 20px;
+    color: #b71c1c;
+    align-self: center;
+  }
+  
+  .cta-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .cta-button button {
+    background-color: #b71c1c;
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  
+  .cta-button button:hover {
+    background-color: #8e0000;
+  }
+  @media (max-width: 900px) {
+    .law-card {
+      max-width: 100%;
+      flex: 1 1 100%;
+    }
+  }

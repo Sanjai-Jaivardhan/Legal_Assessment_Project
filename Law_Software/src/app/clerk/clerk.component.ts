@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-clerk',
   standalone: true,
@@ -12,8 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ClerkComponent {
   selectedFile: File | null = null;
+  constructor(private location: Location) {}
 
+  goBack(): void {
+    this.location.back();
+  }
   
+
   
     courtSections = [
       {
