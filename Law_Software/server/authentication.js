@@ -30,14 +30,24 @@ const secretKey = '8cf04fefd57e544e73bc8f6bf49b28dd25e5475c1d75b001436cc68c151c2
 app.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
+
+  
+        const userCheck = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+        if (userCheck.rows.length > 0) {
+          
+            return res.status(400).send('User already exists');
+        }
+      
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, hashedPassword]);
+
         res.status(201).send('User Registered');
     } catch (error) {
         console.error('Error during registration:', error);
         res.status(500).send('Error registering user');
     }
 });
+
 
 
 app.post('/login', async (req, res) => {
@@ -73,7 +83,7 @@ const authenticateJWT = (req, res, next) => {
 
     jwt.verify(token, secretKey, (err, user) => {
         if (err) {
-            return res.status(403).send('Invalid token');
+            return res.status(403).send('Invalid tokens');
         }
         req.user = user;
         next();

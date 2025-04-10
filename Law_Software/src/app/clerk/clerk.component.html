@@ -1,33 +1,74 @@
+<h1>
+    This is header
+</h1>
 <div class="container">
-    <header>
-        <h1>Legal Clerk Management</h1>
-        <h2>Efficient Case Handling & Document Processing</h2>
-    </header>
-
-    <section class="content">
-        <!-- <div class="image-section">
-            <img src="assets/images/legal-clerk.jpg" alt="Legal Clerk Illustration">
-        </div> -->
-
-        <div class="card-section">
-            <div class="card">
-                <h3>Case Documentation</h3>
-                <p>Upload and manage case-related files securely.</p>
-            </div>
-            <div class="card">
-                <h3>Client Records</h3>
-                <p>Maintain structured client records with legal case history.</p>
-            </div>
-            <div class="card">
-                <h3>Legal Notices</h3>
-                <p>Track and organize legal notices efficiently.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="upload-section">
-        <label for="fileUpload" class="upload-btn">Upload Legal Document</label>
-        <input type="file" id="fileUpload" (change)="onFileSelected($event)" hidden>
-        <p *ngIf="selectedFile">Selected File: {{ selectedFile.name }}</p>
-    </section>
+    <!-- <h1>Interaction with Court Clerk</h1> -->
+    
+    <div class="section">
+        <h2>1. Case Filing & Documentation</h2>
+        <p>Advocates submit petitions, suits, and appeals with proper verification.</p>
+        <input type="file" class="input-field">
+        <button class="btn">Submit</button>
+    </div>
+    
+    <div class="section">
+        <h2>2. Case Status & Scheduling</h2>
+        <p>Advocates track case progress and check hearing schedules.</p>
+        <input type="text" class="input-field" placeholder="Enter Case Number">
+        <button class="btn">Check Status</button>
+    </div>
+    
+    <div class="section">
+        <h2>3. Summons & Notices</h2>
+        <p>Issuing legal notices, summons, and warrants to parties involved.</p>
+        <input type="file" class="input-field">
+        <button class="btn">Submit</button>
+    </div>
+    
+    <div class="section">
+        <h2>4. Certified Copies & Judicial Records</h2>
+        <p>Advocates request copies of court orders and past judgments.</p>
+        <input type="text" class="input-field" placeholder="Enter Case Order ID">
+        <button class="btn">Request Copy</button>
+    </div>
+    
+    <div class="section">
+        <h2>5. Payment & Court Fees Processing</h2>
+        <p>Processing court fees, fine receipts, and legal payments.</p>
+        <input type="number" class="input-field" placeholder="Enter Payment Amount">
+        <button class="btn">Proceed to Payment</button>
+    </div>
+    
+    <div class="section">
+        <h2>6. Execution of Court Orders</h2>
+        <p>Issuing orders for financial settlements, bail, and property disputes.</p>
+        <textarea class="input-field" placeholder="Enter Order Details"></textarea>
+        <button class="btn">Submit</button>
+    </div>
+    
+    <div class="section">
+        <h2>7. Assistance in Lok Adalat & ADR</h2>
+        <p>Moving cases to alternative dispute resolution mechanisms.</p>
+        <select class="input-field">
+            <option>Choose Dispute Type</option>
+            <option>Financial Settlement</option>
+            <option>Property Dispute</option>
+            <option>Family Dispute</option>
+        </select>
+        <button class="btn">View</button>
+    </div>
+    
+    <div class="section">
+        <h2>8. Compliance & Procedural Guidance</h2>
+        <p>Clerk guidance for filing accuracy and procedural compliance.</p>
+        <input type="text" class="input-field" placeholder="Enter Your Query">
+        <button class="btn">Submit Query</button>
+    </div>
+    
+    <div class="section">
+        <h2>9. Advocate Training & Knowledge Support</h2>
+        <p>Clerk assists junior advocates in learning court procedures.</p>
+        <input type="date" class="input-field">
+        <button class="btn">Request Training</button>
+    </div>
 </div>
