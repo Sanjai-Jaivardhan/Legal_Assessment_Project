@@ -82,8 +82,10 @@ body, .navbar, .nav-links a {
 }
 
 .main-title {
-  font-size: 29px;
+  font-size: 24px;
   border-color: white;
+  padding:30px;
+  color:white;
 }
 
 .main-title:hover {
@@ -96,6 +98,8 @@ mat-toolbar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   color: #333;
   display: flex;
+  padding:20px;
+  padding-top:20px;
   justify-content: space-between;
   align-items: center;
 }

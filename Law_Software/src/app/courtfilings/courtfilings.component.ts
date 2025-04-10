@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 export interface CourtFiling {
   caseNumber: string;
@@ -15,53 +15,80 @@ export interface CourtFiling {
   status: string;
 }
 
-
-const ELEMENT_DATA: CourtFiling[] = [
-  { caseNumber: '2024TN001', caseTitle: 'Sundar Vs Rakesh', filingDate: '2024-01-15', status: 'Ongoing' },
-  { caseNumber: '2024TN002', caseTitle: 'Anitha Vs Ajay', filingDate: '2024-02-10', status: 'Closed' },
-  { caseNumber: '2024TN003', caseTitle: 'Vikram Vs Satheesh', filingDate: '2024-03-22', status: 'Pending' },
-  { caseNumber: '2024TN004', caseTitle: 'Manoj Vs Devika', filingDate: '2024-04-05', status: 'Ongoing' },
-  { caseNumber: '2024TN005', caseTitle: 'Krishna Vs Madhavan', filingDate: '2024-05-18', status: 'Closed' },
-  { caseNumber: '2024TN006', caseTitle: 'Ravi Vs Archana', filingDate: '2024-06-10', status: 'Pending' },
-  { caseNumber: '2024TN007', caseTitle: 'Kamala Vs Prabu', filingDate: '2024-07-02', status: 'Ongoing' },
-  { caseNumber: '2024TN008', caseTitle: 'Ranjith Vs Santhosh', filingDate: '2024-07-25', status: 'Closed' },
-  { caseNumber: '2024TN009', caseTitle: 'Mohan Vs Renuka', filingDate: '2024-08-12', status: 'Pending' },
-  { caseNumber: '2024TN010', caseTitle: 'Aravind Vs Lavanya', filingDate: '2024-08-28', status: 'Ongoing' },
-  { caseNumber: '2024TN011', caseTitle: 'Sanjay Vs Nandini', filingDate: '2024-09-05', status: 'Closed' },
-  { caseNumber: '2024TN012', caseTitle: 'Ganesh Vs Vidya', filingDate: '2024-09-19', status: 'Pending' },
-  { caseNumber: '2024TN013', caseTitle: 'Sakrat Vs Thyagarajan', filingDate: '2024-10-10', status: 'Ongoing' },
-  { caseNumber: '2024TN014', caseTitle: 'Prema Vs Vivek', filingDate: '2024-10-25', status: 'Closed' },
-  { caseNumber: '2024TN015', caseTitle: 'Parthiban Vs Gopalan', filingDate: '2024-11-14', status: 'Pending' },
-  { caseNumber: '2024TN016', caseTitle: 'Chandran Vs Jayanthi', filingDate: '2024-11-28', status: 'Ongoing' },
-  { caseNumber: '2024TN017', caseTitle: 'Nagaraj Vs Deepa', filingDate: '2024-12-05', status: 'Closed' },
-  { caseNumber: '2024TN018', caseTitle: 'Akhilan Vs Anusha', filingDate: '2024-12-18', status: 'Pending' },
-  { caseNumber: '2024TN019', caseTitle: 'Siva Vs Premalatha', filingDate: '2025-01-07', status: 'Ongoing' },
-  { caseNumber: '2024TN020', caseTitle: 'Rajesh Vs Sumithra', filingDate: '2025-01-20', status: 'Closed' }
-
-];
-
-
 @Component({
   selector: 'app-courtfilings',
   standalone: true,
-  imports: [MatTableModule, FormsModule, MatCardModule,MatIconModule,MatToolbarModule,MatButtonModule,MatInputModule,FormsModule],
+  imports: [
+    MatTableModule,
+    MatChipsModule,
+    FormsModule,
+    MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatInputModule,
+  ],
   templateUrl: './courtfilings.component.html',
-  styleUrl: './courtfilings.component.scss'
+  styleUrl: './courtfilings.component.scss',
 })
 export class CourtfilingsComponent {
-  title = 'Court Case Filings';
-  searchQuery = '';
+  searchText: string = '';
 
-  displayedColumns: string[] = ['caseNumber', 'caseTitle', 'filingDate', 'status'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['caseId', 'caseName', 'filingDate', 'status'];
 
-  get filteredCases() {
-    return this.dataSource.filter(c => 
-      c.caseNumber.includes(this.searchQuery) || 
-      c.caseTitle.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-      c.filingDate.includes(this.searchQuery) ||
-     
-      c.status.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+  dataSource = new MatTableDataSource( [
+    { caseId: 'CF-101', caseName: 'Thiruppathi vs Arumugam', filingDate: '2024-10-01', status: 'Pending' },
+    { caseId: 'CF-102', caseName: 'Muthu vs Ganesh', filingDate: '2024-09-28', status: 'Approved' },
+    { caseId: 'CF-103', caseName: 'Lakshmi vs Rajendran', filingDate: '2024-09-26', status: 'Under Review' },
+    { caseId: 'CF-104', caseName: 'Kumar vs Kumaravel', filingDate: '2024-09-22', status: 'Rejected' },
+    { caseId: 'CF-105', caseName: 'Revathi vs Inspector', filingDate: '2024-09-20', status: 'Pending' },
+    { caseId: 'CF-106', caseName: 'Suresh vs Bhavani', filingDate: '2024-09-18', status: 'Approved' },
+    { caseId: 'CF-107', caseName: 'Anitha vs Collector', filingDate: '2024-09-15', status: 'Rejected' },
+    { caseId: 'CF-108', caseName: 'Dinesh vs Sathya', filingDate: '2024-09-12', status: 'Under Review' },
+    { caseId: 'CF-109', caseName: 'Tharani vs Mani', filingDate: '2024-09-10', status: 'Approved' },
+    { caseId: 'CF-110', caseName: 'Gopal vs State', filingDate: '2024-09-08', status: 'Pending' },
+    { caseId: 'CF-111', caseName: 'Vasanthi vs Venkatesh', filingDate: '2024-09-05', status: 'Approved' },
+    { caseId: 'CF-112', caseName: 'Malar vs Sudha', filingDate: '2024-09-03', status: 'Under Review' },
+    { caseId: 'CF-113', caseName: 'Hari vs Sub-Inspector', filingDate: '2024-09-01', status: 'Rejected' },
+    { caseId: 'CF-114', caseName: 'Nila vs Arun', filingDate: '2024-08-30', status: 'Pending' },
+    { caseId: 'CF-115', caseName: 'Velu vs Babu', filingDate: '2024-08-28', status: 'Approved' },
+    { caseId: 'CF-116', caseName: 'Keerthi vs Officer', filingDate: '2024-08-26', status: 'Rejected' },
+    { caseId: 'CF-117', caseName: 'Raja vs Raja', filingDate: '2024-08-24', status: 'Under Review' },
+    { caseId: 'CF-118', caseName: 'Meena vs Prakash', filingDate: '2024-08-22', status: 'Approved' },
+    { caseId: 'CF-119', caseName: 'Saravanan vs Dhanam', filingDate: '2024-08-20', status: 'Pending' },
+    { caseId: 'CF-120', caseName: 'Priya vs Ilango', filingDate: '2024-08-18', status: 'Rejected' },
+  ]);
+
+  
+
+  ngOnInit() {
+    this.dataSource.filterPredicate = (data: any, filter: string) => {
+      return data.caseId.toLowerCase().includes(filter) ||
+             data.caseName.toLowerCase().includes(filter);
+    };
   }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
+
+  getStatusIcon(status: string): string {
+    switch (status) {
+      case 'Approved': return 'check_circle';
+      case 'Pending': return 'hourglass_empty';
+      case 'Rejected': return 'cancel';
+      default: return 'help_outline';
+    }
+  }
+
+  getStatusIconClass(status: string): string {
+    switch (status) {
+      case 'Approved': return 'status-icon approved';
+      case 'Pending': return 'status-icon pending';
+      case 'Rejected': return 'status-icon rejected';
+      default: return 'status-icon unknown';
+    }
+  }
+  
 }

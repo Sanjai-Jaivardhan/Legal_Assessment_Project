@@ -1,51 +1,68 @@
-<mat-toolbar class="custom-toolbar">
-    <span class="title">Court Filings</span>
-    <span class="spacer"></span>
-  
-  </mat-toolbar>
-  
-  <div class="container">
-    <h2>Case Filings & Status Tracker</h2>
-    <p class="subtitle">View, track, and manage court case filings efficiently.</p>
-  
-    <div class="search-container">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Search</mat-label>
-          <input matInput placeholder="Search by case number, name, or status" [(ngModel)]="searchQuery">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </div>
-      
-  
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
-  
-        <!-- Case Number Column -->
-        <ng-container matColumnDef="caseNumber">
-          <th mat-header-cell *matHeaderCellDef> Case Number </th>
-          <td mat-cell *matCellDef="let element"> {{element.caseNumber}} </td>
-        </ng-container>
-  
-        <!-- Case Title Column -->
-        <ng-container matColumnDef="caseTitle">
-          <th mat-header-cell *matHeaderCellDef> Case Title </th>
-          <td mat-cell *matCellDef="let element"> {{element.caseTitle}} </td>
-        </ng-container>
-  
-        <!-- Filing Date Column -->
-        <ng-container matColumnDef="filingDate">
-          <th mat-header-cell *matHeaderCellDef> Filing Date </th>
-          <td mat-cell *matCellDef="let element"> {{element.filingDate}} </td>
-        </ng-container>
-  
-        <!-- Status Column -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-        </ng-container>
-  
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-  
+<div class="court-filings-container">
+
+  <!-- Title Section -->
+  <h1 class="title">Court Filings</h1>
+  <p class="subtitle">Track, manage, and analyze all legal case submissions in one place.</p>
+
+  <!-- Definition Box -->
+  <mat-card class="definition-card">
+    <h2>What are Court Filings?</h2>
+    <p>
+      Court filings refer to the official submission of legal documents to a court in relation to a legal case.
+      These documents can include petitions, complaints, motions, responses, and evidence.
+    </p>
+    <ul>
+      <li><strong>Initiate Legal Proceedings:</strong> Begin a case by submitting a petition or complaint.</li>
+      <li><strong>Track Status:</strong> Monitor approval stages, court reviews, and follow-up notices.</li>
+      <li><strong>Secure Repository:</strong> All filings are stored securely and can be accessed anytime.</li>
+    </ul>
+  </mat-card>
+
+  <!-- Search Bar -->
+  <div class="table-actions">
+    <mat-form-field appearance="outline">
+      <mat-label>Search Case</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Enter case name or ID">
+      <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
-  
+
+  <!-- Table Section -->
+  <h2 class="table-title">Recent Case Filings</h2>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" matSort>
+
+      <!-- Case ID Column -->
+      <ng-container matColumnDef="caseId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Case ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.caseId}} </td>
+      </ng-container>
+
+      <!-- Case Name Column -->
+      <ng-container matColumnDef="caseName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Case Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.caseName}} </td>
+      </ng-container>
+
+      <!-- Filing Date Column -->
+      <ng-container matColumnDef="filingDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Filing Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.filingDate}} </td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">
+         
+          {{element.status}}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
