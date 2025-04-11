@@ -23,7 +23,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { LawaccessComponent } from './lawaccess/lawaccess.component';
 import { CourtOfficerComponent } from './court-officer/court-officer.component';
 import { ClientdocumentComponent } from './clientdocument/clientdocument.component';
-
+import { InstructionPageComponent } from './instruction-page/instruction-page.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -46,7 +46,8 @@ import { ClientdocumentComponent } from './clientdocument/clientdocument.compone
     CourtfilingsComponent,
     LawaccessComponent,
     CourtOfficerComponent,
-    ClientdocumentComponent
+    ClientdocumentComponent,
+    InstructionPageComponent
     
   ],
   providers: [provideNativeDateAdapter()], 

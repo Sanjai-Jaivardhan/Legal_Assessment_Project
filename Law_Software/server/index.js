@@ -254,6 +254,26 @@ app.post('/api/increment-filing-count', async (req, res) => {
   });
   
   
+  app.post('/api/increment-digital-count', async (req, res) => {
+    try {
+      const checkQuery = 'SELECT * FROM digital_details LIMIT 1';
+      const checkResult = await pool.query(checkQuery);
+  
+      let result;
+      if (checkResult.rows.length === 0) {
+        const insertQuery = 'INSERT INTO digital_details (digital_count) VALUES (1) RETURNING *';
+        result = await pool.query(insertQuery);
+      } else {
+        const updateQuery = 'UPDATE digital_details SET digital_count = digital_count + 1 RETURNING *';
+        result = await pool.query(updateQuery);
+      }
+  
+      res.status(200).json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('Error updating digital count:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  });
   
   
 
