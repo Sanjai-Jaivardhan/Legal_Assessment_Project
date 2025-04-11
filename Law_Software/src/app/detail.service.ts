@@ -58,4 +58,9 @@ export class DetailService {
   submitClerkDetails(data: any): Observable<any> {
     return this.http.post(`${this.api}/clerk-details`, data);
   }
+  incrementFilingCount(): Observable<any> {
+    return this.http.post(`${this.api}/api/increment-filing-count`, {});
+  }
+  
+  
 }

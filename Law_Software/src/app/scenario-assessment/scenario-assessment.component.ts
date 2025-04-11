@@ -14,6 +14,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { DetailService } from '../detail.service';
 import { RouterModule } from '@angular/router';
 import { EndAssessComponent } from '../end-assess/end-assess.component';
+
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 export interface Tile {
   text: string;
   color: string;
@@ -43,7 +46,7 @@ export interface Tile {
   styleUrls: ['./scenario-assessment.component.scss'] // Fixed typo here
 })
 export class ScenarioAssessmentComponent {
-  constructor(public dialog: MatDialog,private trackService:DetailService) {}
+  constructor(public dialog: MatDialog,private trackService:DetailService,private router: Router, private http: HttpClient) {}
 
   tiles: Tile[] = [
     { text: 'Home', color: '#aed581', cols: 1, rows: 1 },
@@ -156,5 +159,13 @@ export class ScenarioAssessmentComponent {
   }
   selected(){
 
+  }
+
+  onFilingTileClick(): void {
+    this.trackService.incrementFilingCount().subscribe({
+      next: (res) => console.log('Filing count updated:', res),
+      error: (err) => console.error('Failed to update filing count:', err)
+    });
+    this.router.navigate(['/courtfilings']);    
   }
 }

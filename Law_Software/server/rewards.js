@@ -37,7 +37,6 @@ app.post('/api/update-clerk-reward', async (req, res) => {
       const existing = await pool.query(`SELECT * FROM clerk_reward LIMIT 1`);
   
       if (existing.rows.length === 0) {
-        // Insert if no row exists
         await pool.query(`
           INSERT INTO clerk_reward (total_reward_points, updated_at)
           VALUES ($1, NOW())
@@ -62,10 +61,67 @@ app.post('/api/update-clerk-reward', async (req, res) => {
       res.status(500).json({ error: 'Failed to update total clerk reward.' });
     }
   });
-  
-  
-  
 
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+  
+  app.post('/api/filing_reward', async (req, res) => {
+    try {
+      const countQuery = 'SELECT filing_count FROM court_filing_details LIMIT 1';
+      const countResult = await pool.query(countQuery);
+      const count = countResult.rows.length > 0 ? countResult.rows[0].filing_count : 0;
+  
+      let reward = 0;
+      if (count >= 25 && count <= 50) {
+        reward = getRandomInt(80, 100);
+      } else if (count >= 15 && count < 25) {
+        reward = getRandomInt(50, 80);
+      } else if (count > 0 && count < 10) {
+        reward = getRandomInt(25, 50);
+      } else {
+        reward = 0;
+      }
+  
+      const checkQuery = 'SELECT * FROM court_filing_rewards LIMIT 1';
+      const existingReward = await pool.query(checkQuery);
+  
+      let rewardResult;
+  
+      if (existingReward.rows.length === 0) {
+        // Insert for the first time
+        const insertQuery = `
+          INSERT INTO court_filing_rewards (filing_count, reward)
+          VALUES ($1, $2)
+          RETURNING *
+        `;
+        rewardResult = await pool.query(insertQuery, [count, reward]);
+      } else {
+        // Update the existing record
+        const updateQuery = `
+          UPDATE court_filing_rewards
+          SET filing_count = $1, reward = $2, created_at = CURRENT_TIMESTAMP
+          WHERE id = $3
+          RETURNING *
+        `;
+        rewardResult = await pool.query(updateQuery, [count, reward, existingReward.rows[0].id]);
+      }
+  
+      res.status(200).json({
+        success: true,
+        message: 'Reward generated and stored/updated successfully',
+        data: rewardResult.rows[0]
+      });
+  
+    } catch (error) {
+      console.error('Error generating or updating reward:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  });
+    
+
+  
+  
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)

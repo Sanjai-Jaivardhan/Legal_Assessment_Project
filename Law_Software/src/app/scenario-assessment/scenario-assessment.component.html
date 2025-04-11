@@ -37,7 +37,7 @@
     </mat-grid-tile>
   
     <!-- Second Card -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" [routerLink]="'/access'">
       <mat-card class="law-access-card">
         <div class="card-content-wrapper">
           <div class="card-text">
@@ -52,7 +52,7 @@
 
   
     
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" [routerLink]="'/courtfilings'" >
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" (click)="onFilingTileClick()" [routerLink]="'/courtfilings'" >
       <mat-card class="law-access-card">
         <mat-card-header>
           <mat-card-title>court filings</mat-card-title>
@@ -151,7 +151,7 @@
     </mat-card>  
   </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" >
+    <mat-grid-tile [colspan]="1" [rowspan]="2" [style.background]="'white'" [routerLink]="'/court-officer'">
       <mat-card class="law-access-card">
         <mat-card-header>
           <mat-card-title class="centered-title">Court Officer</mat-card-title>

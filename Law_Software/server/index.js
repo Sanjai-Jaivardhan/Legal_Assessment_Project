@@ -229,7 +229,33 @@ app.post('/clerk-details', async (req, res) => {
     }
 });
 
+//Incrementation for the filing count
+// 1 is the id for the filing count in the database
 
+app.post('/api/increment-filing-count', async (req, res) => {
+    try {
+      const checkQuery = 'SELECT * FROM court_filing_details LIMIT 1';
+      const checkResult = await pool.query(checkQuery);
+  
+      let result;
+      if (checkResult.rows.length === 0) {
+        const insertQuery = 'INSERT INTO court_filing_details (filing_count) VALUES (1) RETURNING *';
+        result = await pool.query(insertQuery);
+      } else {
+        const updateQuery = 'UPDATE court_filing_details SET filing_count = filing_count + 1 RETURNING *';
+        result = await pool.query(updateQuery);
+      }
+  
+      res.status(200).json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('Error updating filing count:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  });
+  
+  
+  
+  
 
 
 
