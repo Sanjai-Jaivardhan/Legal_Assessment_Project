@@ -22,6 +22,7 @@ import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { LawaccessComponent } from './lawaccess/lawaccess.component';
 import { CourtOfficerComponent } from './court-officer/court-officer.component';
+import { ClientdocumentComponent } from './clientdocument/clientdocument.component';
 
 @Component({
   selector: 'app-root',
@@ -45,6 +46,7 @@ import { CourtOfficerComponent } from './court-officer/court-officer.component';
     CourtfilingsComponent,
     LawaccessComponent,
     CourtOfficerComponent,
+    ClientdocumentComponent
     
   ],
   providers: [provideNativeDateAdapter()], 

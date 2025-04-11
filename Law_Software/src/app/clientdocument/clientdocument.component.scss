@@ -1,0 +1,82 @@
+.client-docs-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 30px;
+  
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color:red;
+    }
+  
+    .page-subtitle {
+      color: #777;
+      font-size: 15px;
+    }
+  }
+  
+  .existing-docs {
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+  
+      .doc-card {
+        cursor: pointer;
+        transition: 0.2s ease;
+        border-radius: 10px;
+  
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+  
+        mat-card-title {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  
+  .new-doc-section {
+    margin-top: 40px;
+  
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    .template-hint {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+  
+    .new-doc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  
+      mat-form-field {
+        width: 100%;
+      }
+  
+      .button-wrapper {
+        text-align: right;
+        margin-top: 10px;
+        color:red;
+      }
+    }
+  }
+  
