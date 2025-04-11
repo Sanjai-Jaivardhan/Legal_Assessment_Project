@@ -62,5 +62,11 @@ export class DetailService {
     return this.http.post(`${this.api}/api/increment-filing-count`, {});
   }
   
+  incrementDocumentCount(): Observable<any> {
+    return this.http.post(`${this.api}/api/increment-document-count`, {});
+  }
   
+  incrementAccessCount(): Observable<any> {
+    return this.http.post(`${this.api}/api/increment-access-count`, {});
+  }
 }

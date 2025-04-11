@@ -14,6 +14,8 @@ import { DivOfCourtComponent } from './div-of-court/div-of-court.component';
 import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 import { LawaccessComponent } from './lawaccess/lawaccess.component';
 import { CourtOfficerComponent } from './court-officer/court-officer.component';
+import { ClientdocumentComponent } from './clientdocument/clientdocument.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
   { path: 'login', component: LoginPageComponent },
@@ -29,6 +31,7 @@ export const routes: Routes = [
   { path:'courtfilings',component:CourtfilingsComponent},
   { path:'access',component:LawaccessComponent},
   { path:'court-officer',component:CourtOfficerComponent},
+  { path:'documents',component:ClientdocumentComponent},
   { path: '**',redirectTo: '/login'}
 ];
 

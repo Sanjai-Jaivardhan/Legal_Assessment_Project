@@ -160,9 +160,22 @@ export class ScenarioAssessmentComponent {
   selected(){
 
   }
-
+  onDocumentFileTick(){
+    this.trackService.incrementDocumentCount().subscribe({
+      next: (res) => console.log('Document count updated:', res),
+      error: (err) => console.error('Failed to update Document count:', err)
+    });
+    this.router.navigate(['/documents']);
+  }
   onFilingTileClick(): void {
     this.trackService.incrementFilingCount().subscribe({
+      next: (res) => console.log('Filing count updated:', res),
+      error: (err) => console.error('Failed to update filing count:', err)
+    });
+    this.router.navigate(['/courtfilings']);    
+  }
+  onAccessClick(): void {
+    this.trackService.incrementAccessCount().subscribe({
       next: (res) => console.log('Filing count updated:', res),
       error: (err) => console.error('Failed to update filing count:', err)
     });

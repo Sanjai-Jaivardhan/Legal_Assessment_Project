@@ -19,7 +19,7 @@
 <mat-grid-list cols="4" rowHeight="184px">
   
     <!-- First Card -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" (click)="onAccessClick()" [routerLink]="'/access'">
       <mat-card class="law-access-card">
         <div class="card-content-wrapper">
           
@@ -35,7 +35,7 @@
     </mat-grid-tile>
   
     <!-- Second Card -->
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" [routerLink]="'/access'">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'white'" (click)="onDocumentFileTick()" [routerLink]="'/documents'">
       <mat-card class="law-access-card">
         <div class="card-content-wrapper">
           <div class="card-text">
