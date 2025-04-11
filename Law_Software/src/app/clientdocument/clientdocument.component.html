@@ -1,87 +1,135 @@
-<div class="client-docs-container">
 
-    <!-- Page Header -->
-    <header class="page-header">
-      <h1>Client Documents</h1>
-      <p class="page-subtitle">View your saved documents or create a new one.</p>
-    </header>
+<mat-sidenav-container class="clerk-container">
+  <!-- 🔙 Back Button -->
+ 
+
+  <mat-sidenav mode="side" opened>
+    <h2 class="sidebar-title">Navigation</h2>
   
-    <!-- Existing Documents -->
-    <section class="existing-docs">
-      <h2>Existing Documents</h2>
-      <div class="doc-grid">
-        <mat-card class="doc-card" *ngFor="let doc of documents" (click)="useAsTemplate(doc)">
-          <mat-card-header>
-            <mat-card-title>{{ doc.title }}</mat-card-title>
-            <mat-card-subtitle>{{ doc.date }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p><strong>Client:</strong> {{ doc.clientName }}</p>
-            <p>{{ doc.summary }}</p>
-          </mat-card-content>
+    <button mat-raised-button color="primary" (click)="showAssessment = false">Client Documents</button>
+    <button mat-raised-button color="accent" (click)="showAssessment = true">Assessment</button>
+  
+    <!-- 🔙 Back Button inside sidenav -->
+    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content-wrapper">
+      <!-- ✅ Client Document Section -->
+    
+      <div *ngIf="!showAssessment" class="client-docs-container">
+        <header class="page-header">
+          <h1>Client Documents</h1>
+          <p class="page-subtitle">View your saved documents or create a new one.</p>
+        </header>
+
+        <section class="existing-docs">
+          <h2>Existing Documents</h2>
+          <div class="doc-grid">
+            <mat-card class="doc-card" *ngFor="let doc of documents" (click)="useAsTemplate(doc)">
+              <mat-card-header>
+                <mat-card-title>{{ doc.title }}</mat-card-title>
+                <mat-card-subtitle>{{ doc.date }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p><strong>Client:</strong> {{ doc.clientName }}</p>
+                <p>{{ doc.summary }}</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </section>
+
+        <mat-divider></mat-divider>
+
+        <section class="new-doc-section">
+          <h2>Create New Document</h2>
+          <form (ngSubmit)="saveNewDoc()" #docForm="ngForm" class="new-doc-form">
+            <mat-form-field appearance="outline">
+              <mat-label>Document Type</mat-label>
+              <mat-select name="type" [(ngModel)]="newDoc.type" required>
+                <mat-option *ngFor="let type of documentTypes" [value]="type">{{ type }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Client Name</mat-label>
+              <input matInput name="clientName" [(ngModel)]="newDoc.clientName" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Contact</mat-label>
+              <input matInput name="contact" [(ngModel)]="newDoc.contact" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Document Summary</mat-label>
+              <textarea matInput name="summary" rows="3" [(ngModel)]="newDoc.summary" required></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Parties Involved</mat-label>
+              <textarea matInput name="parties" rows="2" [(ngModel)]="newDoc.parties"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Clauses and Terms</mat-label>
+              <textarea matInput name="clauses" rows="4" [(ngModel)]="newDoc.clauses"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Signed By</mat-label>
+              <input matInput name="signedBy" [(ngModel)]="newDoc.signedBy" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Witness</mat-label>
+              <input matInput name="witness" [(ngModel)]="newDoc.witness" />
+            </mat-form-field>
+
+            <button mat-raised-button color="warn" type="submit">Save Document</button>
+          </form>
+        </section>
+      </div>
+
+      <!-- ✅ Assessment Section -->
+      <div *ngIf="showAssessment" class="assessment-section">
+        <h1 class="main-title"> Assessment</h1>
+
+        <div *ngIf="!showSetScore" class="quiz-wrapper">
+          <mat-card class="section">
+            <h2 class="question-title">
+              Q{{ currentQuestionIndex + 1 }}. {{ visibleQuestions[currentQuestionIndex]?.question }}
+            </h2>
+            <mat-radio-group [(ngModel)]="selectedOptions[currentQuestionIndex]" class="option-group">
+              <mat-radio-button *ngFor="let opt of visibleQuestions[currentQuestionIndex]?.options" [value]="opt">
+                {{ opt }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+            <div class="navigation-buttons">
+              <button mat-stroked-button (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">
+                ← Previous
+              </button>
+              <button mat-stroked-button *ngIf="currentQuestionIndex < 4" (click)="nextQuestion()">
+                Next →
+              </button>
+            </div>
+          </mat-card>
+
+          <div class="submit-button" *ngIf="currentQuestionIndex === 4">
+            <button mat-raised-button color="warn" (click)="submitSet()">Submit Set</button>
+          </div>
+        </div>
+
+        <!-- ✅ Show Result -->
+        <mat-card *ngIf="showSetScore" class="result-card">
+          <h2>Set {{ currentSet + 1 }} Completed</h2>
+          <p>You scored <strong>{{ setScore }}/{{ questionsPerSet }}</strong>.</p>
+          <button mat-raised-button color="primary" (click)="proceedToNextSet()">
+            {{ currentSet < 4 ? 'Next Set →' : 'Finish' }}
+          </button>
         </mat-card>
       </div>
-    </section>
-  
-    <mat-divider></mat-divider>
-  
-    <!-- New Document Form -->
-    <section class="new-doc-section">
-      <h2>Create New Document</h2>
-      <p class="template-hint">Click on a document above to use it as a template.</p>
-  
-      <form (ngSubmit)="saveNewDoc()" #docForm="ngForm" class="new-doc-form">
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Document Type</mat-label>
-          <mat-select name="type" [(ngModel)]="newDoc.type" required>
-            <mat-option *ngFor="let type of documentTypes" [value]="type">
-              {{ type }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Client Name</mat-label>
-          <input matInput name="clientName" [(ngModel)]="newDoc.clientName" required />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Contact</mat-label>
-          <input matInput name="contact" [(ngModel)]="newDoc.contact" />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Document Summary</mat-label>
-          <textarea matInput rows="3" name="summary" [(ngModel)]="newDoc.summary" required></textarea>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Parties Involved</mat-label>
-          <textarea matInput rows="2" name="parties" [(ngModel)]="newDoc.parties"></textarea>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Clauses and Terms</mat-label>
-          <textarea matInput rows="4" name="clauses" [(ngModel)]="newDoc.clauses"></textarea>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Signed By</mat-label>
-          <input matInput name="signedBy" [(ngModel)]="newDoc.signedBy" />
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Witness</mat-label>
-          <input matInput name="witness" [(ngModel)]="newDoc.witness" />
-        </mat-form-field>
-  
-        <div class="button-wrapper">
-          <button mat-raised-button color="warn" type="submit">Save Document</button>
-        </div>
-  
-      </form>
-    </section>
-  
-  </div>
-  
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

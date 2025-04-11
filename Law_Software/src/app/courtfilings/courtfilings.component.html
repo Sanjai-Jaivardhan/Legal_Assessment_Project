@@ -1,76 +1,99 @@
+<mat-sidenav-container class="clerk-container">
+  <!-- Sidebar -->
+  <mat-sidenav mode="side" opened>
+    <h2 class="sidebar-title">Navigation</h2>
+    <button mat-raised-button color="primary" (click)="showAssessment = false">Court Filings</button>
+    <button mat-raised-button color="accent" (click)="showAssessment = true">Assessment</button>
+    <button mat-stroked-button color="warn" (click)="goBack()"> ← Back</button>
+  </mat-sidenav>
 
-<div class="back-button-container">
-    <button mat-stroked-button color="primary" (click)="goBack()">
-      ← Back
-    </button>
-  </div>
+  <mat-sidenav-content>
+    <div class="content-wrapper">
+      <!-- Court Filing Section -->
+      <div *ngIf="!showAssessment">
+        <div class="court-filings-container">
+          <h1 class="title">Court Filings</h1>
+          <p class="subtitle">Track, manage, and analyze all legal case submissions in one place.</p>
 
+          <div class="table-actions">
+            <mat-form-field appearance="outline">
+              <mat-label>Search Case</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Enter case name or ID">
+              <button mat-icon-button matSuffix>
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
 
-<div class="court-filings-container">
+          <h2 class="table-title">Recent Case Filings</h2>
+          <div class="table-wrapper">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" matSort>
+              <ng-container matColumnDef="caseId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Case ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.caseId}} </td>
+              </ng-container>
 
-  <!-- Title Section -->
-  <h1 class="title">Court Filings</h1>
-  <p class="subtitle">Track, manage, and analyze all legal case submissions in one place.</p>
+              <ng-container matColumnDef="caseName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Case Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.caseName}} </td>
+              </ng-container>
 
-  <!-- Definition Box -->
-  <mat-card class="definition-card">
-    <h2>What are Court Filings?</h2>
-    <p>
-      Court filings refer to the official submission of legal documents to a court in relation to a legal case.
-      These documents can include petitions, complaints, motions, responses, and evidence.
-    </p>
-    <ul>
-      <li><strong>Initiate Legal Proceedings:</strong> Begin a case by submitting a petition or complaint.</li>
-      <li><strong>Track Status:</strong> Monitor approval stages, court reviews, and follow-up notices.</li>
-      <li><strong>Secure Repository:</strong> All filings are stored securely and can be accessed anytime.</li>
-    </ul>
-  </mat-card>
+              <ng-container matColumnDef="filingDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Filing Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.filingDate}} </td>
+              </ng-container>
 
-  <!-- Search Bar -->
-  <div class="table-actions">
-    <mat-form-field appearance="outline">
-      <mat-label>Search Case</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Enter case name or ID">
-      <button mat-icon-button matSuffix>
-        <mat-icon>search</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+              </ng-container>
 
-  <!-- Table Section -->
-  <h2 class="table-title">Recent Case Filings</h2>
-  <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" matSort>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
 
-      <!-- Case ID Column -->
-      <ng-container matColumnDef="caseId">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Case ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.caseId}} </td>
-      </ng-container>
+      <!-- Assessment Section -->
+      <div *ngIf="showAssessment" class="assessment-section">
+        <h1 class="main-title">Court Filing Assessment</h1>
 
-      <!-- Case Name Column -->
-      <ng-container matColumnDef="caseName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Case Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.caseName}} </td>
-      </ng-container>
+        <div *ngIf="!showSetScore" class="quiz-wrapper">
+          <mat-card class="section">
+            <h2 class="question-title">
+              Q{{ currentQuestionIndex + 1 }}. {{ visibleQuestions[currentQuestionIndex]?.question }}
+            </h2>
 
-      <!-- Filing Date Column -->
-      <ng-container matColumnDef="filingDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Filing Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.filingDate}} </td>
-      </ng-container>
+            <mat-radio-group [(ngModel)]="selectedOptions[currentQuestionIndex]" class="option-group">
+              <mat-radio-button *ngFor="let opt of visibleQuestions[currentQuestionIndex]?.options" [value]="opt">
+                {{ opt }}
+              </mat-radio-button>
+            </mat-radio-group>
 
-      <!-- Status Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element">
-         
-          {{element.status}}
-        </td>
-      </ng-container>
+            <div class="navigation-buttons">
+              <button mat-stroked-button color="primary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">
+                ← Previous
+              </button>
+              <button mat-stroked-button color="primary" *ngIf="currentQuestionIndex < 4" (click)="nextQuestion()">
+                Next →
+              </button>
+            </div>
+          </mat-card>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </div>
-</div>
+          <div class="submit-button" *ngIf="currentQuestionIndex === 4">
+            <button mat-raised-button color="warn" (click)="submitSet()">Submit Set</button>
+          </div>
+        </div>
+
+        <mat-card *ngIf="showSetScore" class="result-card">
+          <h2>Set {{ currentSet + 1 }} Completed</h2>
+          <p>You scored <strong>{{ setScore }}/{{ questionsPerSet }}</strong>.</p>
+          <button mat-raised-button color="primary" (click)="proceedToNextSet()">
+            {{ currentSet < 4 ? 'Next Set →' : 'Finish' }}
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

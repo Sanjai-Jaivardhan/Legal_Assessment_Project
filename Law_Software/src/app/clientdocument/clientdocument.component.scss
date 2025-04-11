@@ -1,82 +1,317 @@
-.client-docs-container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+/* ===== Global Layout ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+.clerk-container {
+  display: flex;
+  height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+  width: 100%;
+}
+
+mat-sidenav {
+  width: 280px;
+  background-color: #fdfdfd;
+  border-right: 1px solid #ddd;
+  padding: 1.5rem;
+
+  .sidebar-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-bottom: 20px;
   }
+
+  button {
+    width: 100%;
+    background-color: #b71c1c;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-top: 10px;
+
+    &:hover {
+      background-color: #a30000;
+    }
+  }
+}
+
+mat-sidenav-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ===== Content Centering ===== */
+.center-content {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== Question Styling ===== */
+.section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+
+.question-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  mat-radio-button {
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+  }
+
+  mat-radio-button.mat-radio-checked {
+    background-color: #b71c1c;
+    color: white;
+  }
+}
+
+/* ===== Navigation Buttons ===== */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  button {
+    min-width: 120px;
+  }
+}
+
+.submit-button {
+  text-align: center;
+  margin: 30px 0;
+
+  button {
+    background-color: #b71c1c;
+    color: white;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #a30000;
+    }
+  }
+}
+
+/* ===== Result Card ===== */
+.result-card {
+  background-color: #fff7f7;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto 0;
+  text-align: center;
+
+  h2 {
+    color: #b71c1c;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  button {
+    background-color: #b71c1c;
+    color: white;
+
+    &:hover {
+      background-color: #a30000;
+    }
+  }
+}
+
+/* ===== Page Header for Client Documents ===== */
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    color: #b71c1c;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+    color: #777;
+  }
+}
+
+/* ===== Existing Document Cards ===== */
+.doc-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  overflow-x: auto; /* Enables horizontal scrolling if too many cards */
+  padding: 10px 0;
+}
+
+.doc-card {
+  min-width: 280px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  mat-card-title {
+    font-weight: 600;
+    color: #b71c1c;
+  }
+
+  mat-card-subtitle {
+    font-size: 12px;
+    color: #777;
+  }
+ 
   
-  .page-header {
+  mat-card-content {
+    font-size: 14px;
+    color: #444;
+  }
+}
+
+@media (max-width: 768px) {
+  .doc-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doc-card {
+    width: 90%;
+  }
+}
+
+.new-doc-section {
+  padding-bottom: 40px; // ✅ Ensure bottom spacing
+
+
+
+  h2 {
+    color: #b71c1c;
     text-align: center;
-    margin-bottom: 30px;
-  
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color:red;
-    }
-  
-    .page-subtitle {
-      color: #777;
-      font-size: 15px;
-    }
+    margin-bottom: 10px;
+  }
+
+  .template-hint {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+}
+
+.new-doc-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .button-wrapper {
+    margin-top: 20px;
+    text-align: center;
   }
   
-  .existing-docs {
-    h2 {
-      margin-bottom: 10px;
-    }
-  
-    .doc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 15px;
-  
-      .doc-card {
-        cursor: pointer;
-        transition: 0.2s ease;
-        border-radius: 10px;
-  
-        &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-  
-        mat-card-title {
-          font-weight: 600;
-        }
-      }
+
+  button {
+    font-weight: bold;
+  }
+}
+
+
+.main-title {
+  text-align: center;
+  color: #b71c1c; // Deep red
+  font-size: 36px;
+  font-weight: 800;
+  margin: 20px 0;
+  letter-spacing: 1px;
+}
+.quiz-wrapper {
+  width: 100%;
+  max-width: 700px;
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+.result-card {
+  width: 100%;
+  max-width: 700px;
+  min-width: 600px;
+  min-height: 250px; // ✅ Fixed height
+  padding: 30px;
+  margin: 30px auto 0;
+  background-color: #fff7f7;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: #b71c1c;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  button {
+    background-color: #b71c1c;
+    color: white;
+
+    &:hover {
+      background-color: #a30000;
     }
   }
-  
-  .new-doc-section {
-    margin-top: 40px;
-  
-    h2 {
-      margin-bottom: 10px;
-    }
-  
-    .template-hint {
-      color: #666;
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-  
-    .new-doc-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-  
-      mat-form-field {
-        width: 100%;
-      }
-  
-      .button-wrapper {
-        text-align: right;
-        margin-top: 10px;
-        color:red;
-      }
-    }
-  }
-  
+}

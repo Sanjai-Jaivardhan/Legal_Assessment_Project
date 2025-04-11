@@ -5,23 +5,44 @@ body, .navbar, .nav-links a {
   font-family: 'Montserrat', sans-serif;
 }
 .law-access-card {
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.card-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .card-header-inline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-
-  mat-card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0;
-  }
+  font-family: 'Literata', serif; // Optional for elegance
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2e3b55;
+  margin-bottom: 12px;
 }
+
+mat-card-content p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
 
 .icon-style {
   font-size: 28px;
@@ -173,11 +194,11 @@ img {
   margin-left: 12px;
   margin-bottom:40px;
   background-image: url('/assets/images/picture-profile45man.jpeg');
-  /* Path to your image */
+
   background-size: cover;
   background-position: center;
   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
-  /* Optional shadow */
+ 
 
 }
 
@@ -326,11 +347,8 @@ img {
   .profile-container {
     display: flex;
     flex-direction: column;
-    /* Stack image and title vertically */
     align-items: center;
-    /* Center the title below the image */
     text-align: center;
-    /* Center the title text */
   }
 
   .Picture-judge {
@@ -341,23 +359,19 @@ img {
     background-size: cover;
     background-position: center;
     margin-bottom: 8px;
-    /* Space between image and title */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Optional, for shadow effect */
+    
   }
 
   .Picture-judge:hover {
     box-shadow: 0px 6px 8px rgba(9, 9, 9, 0.3), 0px 3px 6px rgba(0, 0, 0, 0.15);
-    /* Slightly raised on hover */
     transform: translateY(-2px);
-    /* Subtle upward movement */
+  
   }
 
   .profile-card:active {
     box-shadow: 0px 2px 4px rgba(9, 9, 9, 0.2);
-    /* Pressed button effect */
     transform: translateY(1px);
-    /* Slight downward movement */
   }
 
   .title {
@@ -383,23 +397,17 @@ img {
 
   .judge-profiles-container {
     display: flex;
-
     gap: 23px;
-    /* Space between the profiles */
     justify-content: flex-start;
-    /* Align the profiles to the left */
     align-items: center;
-    /* Vertically center the profiles */
   }
 
   .profile-container {
     display: flex;
     flex-direction: column;
-    /* Stack image and title vertically */
     align-items: center;
-    /* Center the title below the image */
     text-align: center;
-    /* Center the title text */
+   
   }
 
   .judge-profiles-description {
@@ -832,7 +840,6 @@ img {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  
 }
 
 .custom-button:hover {
@@ -844,7 +851,6 @@ img {
 }
 .digital.div1{
   display:flex;
-
 }
 
 .subinnerdiv.digital{
@@ -885,4 +891,18 @@ img {
 }
 .digital-head{
   text-align: center;
+} 
+
+.client-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  color:white;
+}
+
+.chatbot-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }

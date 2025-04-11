@@ -1,84 +1,87 @@
-<div class="back-button-container">
-  <button mat-stroked-button color="primary" (click)="goBack()">
-    ← Back
-  </button>
-</div>
+<!-- Page Wrapper -->
+<div class="clerk-container">
 
-<h1 class="main-title">Court Clerk</h1>
+  <!-- 🧠 Sidebar with Assessments -->
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+      <h3 class="sidebar-header">Assessment Navigation</h3>
+      <button mat-button (click)="startAssessment()">Start Clerk Assessment</button>
+      <button mat-button (click)="goToClerkPage()">Clerk Tasks</button>
 
-<div class="definition-container">
-  <mat-card class="definition-card">
-    <h2>Who is a Court Clerk?</h2>
-    <p>
-      A <strong>Court Clerk</strong> is a vital administrative officer in the judicial system.
-      They manage and maintain court records, handle court documentation, assist judges, and ensure
-      legal procedures are followed smoothly.
-    </p>
-  </mat-card>
+    </mat-sidenav>
 
-  <mat-card class="definition-card">
-    <h2>How Does the Clerk System Work?</h2>
-    <ul>
-      <li>Receives and files petitions, documents, and evidence from advocates.</li>
-      <li>Schedules hearings and manages case calendars.</li>
-    </ul>
-  </mat-card>
-</div>
+    <mat-sidenav-content>
+      <!-- 👩‍💼 Clerk Tasks Section -->
+      <div *ngIf="!isAssessmentStarted" class="center-content">
+        <h2 class="section-header">Clerk Tasks</h2>
+        <div class="card-grid">
+          <mat-card class="section" *ngFor="let item of courtSections; let i = index">
+            <h2>{{ item.title }}</h2>
+            <p>{{ item.description }}</p>
 
-<div class="card-grid">
-  <mat-card class="section" *ngFor="let item of courtSections; let i = index">
-    <h2>{{ item.title }}</h2>
-    <p>{{ item.description }}</p>
+            <ng-container [ngSwitch]="item.inputType">
+              <input *ngSwitchCase="'file'" type="file" class="input-field" (change)="onFileSelected($event, i)" />
+              <input *ngSwitchCase="'text'" type="text" class="input-field" [placeholder]="item.placeholder"
+                [(ngModel)]="textInputMap[i]" />
+              <input *ngSwitchCase="'number'" type="number" class="input-field" [placeholder]="item.placeholder"
+                [(ngModel)]="numberInputMap[i]" />
+              <input *ngSwitchCase="'date'" type="date" class="input-field" [(ngModel)]="dateInputMap[i]" />
+              <textarea *ngSwitchCase="'textarea'" class="input-field" [placeholder]="item.placeholder"
+                [(ngModel)]="textareaInputMap[i]"></textarea>
+              <select *ngSwitchCase="'select'" class="input-field" [(ngModel)]="selectedOptionMap[i]">
+                <option *ngFor="let opt of item.options" [value]="opt">{{ opt }}</option>
+              </select>
+            </ng-container>
 
-    <ng-container [ngSwitch]="item.inputType">
-      <input
-        *ngSwitchCase="'file'"
-        type="file"
-        class="input-field"
-        (change)="onFileSelected($event, i)"
-      />
+            <button mat-raised-button color="warn" (click)="handleAction(i)">
+              {{ item.buttonText }}
+            </button>
+          </mat-card>
+        </div>
+      </div>
 
-      <input
-        *ngSwitchCase="'text'"
-        type="text"
-        class="input-field"
-        [placeholder]="item.placeholder"
-        [(ngModel)]="textInputMap[i]"
-      />
+      <!-- 🧠 Assessment Questions Section -->
+      <div *ngIf="isAssessmentStarted" class="center-content">
+        <h2 class="section-header assessment-heading" *ngIf="!showSetScore">
+          Assessment
+        </h2>
+        <mat-card *ngIf="!showSetScore" class="section">
+          <h2 class="question-title">
+            Q{{ currentQuestionIndex + 1 }}. {{ visibleQuestions[currentQuestionIndex].question }}
+          </h2>
 
-      <input
-        *ngSwitchCase="'number'"
-        type="number"
-        class="input-field"
-        [placeholder]="item.placeholder"
-        [(ngModel)]="numberInputMap[i]"
-      />
+          <mat-radio-group [(ngModel)]="selectedOptions[currentQuestionIndex]" class="option-group">
+            <mat-radio-button *ngFor="let opt of visibleQuestions[currentQuestionIndex].options" [value]="opt">
+              {{ opt }}
+            </mat-radio-button>
+          </mat-radio-group>
 
-      <input
-        *ngSwitchCase="'date'"
-        type="date"
-        class="input-field"
-        [(ngModel)]="dateInputMap[i]"
-      />
+          <div class="navigation-buttons">
+            <button mat-stroked-button color="primary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">
+              ← Previous
+            </button>
+            <button mat-stroked-button color="primary" 
+              *ngIf="currentQuestionIndex < 4"
+              (click)="nextQuestion()">
+              Next →
+            </button>
+          </div>
+        </mat-card>
 
-      <textarea
-        *ngSwitchCase="'textarea'"
-        class="input-field"
-        [placeholder]="item.placeholder"
-        [(ngModel)]="textareaInputMap[i]"
-      ></textarea>
+        <!-- 🔘 Submit Button only on 5th question -->
+        <div class="submit-button" *ngIf="currentQuestionIndex === 4 && !showSetScore">
+          <button mat-raised-button color="warn" (click)="submitSet()">Submit Set</button>
+        </div>
 
-      <select
-        *ngSwitchCase="'select'"
-        class="input-field"
-        [(ngModel)]="selectedOptionMap[i]"
-      >
-        <option *ngFor="let opt of item.options" [value]="opt">{{ opt }}</option>
-      </select>
-    </ng-container>
-
-    <button mat-raised-button color="warn" (click)="handleAction(i)">
-      {{ item.buttonText }}
-    </button>
-  </mat-card>
+        <!-- 📊 Show Result -->
+        <mat-card *ngIf="showSetScore" class="result-card section">
+          <h2>Set Completed ✅</h2>
+          <p>You scored <strong>{{ setScore }}/{{ questionsPerSet }}</strong>.</p>
+          <button mat-raised-button color="primary" (click)="proceedToNextSet()">
+            {{ currentSet < 4 ? 'Next Set →' : 'Finish & Go to Dashboard' }}
+          </button>
+        </mat-card>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

@@ -7,6 +7,20 @@ import { MatButton } from '@angular/material/button';
 import { DetailService } from '../detail.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatRadioModule } from '@angular/material/radio';
+import { Router } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
+
+interface Question {
+  question: string;
+  options: string[];
+  answer: string;
+  explanation: string;
+  reference: string;
+}
 @Component({
   selector: 'app-clerk',
   standalone: true,
@@ -15,10 +29,14 @@ import { HttpClientModule } from '@angular/common/http';
     NgFor,
     NgSwitch,
     NgSwitchCase,
+    MatSidenavModule,
     FormsModule,
     HttpClientModule,
     MatCard,
-    MatButton
+    MatButton,
+    MatProgressBar,
+    MatRadioModule
+
   ],
   templateUrl: './clerk.component.html',
   styleUrls: ['./clerk.component.scss']
@@ -32,7 +50,7 @@ export class ClerkComponent {
   textareaInputMap: { [key: number]: string } = {};
   selectedOptionMap: { [key: number]: string } = {};
 
-  constructor(private location: Location, private clerkService: DetailService) {}
+  constructor(private location: Location, private clerkService: DetailService,  private router: Router) {}
 
   goBack(): void {
     this.location.back();
@@ -154,4 +172,325 @@ export class ClerkComponent {
       }
     });
   }
+  questions: Question[] = []; // Load 25 questions here
+  questionsPerSet = 5;
+  currentSet = 0;
+  visibleQuestions: Question[] = [];
+  userAnswers: string[][] = [[], [], [], [], []];
+  scoresBySet: number[] = [0, 0, 0, 0, 0];
+  totalScore = 0;
+  setCompleted: boolean[] = [false, false, false, false, false];
+  showSetScore: boolean = false;
+  setScore: number = 0;
+  selectedOptions: string[] = [];
+  currentQuestionIndex = 0;
+
+  goToClerkPage() {
+    this.router.navigate(['/clerk']);
+  }
+
+  ngOnInit(): void {
+    this.loadQuestions();
+    this.loadSet(this.currentSet);
+  }
+
+  loadQuestions() {
+    this.questions = [
+      {
+        question: 'What is the primary role of a court clerk?',
+        options: [
+          'Presiding over trials',
+          'Enforcing law and order',
+          'Maintaining court records',
+          'Providing legal advice'
+        ],
+        answer: 'Maintaining court records',
+        explanation: 'Clerks are responsible for managing and maintaining official court records.',
+        reference: 'Judicial Service Manual - Sec. 3.2'
+      },
+      {
+        question: 'Which document initiates a civil case in court?',
+        options: ['Summon', 'Plea', 'Petition', 'Affidavit'],
+        answer: 'Petition',
+        explanation: 'A civil case typically begins with a petition or plaint.',
+        reference: 'Civil Procedure Code, Order VII Rule 1'
+      },
+      {
+        question: 'Which tool helps schedule hearings?',
+        options: ['Calendar Register', 'Summon Sheet', 'Filing Docket', 'Index Register'],
+        answer: 'Calendar Register',
+        explanation: 'The calendar register is used to manage hearing dates.',
+        reference: 'Court Management Handbook'
+      },
+      {
+        question: 'What is issued by the clerk to inform parties about case dates?',
+        options: ['Warrant', 'Summons', 'Charge Sheet', 'Bail Order'],
+        answer: 'Summons',
+        explanation: 'A summon is a legal document issued to notify parties about court appearances.',
+        reference: 'CrPC Sec. 61'
+      },
+      {
+        question: 'Which document is required to request a certified copy?',
+        options: ['RTI Request', 'Affidavit', 'Copy Application', 'Summon'],
+        answer: 'Copy Application',
+        explanation: 'A formal application must be submitted to obtain certified copies.',
+        reference: 'High Court Copying Rules'
+      },
+      {
+        question: 'Which act governs fees paid in court?',
+        options: ['Indian Stamp Act', 'Court Fees Act', 'CrPC', 'IPC'],
+        answer: 'Court Fees Act',
+        explanation: 'Court fees are regulated under the Court Fees Act.',
+        reference: 'Court Fees Act, 1870'
+      },
+      {
+        question: 'Who assists the judge in maintaining decorum?',
+        options: ['Lawyer', 'Bailiff', 'Registrar', 'Clerk'],
+        answer: 'Registrar',
+        explanation: 'The registrar ensures the smooth running of the courtroom under the judge.',
+        reference: 'Judicial Administration Guide'
+      },
+      {
+        question: 'Which is an alternative dispute resolution (ADR) method?',
+        options: ['Appeal', 'Bail Hearing', 'Lok Adalat', 'Injunction'],
+        answer: 'Lok Adalat',
+        explanation: 'Lok Adalat provides an ADR mechanism to resolve disputes amicably.',
+        reference: 'Legal Services Authorities Act'
+      },
+      {
+        question: 'What is the first step in criminal case initiation?',
+        options: ['Summons', 'FIR', 'Petition', 'Copy Application'],
+        answer: 'FIR',
+        explanation: 'FIR (First Information Report) starts the criminal investigation process.',
+        reference: 'CrPC Sec. 154'
+      },
+      {
+        question: 'Which document notifies a person to appear in court?',
+        options: ['Affidavit', 'Warrant', 'Summons', 'Subpoena'],
+        answer: 'Summons',
+        explanation: 'Summons is issued for appearance; warrant is for arrest.',
+        reference: 'CrPC Sec. 61'
+      },
+  
+      // Set 2
+      {
+        question: 'What is a docket used for?',
+        options: ['Evidence logging', 'Case summary tracking', 'Witness management', 'Judgment writing'],
+        answer: 'Case summary tracking',
+        explanation: 'Dockets contain a running summary of proceedings.',
+        reference: 'Judicial Forms Manual'
+      },
+      {
+        question: 'Clerks prepare ________ for day-to-day case updates.',
+        options: ['Order Sheets', 'Affidavits', 'Judgments', 'Depositions'],
+        answer: 'Order Sheets',
+        explanation: 'Order sheets record court directions and dates.',
+        reference: 'Court Procedure Rules'
+      },
+      {
+        question: 'To file a case, a ________ must be paid.',
+        options: ['Late fee', 'Admission charge', 'Court fee', 'Penalty'],
+        answer: 'Court fee',
+        explanation: 'Filing involves a mandatory court fee.',
+        reference: 'Court Fees Act'
+      },
+      {
+        question: 'When parties resolve disputes outside court, it is called:',
+        options: ['Dismissal', 'Plea bargain', 'ADR', 'Litigation'],
+        answer: 'ADR',
+        explanation: 'Alternative Dispute Resolution (ADR) methods include mediation, arbitration.',
+        reference: 'Legal Services Authorities Act'
+      },
+      {
+        question: 'Which official signs certified copies?',
+        options: ['Lawyer', 'Registrar', 'Clerk', 'Magistrate'],
+        answer: 'Clerk',
+        explanation: 'Court clerks authenticate certified copies.',
+        reference: 'High Court Copying Rules'
+      },
+  
+      // Set 3
+      {
+        question: 'In criminal matters, who prepares charge sheets?',
+        options: ['Clerk', 'Police', 'Lawyer', 'Court'],
+        answer: 'Police',
+        explanation: 'Charge sheets are prepared by police post-investigation.',
+        reference: 'CrPC Sec. 173'
+      },
+      {
+        question: 'What is the purpose of cause list?',
+        options: ['Check fines', 'List court holidays', 'Show daily hearings', 'Warrant list'],
+        answer: 'Show daily hearings',
+        explanation: 'Cause list shows cases to be heard on a particular day.',
+        reference: 'Court Management System'
+      },
+      {
+        question: 'What is the role of diary register?',
+        options: ['To track correspondence', 'Log visitors', 'Record appeals', 'Maintain case flow'],
+        answer: 'Maintain case flow',
+        explanation: 'Diary register records filing and progress of cases.',
+        reference: 'Judicial Registers Manual'
+      },
+      {
+        question: 'Certified copies are used for:',
+        options: ['New FIRs', 'Secondary evidence', 'Summons delivery', 'Investigation'],
+        answer: 'Secondary evidence',
+        explanation: 'Certified copies serve as admissible copies in related proceedings.',
+        reference: 'Indian Evidence Act'
+      },
+  
+      // Set 4
+      {
+        question: 'What is a return memo?',
+        options: ['Payment receipt', 'Warrant explanation', 'Rejection notice for documents', 'Order sheet'],
+        answer: 'Rejection notice for documents',
+        explanation: 'Return memo is issued if filing has errors or is incomplete.',
+        reference: 'Court Filing Manual'
+      },
+      {
+        question: 'Who is responsible for indexing case files?',
+        options: ['Judge', 'Court Officer', 'Registrar', 'Clerk'],
+        answer: 'Clerk',
+        explanation: 'Court clerks prepare the index to maintain proper file structure.',
+        reference: 'File Management Handbook'
+      },
+      {
+        question: 'What happens if court fee is not paid?',
+        options: ['Immediate rejection', 'Delay in listing', 'Case remains dormant', 'All of the above'],
+        answer: 'All of the above',
+        explanation: 'Court fee is mandatory — non-payment can lead to rejection or delay.',
+        reference: 'Court Fees Act'
+      },
+      {
+        question: 'A court clerk CANNOT:',
+        options: ['Advise on law', 'File orders', 'Maintain cause lists', 'Issue certified copies'],
+        answer: 'Advise on law',
+        explanation: 'Clerks are not legally permitted to offer legal advice.',
+        reference: 'Judicial Ethics Handbook'
+      },
+  
+      // Set 5
+      {
+        question: 'In Lok Adalat, disputes are resolved by:',
+        options: ['Trial', 'Compromise', 'Police', 'Arrest'],
+        answer: 'Compromise',
+        explanation: 'Lok Adalat emphasizes compromise and mutual agreement.',
+        reference: 'Legal Services Authorities Act'
+      },
+      {
+        question: 'Clerks should update ________ daily.',
+        options: ['Cause list', 'Evidence box', 'Judge’s order', 'Witness register'],
+        answer: 'Cause list',
+        explanation: 'Cause list is the most frequently updated document.',
+        reference: 'Daily Judicial Procedure'
+      },
+      {
+        question: 'What is entered into the order sheet?',
+        options: ['Verdict only', 'Procedural orders', 'Objections', 'Evidence'],
+        answer: 'Procedural orders',
+        explanation: 'Order sheet captures each hearing’s outcomes and directions.',
+        reference: 'Case File Structure Manual'
+      },
+      {
+        question: 'Court Clerk ensures compliance with:',
+        options: ['Filing rules', 'Legal ethics', 'Trial verdicts', 'Defense strategies'],
+        answer: 'Filing rules',
+        explanation: 'Clerks verify that all filings are legally complete.',
+        reference: 'Court Filing SOP'
+      },
+      {
+        question: 'Who maintains the summons dispatch register?',
+        options: ['Court police', 'Magistrate', 'Court clerk', 'Court stenographer'],
+        answer: 'Court clerk',
+        explanation: 'Clerks track dispatch and return of summons.',
+        reference: 'Court Registers Handbook'
+      }
+    ];
+  }
+  
+
+  loadSet(setIndex: number) {
+    const start = setIndex * this.questionsPerSet;
+    const end = start + this.questionsPerSet;
+    this.visibleQuestions = this.questions.slice(start, end).map(q => ({
+      ...q,
+      options: this.shuffleArray([...q.options]),
+    }));
+    this.showSetScore = false;
+    this.setScore = 0;
+    this.currentQuestionIndex = 0;
+    this.selectedOptions = [];
+  }
+
+  shuffleArray(array: string[]) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  selectAnswer(option: string) {
+    this.selectedOptions[this.currentQuestionIndex] = option;
+  }
+
+  nextQuestion() {
+    if (this.currentQuestionIndex < this.visibleQuestions.length - 1) {
+      this.currentQuestionIndex++;
+    }
+  }
+
+  previousQuestion() {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+    }
+  }
+  submitSet() {
+    let score = 0;
+  
+    this.visibleQuestions.forEach((q, i) => {
+      const selected = this.selectedOptions[i];
+      const correct = q.answer;
+  
+      // 🖨️ Log each answer comparison
+      console.log(`Q${i + 1}: Selected - ${selected}, Correct - ${correct}`);
+  
+      if (selected === correct) {
+        score++;
+      }
+    });
+  
+    this.scoresBySet[this.currentSet] = score;
+    this.totalScore += score;
+    this.setCompleted[this.currentSet] = true;
+    this.setScore = score;
+    this.showSetScore = true;
+  
+    // 🖨️ Log final set score and total
+    console.log(`Set ${this.currentSet + 1} score: ${score}/${this.questionsPerSet}`);
+    console.log(`Current Total Score: ${this.totalScore}`);
+  }
+  
+
+  proceedToNextSet() {
+    if (this.currentSet < 4) {
+      this.currentSet++;
+      this.loadSet(this.currentSet);
+    } else {
+      this.navigateToDashboard();
+    }
+  }
+
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard'], {
+      state: {
+        scoresBySet: this.scoresBySet,
+        totalScore: this.totalScore
+      }
+    });
+  }
+  isAssessmentStarted = false;
+
+startAssessment() {
+  this.isAssessmentStarted = true;
+}
+
+
+
 }

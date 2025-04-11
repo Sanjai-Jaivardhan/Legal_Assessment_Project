@@ -7,7 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatRadioModule } from '@angular/material/radio';
+
+
 export interface CourtFiling {
   caseNumber: string;
   caseTitle: string;
@@ -21,12 +25,16 @@ export interface CourtFiling {
   imports: [
     MatTableModule,
     MatChipsModule,
+    CommonModule,
     FormsModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatSidenav,
+    MatRadioModule,
+    MatSidenavModule,
   ],
   templateUrl: './courtfilings.component.html',
   styleUrl: './courtfilings.component.scss',
@@ -79,7 +87,49 @@ export class CourtfilingsComponent {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSource.filter = filterValue;
   }
+  showAssessment = false;
+  isAssessmentStarted = false;
+  currentSet = 0;
+  currentQuestionIndex = 0;
+  questionsPerSet = 5;
+  selectedOptions: string[] = [];
+  setScore = 0;
+  showSetScore = false;
 
+  startAssessment() {
+    this.isAssessmentStarted = true;
+    this.showSetScore = false;
+    this.currentSet = 0;
+    this.currentQuestionIndex = 0;
+    this.selectedOptions = [];
+  }
+  allQuestions = [
+    {
+      question: 'What document confirms a court filing?',
+      options: ['Filing receipt', 'Witness note', 'Verdict sheet', 'ID proof'],
+      answer: 'Filing receipt'
+    },
+    {
+      question: 'What field helps search filings quickly?',
+      options: ['Case Type', 'Case Name or ID', 'Filing Office', 'Lawyer Name'],
+      answer: 'Case Name or ID'
+    },
+    {
+      question: 'Who files the case in court?',
+      options: ['Plaintiff', 'Judge', 'Clerk', 'Bailiff'],
+      answer: 'Plaintiff'
+    },
+    {
+      question: 'Status "Under Review" means?',
+      options: ['Case is complete', 'Case is rejected', 'Case is still being reviewed', 'Filed again'],
+      answer: 'Case is still being reviewed'
+    },
+    {
+      question: 'Filing Date refers to?',
+      options: ['Judgment day', 'Approval day', 'Submission day', 'Lawyer visit'],
+      answer: 'Submission day'
+    },
+  ];
   getStatusIcon(status: string): string {
     switch (status) {
       case 'Approved': return 'check_circle';
@@ -98,4 +148,38 @@ export class CourtfilingsComponent {
     }
   }
   
+  get visibleQuestions() {
+    const start = this.currentSet * this.questionsPerSet;
+    return this.allQuestions.slice(start, start + this.questionsPerSet);
+  }
+
+  previousQuestion() {
+    if (this.currentQuestionIndex > 0) this.currentQuestionIndex--;
+  }
+
+  nextQuestion() {
+    if (this.currentQuestionIndex < this.questionsPerSet - 1) this.currentQuestionIndex++;
+  }
+
+  submitSet() {
+    this.setScore = 0;
+    this.visibleQuestions.forEach((q, i) => {
+      const chosen = this.selectedOptions[i];
+      console.log(`Q${i + 1}: Chose "${chosen}" | Correct: "${q.answer}"`);
+      if (q.answer === chosen) this.setScore++;
+    });
+    this.showSetScore = true;
+  }
+
+  proceedToNextSet() {
+    if (this.currentSet < Math.floor(this.allQuestions.length / this.questionsPerSet) - 1) {
+      this.currentSet++;
+      this.currentQuestionIndex = 0;
+      this.selectedOptions = [];
+      this.setScore = 0;
+      this.showSetScore = false;
+    } else {
+      this.isAssessmentStarted = false;
+    }
+  }
 }
