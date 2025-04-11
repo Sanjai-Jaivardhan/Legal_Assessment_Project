@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Test Instructions</h2>
+
+<mat-dialog-content>
+  <p><strong>1.</strong> The test practitioner must rely solely on their own legal reasoning and intuition to proceed.</p>
+  <p><strong>2.</strong> This test does not contain any hints, help, or suggestions to proceed.</p>
+  <p><strong>3.</strong> Every aspect of the lawyer community is addressed in detail.</p>
+  <p><strong>4.</strong> Core skills such as legal interpretation, argumentation, evidence submission, and courtroom etiquette will be evaluated.</p>
+  <p><strong>5.</strong> There will be several phases during the course of the test where your technical core knowledge will be assessed.</p>
+  <p><strong>6.</strong> Client interactions are dynamic. Pay close attention to responses, as some information will only be revealed through effective questioning.</p>
+  <p><strong>7.</strong> You may select assistants during trial preparation, but submissions and objections must be made at the correct moments.</p>
+  <p><strong>8.</strong> Engage with the courtroom as in real trials — wait for your turn, raise valid objections, and submit forms when necessary.</p>
+  <p><strong>9.</strong> Every path or legal module can be accessed independently based on the advocate’s choices, and each decision will impact the outcome.</p>
+  <p><strong>10.</strong> A timer will be running and recorded throughout the test duration.</p>
+  <p><strong>11.</strong> Every module in the test will be tracked.</p>
+  <p><strong>12.</strong> All supporting systems and modules are operational and monitored in real time.</p>
+  <p><strong>13.</strong> Follow the given procedures and steps accurately to ensure the best results.</p>
+  <p><strong>14.</strong> A comprehensive report will be provided after the simulation, highlighting your strengths, mistakes, and areas of improvement.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button
+          class="start-button"
+          color="warn"
+          (click)="startCountdown()"
+          [disabled]="isCounting">
+    {{ countdown !== null ? countdown : 'Start Test' }}
+  </button>
+</mat-dialog-actions>

@@ -6,7 +6,8 @@ import { DetailService } from '../detail.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
-
+import { InstructionPageComponent } from '../instruction-page/instruction-page.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-scenario-description',
   standalone: true,
@@ -25,7 +26,8 @@ export class ScenarioDescriptionComponent {
   constructor(
     private detailService:DetailService,
     private router: Router,
-    private dialogRef: MatDialogRef<ScenarioDescriptionComponent>
+    private dialogRef: MatDialogRef<ScenarioDescriptionComponent>,
+    private dialog: MatDialog,
   ){
 
   }
@@ -38,6 +40,10 @@ export class ScenarioDescriptionComponent {
   }
   
   onStartScenario(event: Event): void {
+    this.dialog.open(InstructionPageComponent, {
+      width: '1000px',
+      disableClose: true
+    });
     const buttonId = (event.currentTarget as HTMLElement).id;
     const eventTime = Date.now() - performance.now() + event.timeStamp;
     this.dialogRef.close();
