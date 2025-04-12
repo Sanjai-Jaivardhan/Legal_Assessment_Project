@@ -271,6 +271,92 @@ app.post('/api/update-clerk-reward', async (req, res) => {
     }
   });
   
+  //to get the final reward or score or what so ever
+  app.post('/api/final-result-path-based', async (req, res) => {
+    try {
+      // Step 1: Get counts from the base tables (not reward/assessment)
+      const [clientDoc, courtFiling, digital] = await Promise.all([
+        pool.query('SELECT document_count FROM client_document LIMIT 1'),
+        pool.query('SELECT filing_count FROM court_filing_details LIMIT 1'),
+        pool.query('SELECT digital_count FROM digital_details LIMIT 1')
+      ]);
+  
+      const docCount = clientDoc.rows[0]?.document_count || 0;
+      const filingCount = courtFiling.rows[0]?.filing_count || 0;
+      const digitalCount = digital.rows[0]?.digital_count || 0;
+  
+      const pathCounts = [
+        { name: 'Client Document', count: docCount },
+        { name: 'Court Filing', count: filingCount },
+        { name: 'Digital', count: digitalCount }
+      ];
+  
+      // Step 2: Sort to form path
+      const sortedPath = pathCounts.sort((a, b) => b.count - a.count);
+      const testPath = sortedPath.map(p => p.name).join(' > ');
+  
+      // Step 3: Get rewards from respective reward tables
+      const [docRewardRes, filingRewardRes, digitalRewardRes, clerkRes] = await Promise.all([
+        pool.query('SELECT reward FROM client_document_rewards ORDER BY created_at DESC LIMIT 1'),
+        pool.query('SELECT reward FROM court_filing_rewards ORDER BY created_at DESC LIMIT 1'),
+        pool.query('SELECT reward FROM digital_rewards ORDER BY created_at DESC LIMIT 1'),
+        pool.query('SELECT total_reward_points FROM clerk_reward LIMIT 1')
+      ]);
+  
+      const docReward = docRewardRes.rows[0]?.reward || 0;
+      const filingReward = filingRewardRes.rows[0]?.reward || 0;
+      const digitalReward = digitalRewardRes.rows[0]?.reward || 0;
+      const clerkReward = clerkRes.rows[0]?.total_reward_points || 0;
+  
+      // Step 4: Calculate total reward (percentage-based)
+      const pathReward = Math.floor(
+        (docReward * 0.35) +
+        (filingReward * 0.35) +
+        (digitalReward * 0.10) +
+        (clerkReward * 0.20)
+      );
+  
+      // Step 5: Get technical score from assessment tables (Updated table name here)
+      const [clerkAssess, clientDocumentAssess, courtAssess] = await Promise.all([
+        pool.query('SELECT total_score FROM clerk_technical_assessment'),
+        pool.query('SELECT total_score FROM client_document_assessment'), // Updated table name here
+        pool.query('SELECT total_score FROM court_filing_assessment') 
+      ]);
+  
+      const totalTechScore = [...clerkAssess.rows, ...clientDocumentAssess.rows, ...courtAssess.rows]
+        .reduce((sum, row) => sum + row.total_score, 0);
+  
+      // Step 6: Overall Score
+      const overallScore = Math.floor((pathReward * 0.4) + (totalTechScore * 0.8));
+  
+      // Step 7: Insert into results
+      const insertQuery = `
+        INSERT INTO results (test_name, test_path, technical_score, path_reward, overall_score)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+      `;
+      const result = await pool.query(insertQuery, [
+        'End Test',
+        testPath,
+        totalTechScore,
+        pathReward,
+        overallScore
+      ]);
+  
+      res.status(200).json({
+        success: true,
+        message: 'Final result calculated and saved',
+        data: result.rows[0]
+      });
+  
+    } catch (err) {
+      console.error('Error in /api/final-result-path-based:', err.message);
+      res.status(500).json({ success: false, message: err.message });
+    }
+  });
+  
+  
+  
   
 
 app.listen(port, () => {

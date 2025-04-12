@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { LogoutPageComponent } from '../logout-page/logout-page.component';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatTableDataSource } from '@angular/material/table';
+import { DetailService } from '../detail.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -71,6 +72,22 @@ export class DashboardPageComponent {
       overall_score: 80
     }
   ];
+
+  finalResults: any[] = [];
+
+  constructor(private detailService: DetailService) {}
+
+  ngOnInit(): void {
+    this.detailService.getFinalResults().subscribe(
+      res => {
+        if (res.success) {
+          this.finalResults = res.data;
+        }
+      },
+      err => {
+        console.error('Error loading final results:', err);
+      }
+    );
   
-  
+  }
 }

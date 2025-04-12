@@ -391,7 +391,20 @@ app.post('/api/increment-filing-count', async (req, res) => {
       res.status(500).json({ success: false, message: error.message });
     }
   });
-  
+
+  // GET all final results
+app.get('/api/final-results', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM results ORDER BY created_at DESC');
+    res.status(200).json({
+      success: true,
+      data: result.rows
+    });
+  } catch (err) {
+    console.error('Error fetching final results:', err.message);
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
 
 
 

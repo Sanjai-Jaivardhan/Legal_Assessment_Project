@@ -24,6 +24,11 @@ export class EndAssessComponent {
       test_feedback: 'Good performance' // Example feedback
     };
     this.openEndTestDialog();
+    this.detailService.getFinalResultPathBased().subscribe({
+      next: (res) => console.log('Final result:', res),
+      error: (err) => console.error('Error getting final result:', err)
+    });
+    
     this.router.navigate(['/dashboard']);
     // this.detailService.endTest(endTestData).subscribe(
     //   (response) => {

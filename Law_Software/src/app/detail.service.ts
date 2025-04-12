@@ -26,7 +26,7 @@ interface EndTestResponse {
 export class DetailService {
 
   private api = 'http://localhost:1000';
-
+  private apiUrl = 'http://localhost:2000';
   constructor(private http: HttpClient) { }
 
   scenariodetails(): Observable<any> {
@@ -80,4 +80,13 @@ export class DetailService {
   submitFilingAssessment(assessmentData: any): Observable<any> {
     return this.http.post(`${this.api}/api/submit-filing-assessment`, assessmentData);
   }
+
+  getFinalResultPathBased(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/api/final-result-path-based`, {});
+  }
+
+  getFinalResults(): Observable<any> {
+    return this.http.get(`${this.api}/api/final-results`);
+  }
+  
 }

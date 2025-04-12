@@ -89,50 +89,42 @@
         <h3>Test Analysis</h3>
       </div>
       
-      <table mat-table [dataSource]="testData" class="mat-elevation-z8">
-
-        <!-- Test ID -->
-        <ng-container matColumnDef="test_id">
-          <th mat-header-cell *matHeaderCellDef> Test ID </th>
-          <td mat-cell *matCellDef="let element"> {{element.test_id}} </td>
-        </ng-container>
-      
+      <div class="result-container" *ngIf="finalResults.length > 0; else noData">
+        <div class="table-container">
+          <div class="final-results-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Test Name</th>
+                  <th>Test Path</th>
+                  <th>Technical Score</th>
+                  <th>Path Reward</th>
+                  <th>Overall Score</th>
+                  <th>Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let result of finalResults; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ result.test_name }}</td>
+                  <td>{{ result.test_path }}</td>
+                  <td>{{ result.technical_score }}</td>
+                  <td>{{ result.path_reward }}</td>
+                  <td>{{ result.overall_score }}</td>
+                  <td>{{ result.created_at | date: 'short' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         
-        <!-- Test Name -->
-        <ng-container matColumnDef="test_name">
-          <th mat-header-cell *matHeaderCellDef> Test Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.test_name}} </td>
-        </ng-container>
-        
-        <!-- Test Path -->
-        <ng-container matColumnDef="test_path">
-          <th mat-header-cell *matHeaderCellDef> Test Path </th>
-          <td mat-cell *matCellDef="let element">
-            {{element.test_path.type}} ({{element.test_path.difficulty}})
-          </td>
-        </ng-container>
-        <!-- Technical Score -->
-        <ng-container matColumnDef="test_technical_score">
-          <th mat-header-cell *matHeaderCellDef> Technical Score </th>
-          <td mat-cell *matCellDef="let element"> {{element.test_technical_score}} </td>
-        </ng-container>
+      </div>
       
-        <!-- Path Reward -->
-        <ng-container matColumnDef="test_path_reward">
-          <th mat-header-cell *matHeaderCellDef> Path Reward </th>
-          <td mat-cell *matCellDef="let element"> {{element.test_path_reward}} </td>
-        </ng-container>
+      <ng-template #noData>
+        <p>No results found.</p>
+      </ng-template>
       
-        <!-- Overall Score -->
-        <ng-container matColumnDef="overall_score">
-          <th mat-header-cell *matHeaderCellDef> Overall Score </th>
-          <td mat-cell *matCellDef="let element"> {{element.overall_score}} </td>
-        </ng-container>
-      
-        <!-- Header and Row Declarations -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
       
       
       
