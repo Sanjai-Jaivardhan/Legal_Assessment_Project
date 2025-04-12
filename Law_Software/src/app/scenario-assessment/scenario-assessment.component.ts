@@ -18,6 +18,7 @@ import { EndAssessComponent } from '../end-assess/end-assess.component';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { EndInstructionComponent } from '../end-instruction/end-instruction.component';
+import { CaseMonitorDialogComponent } from '../case-monitor-dialog/case-monitor-dialog.component';
 export interface Tile {
   text: string;
   color: string;
@@ -48,7 +49,19 @@ export interface Tile {
 })
 export class ScenarioAssessmentComponent {
   constructor(public dialog: MatDialog,private trackService:DetailService,private router: Router, private http: HttpClient) {}
+  
+  openMonitoringDialog(): void {
+    const dialogRef = this.dialog.open(CaseMonitorDialogComponent, {
+      width: '800px',
+      height: '600px',
+      disableClose: true, // Prevent manual close
+      panelClass: 'custom-dialog-container'
+    });
 
+    setTimeout(() => {
+      dialogRef.close();
+    }, 1000); // Auto-close after 3 seconds
+  }
   tiles: Tile[] = [
     { text: 'Home', color: '#aed581', cols: 1, rows: 1 },
     { text: 'Court', color: '#81d4fa', cols: 2, rows: 1 },

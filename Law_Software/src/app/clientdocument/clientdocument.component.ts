@@ -157,7 +157,6 @@ export class ClientdocumentComponent {
       explanation: 'The client must file an affidavit of final distribution to confirm that all assets have been distributed according to the will.',
       reference: 'Closing the Estate, Section 15.2'
     },
- 
         {
           question: 'What is the first document a client must submit to the court after the death of a loved one?',
           options: ['Death Certificate', 'Will', 'Executor’s Affidavit', 'Petition for Probate'],

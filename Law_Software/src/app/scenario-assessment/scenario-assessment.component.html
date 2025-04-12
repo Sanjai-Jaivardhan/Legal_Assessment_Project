@@ -66,11 +66,12 @@
         <mat-card-title style="text-align: center;">Court</mat-card-title>
         <mat-card-content>
           <div class="profile-container">
-            <div class="courtimage"></div>
+            <div class="courtimage" (click)="openMonitoringDialog()"></div>
           </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
+    
 
   <!-- Registrar/Clerk Card -->
   <mat-grid-tile colspan="1" rowspan="2" [style.background]="'white'" [routerLink]="'/clerk'">
@@ -136,19 +137,20 @@
   <mat-grid-tile colspan="1" rowspan="1" [style.background]="'white'">
     <div class="judge-profiles-container">
       <div class="profile-container" (mouseenter)="showDescription(1)" (mouseleave)="hideDescription()">
-        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/512/3048/3048122.png" alt="Judge 1">
+        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/128/3/3729.png" alt="Judge 1">
         <div class="title">Judge 1</div>
       </div>
       <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
-        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Judge 2">
+        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/128/3/3729.png" alt="Judge 2">
         <div class="title">Judge 2</div>
       </div>
-      <div class="profile-container" (mouseenter)="showDescription(3)" (mouseleave)="hideDescription()">
-        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/512/4140/4140051.png" alt="Judge 3">
-        <div class="title">Judge 3</div>
+      <div class="profile-container" (mouseenter)="showDescription(2)" (mouseleave)="hideDescription()">
+        <img class="Picture-judge" src="https://cdn-icons-png.flaticon.com/128/3/3729.png" alt="Judge 2">
+        <div class="title">Judge 3 </div>
       </div>
     </div>
   </mat-grid-tile>
+  
   
 
   <!-- Description Box -->
