@@ -98,7 +98,7 @@
         <div *ngIf="!showSetScore" class="quiz-wrapper">
           <mat-card class="section">
             <h2 class="question-title">
-              Q{{ currentQuestionIndex + 1 }}. {{ visibleQuestions[currentQuestionIndex]?.question }}
+              Q{{ currentQuestionIndex + 1 }}. {{ visibleQuestions[currentQuestionIndex].question }}
             </h2>
             <mat-radio-group [(ngModel)]="selectedOptions[currentQuestionIndex]" class="option-group">
               <mat-radio-button *ngFor="let opt of visibleQuestions[currentQuestionIndex]?.options" [value]="opt">

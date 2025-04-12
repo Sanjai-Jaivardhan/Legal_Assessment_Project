@@ -17,6 +17,7 @@ import { EndAssessComponent } from '../end-assess/end-assess.component';
 
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { EndInstructionComponent } from '../end-instruction/end-instruction.component';
 export interface Tile {
   text: string;
   color: string;
@@ -160,7 +161,7 @@ export class ScenarioAssessmentComponent {
   selected(){
 
   }
-  onDocumentFileTick(){
+  onDocumentFileClick(){
     this.trackService.incrementDocumentCount().subscribe({
       next: (res) => console.log('Document count updated:', res),
       error: (err) => console.error('Failed to update Document count:', err)
@@ -181,4 +182,16 @@ export class ScenarioAssessmentComponent {
     });
     this.router.navigate(['/courtfilings']);    
   }
+
+  // openEndTestDialog(): void {
+  //   const dialogRef = this.dialog.open(EndInstructionComponent, {
+  //     width: '400px',
+  //     disableClose: true
+  //   });
+  
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     console.log('Dialog closed');
+  //     // navigate to results page or dashboard if needed
+  //   });
+  // }
 }

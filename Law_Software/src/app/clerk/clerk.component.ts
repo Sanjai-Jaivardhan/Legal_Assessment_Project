@@ -186,7 +186,9 @@ export class ClerkComponent {
   currentQuestionIndex = 0;
 
   goToClerkPage() {
+    console.log("clicked the page")
     this.router.navigate(['/clerk']);
+    console.log("navigated to clerk page")
   }
 
   ngOnInit(): void {
@@ -443,17 +445,34 @@ export class ClerkComponent {
   }
   submitSet() {
     let score = 0;
+    const correctOptions: string[] = [];
+    const selectedOptions: string[] = [];
   
     this.visibleQuestions.forEach((q, i) => {
       const selected = this.selectedOptions[i];
       const correct = q.answer;
   
-      // 🖨️ Log each answer comparison
-      console.log(`Q${i + 1}: Selected - ${selected}, Correct - ${correct}`);
+      selectedOptions.push(selected);
+      correctOptions.push(correct);
   
       if (selected === correct) {
         score++;
       }
+    });
+  
+    const isCorrect = score === this.visibleQuestions.length;
+  
+    const payload = {
+      clerk_assessment: `Set ${this.currentSet + 1}`,
+      correct_options: correctOptions,
+      options_acquired: selectedOptions,
+      is_correct: isCorrect,
+      total_score: score
+    };
+  
+    this.clerkService.submitAssessment(payload).subscribe({
+      next: (res) => console.log('✅ Assessment saved:', res),
+      error: (err) => console.error('❌ Save error:', err)
     });
   
     this.scoresBySet[this.currentSet] = score;
@@ -461,11 +480,8 @@ export class ClerkComponent {
     this.setCompleted[this.currentSet] = true;
     this.setScore = score;
     this.showSetScore = true;
-  
-    // 🖨️ Log final set score and total
-    console.log(`Set ${this.currentSet + 1} score: ${score}/${this.questionsPerSet}`);
-    console.log(`Current Total Score: ${this.totalScore}`);
   }
+  
   
 
   proceedToNextSet() {

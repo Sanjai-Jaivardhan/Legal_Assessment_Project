@@ -229,6 +229,26 @@ app.post('/clerk-details', async (req, res) => {
     }
 });
 
+app.post('/api/increment-document-count', async (req, res) => {
+    try {
+      const checkQuery = 'SELECT * FROM client_document LIMIT 1';
+      const checkResult = await pool.query(checkQuery);
+  
+      let result;
+      if (checkResult.rows.length === 0) {
+        const insertQuery = 'INSERT INTO client_document (document_count) VALUES (1) RETURNING *';
+        result = await pool.query(insertQuery);
+      } else {
+        const updateQuery = 'UPDATE client_document SET document_count = document_count + 1 RETURNING *';
+        result = await pool.query(updateQuery);
+      }
+  
+      res.status(200).json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('Error updating document count:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  }); 
 //Incrementation for the filing count
 // 1 is the id for the filing count in the database
 
@@ -275,6 +295,102 @@ app.post('/api/increment-filing-count', async (req, res) => {
     }
   });
   
+  
+  //for the technical Assessment
+  // POST /api/clerk-assessment
+  app.post('/api/clerk-assessment', async (req, res) => {
+    try {
+      const {
+        clerk_assessment,
+        correct_options,
+        options_acquired,
+        is_correct,
+        total_score
+      } = req.body;
+  
+      const query = `
+        INSERT INTO clerk_technical_assessment (
+          clerk_assessment,
+          correct_options,
+          options_acquired,
+          is_correct,
+          total_score
+        ) VALUES ($1, $2, $3, $4, $5)
+        RETURNING *
+      `;
+  
+      const values = [
+        clerk_assessment,
+        correct_options,
+        options_acquired,
+        is_correct,
+        total_score
+      ];
+  
+      const result = await pool.query(query, values);
+      res.status(201).json({ success: true, data: result.rows[0] });
+    } catch (err) {
+      console.error('Error inserting assessment:', err.message);
+      res.status(500).json({ success: false, message: err.message });
+    }
+  });
+  
+  //document assessment
+  app.post('/api/document-assessment', async (req, res) => {
+    const {
+      document_assessment,
+      correct_options,
+      options_acquired,
+      is_correct,
+      total_score
+    } = req.body;
+  
+    try {
+      const query = `
+        INSERT INTO client_document_assessment
+          (document_assessment, correct_options, options_acquired, is_correct, total_score)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+      `;
+      const values = [document_assessment, correct_options, options_acquired, is_correct, total_score];
+      const result = await pool.query(query, values);
+  
+      res.status(200).json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('Error saving assessment:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  });
+  //filing assessment
+  app.post('/api/submit-filing-assessment', async (req, res) => {
+    const {
+      filing_assessment,
+      correct_options,
+      options_acquired,
+      is_correct,
+      total_score
+    } = req.body;
+  
+    try {
+      const insertQuery = `
+        INSERT INTO court_filing_assessment
+        (filing_assessment, correct_options, options_acquired, is_correct, total_score)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+      `;
+      const result = await pool.query(insertQuery, [
+        filing_assessment,
+        correct_options,
+        options_acquired,
+        is_correct,
+        total_score
+      ]);
+      res.status(200).json({ success: true, data: result.rows[0] });
+    } catch (error) {
+      console.error('Error saving filing assessment:', error.message);
+      res.status(500).json({ success: false, message: error.message });
+    }
+  });
   
 
 

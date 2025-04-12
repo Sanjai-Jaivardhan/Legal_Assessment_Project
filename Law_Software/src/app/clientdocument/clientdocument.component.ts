@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { DetailService } from '../detail.service';
 
 
 
@@ -37,7 +38,7 @@ import { Router } from '@angular/router';
 export class ClientdocumentComponent {
   showAssessment = false;
 
-  constructor(private location: Location ,private router: Router) {}
+  constructor(private location: Location ,private router: Router,private clientDocumentService:DetailService) {}
 
   goBack() {
     this.router.navigate(['/assessment']);
@@ -263,13 +264,37 @@ export class ClientdocumentComponent {
 
   submitSet() {
     this.setScore = 0;
+    const correctOptions: string[] = [];
+    const selectedOptions: string[] = [];
+  
     this.visibleQuestions.forEach((q, i) => {
       const chosen = this.selectedOptions[i];
       console.log(`Q${i + 1}: Chose "${chosen}" | Correct: "${q.answer}"`);
-      if (q.answer === chosen) this.setScore++;
+  
+      correctOptions.push(q.answer);
+      selectedOptions.push(chosen);
+  
+      if (q.answer === chosen) {
+        this.setScore++;
+      }
     });
+  
     this.showSetScore = true;
+  
+    const assessmentData = {
+      document_assessment: `Set ${this.currentSet + 1}`,
+      correct_options: correctOptions,
+      options_acquired: selectedOptions,
+      is_correct: this.setScore === this.visibleQuestions.length,
+      total_score: this.setScore
+    };
+  
+    this.clientDocumentService.submitDocumentAssessment(assessmentData).subscribe({
+      next: (res) => console.log('Assessment saved:', res),
+      error: (err) => console.error('Error submitting assessment:', err)
+    });
   }
+  
 
   proceedToNextSet() {
     if (this.currentSet < Math.floor(this.allQuestions.length / this.questionsPerSet) - 1) {
@@ -281,3 +306,4 @@ export class ClientdocumentComponent {
     }
   }
 }
+

@@ -26,14 +26,50 @@
 
 /** TABLE STYLES **/
 table.mat-elevation-z8 {
-    border-radius: 12px !important;
-    overflow: hidden;
+  border-radius: 12px !important;
+  overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.mat-header-row,
-.mat-row {
-    border-radius: 12px !important;
+/* Header Style */
+.mat-header-row {
+  background-color: #d32f2f !important; // Red header
+  color: white !important;
+  font-weight: 600;
+  border-radius: 12px 12px 0 0;
 }
+
+/* Row Styles */
+.mat-row {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f4f4f4; // Light grey alternate rows
+}
+
+.mat-row:hover {
+  background-color: #e0e0e0; // Slight hover effect
+  cursor: pointer;
+}
+
+/* Expanded Row */
+.detail-row {
+  background-color: #fafafa;
+  font-style: italic;
+  font-size: 0.95em;
+  color: #555;
+  padding: 10px 20px;
+}
+
+/* Smooth animation */
+.detail-row td {
+  transition: all 0.3s ease-in-out;
+  border-top: 1px solid #ddd;
+}
+
 
 /** ROUNDED ICON BUTTONS **/
 button[mat-icon-button] {

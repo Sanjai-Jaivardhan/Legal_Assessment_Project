@@ -10,7 +10,7 @@
       <a mat-button routerLink="/divisions">Division of courts</a>
       
       <a mat-button href="#">Client</a>
-      <app-end-assess></app-end-assess>
+      <app-end-assess ></app-end-assess>
     </div>
   </mat-toolbar>
 </div>
@@ -19,7 +19,7 @@
 <mat-grid-list cols="4" rowHeight="184px">
 
   <!-- Law Access Card -->
-  <mat-grid-tile colspan="1" rowspan="1" [style.background]="'white'">
+  <mat-grid-tile colspan="1" rowspan="1" [style.background]="'white'" [routerLink]="'/access'">
     <mat-card class="law-access-card">
       <mat-card-title style="text-align: center;">Law Access</mat-card-title>
       <mat-card-content>
@@ -29,7 +29,7 @@
   </mat-grid-tile>
 
   <!-- Client Documents Card -->
-  <mat-grid-tile colspan="1" rowspan="1" [style.background]="'white'" [routerLink]="'/access'">
+  <mat-grid-tile colspan="1" rowspan="1" [style.background]="'white'" (click)="onDocumentFileClick" [routerLink]="'/documents'">
     <mat-card class="law-access-card">
       <mat-card-title style="text-align: center;">Client Documents</mat-card-title>
       <mat-card-content>

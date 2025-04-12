@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DetailService } from '../detail.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EndInstructionComponent } from '../end-instruction/end-instruction.component';
 @Component({
   selector: 'app-end-assess',
   standalone: true,
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EndAssessComponent {
 
-  constructor(private detailService: DetailService, private router: Router) {}
+  constructor(private dialog:MatDialog,private detailService: DetailService, private router: Router) {}
 
   endtest() {
     const endTestData = {
@@ -21,20 +23,32 @@ export class EndAssessComponent {
       test_score: 85, // Example score
       test_feedback: 'Good performance' // Example feedback
     };
-  
-    this.detailService.endTest(endTestData).subscribe(
-      (response) => {
-        console.log('End test data submitted:', response);
-        alert('Test Ended Successfully');
-        this.router.navigate(['/scenarios'], { replaceUrl: true }).then(() => {
-          window.history.pushState(null, '', '/scenarios'); // Prevent back navigation
-        });
+    this.openEndTestDialog();
+    this.router.navigate(['/dashboard']);
+    // this.detailService.endTest(endTestData).subscribe(
+    //   (response) => {
+    //     console.log('End test data submitted:', response);
+    //     alert('Test Ended Successfully');
+    //     this.router.navigate(['/dashboard'], { replaceUrl: true }).then(() => {
+    //       window.history.pushState(null, '', '/scenarios'); // Prevent back navigation
+    //     });
         
-      },
-      (error) => {
-        console.error('Error submitting end test data:', error);
-      }
-    );
+    //   },
+    //   (error) => {
+    //     console.error('Error submitting end test data:', error);
+    //   }
+    // );
   }
+  openEndTestDialog(): void {
+    const dialogRef = this.dialog.open(EndInstructionComponent, {
+      width: '400px',
+      disableClose: true
+    });
   
+    dialogRef.afterClosed().subscribe(() => {
+      
+      console.log('Dialog closed');
+      // navigate to results page or dashboard if needed
+    });
+  }
 }

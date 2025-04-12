@@ -10,6 +10,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { CommonModule, Location } from '@angular/common';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
+import { DetailService } from '../detail.service';
 
 
 export interface CourtFiling {
@@ -42,7 +43,7 @@ export interface CourtFiling {
 export class CourtfilingsComponent {
   searchText: string = '';
 
-  constructor(private location: Location) {}
+  constructor(private location: Location,private courtFilingService:DetailService) {}
 
   goBack(): void {
     this.location.back(); // Navigates to the previous page in browser history
@@ -163,13 +164,37 @@ export class CourtfilingsComponent {
 
   submitSet() {
     this.setScore = 0;
+    const correctOptions: string[] = [];
+    const selectedOptions: string[] = [];
+  
     this.visibleQuestions.forEach((q, i) => {
-      const chosen = this.selectedOptions[i];
-      console.log(`Q${i + 1}: Chose "${chosen}" | Correct: "${q.answer}"`);
-      if (q.answer === chosen) this.setScore++;
+      const selected = this.selectedOptions[i];
+      const correct = q.answer;
+  
+      correctOptions.push(correct);
+      selectedOptions.push(selected);
+  
+      if (selected === correct) {
+        this.setScore++;
+      }
     });
+  
     this.showSetScore = true;
+  
+    const assessmentData = {
+      filing_assessment: `Set ${this.currentSet + 1}`,
+      correct_options: correctOptions,
+      options_acquired: selectedOptions,
+      is_correct: this.setScore === this.visibleQuestions.length,
+      total_score: this.setScore
+    };
+  
+    this.courtFilingService.submitFilingAssessment(assessmentData).subscribe({
+      next: (res) => console.log('Assessment saved:', res),
+      error: (err) => console.error('Error submitting assessment:', err)
+    });
   }
+  
 
   proceedToNextSet() {
     if (this.currentSet < Math.floor(this.allQuestions.length / this.questionsPerSet) - 1) {

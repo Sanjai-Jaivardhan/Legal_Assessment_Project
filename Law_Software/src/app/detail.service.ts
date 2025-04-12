@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { ClientdocumentComponent } from './clientdocument/clientdocument.component';
 // Define the interface for track data related to ending the test
 interface EndTestData {
   track_id: string;
@@ -68,5 +68,16 @@ export class DetailService {
   
   incrementAccessCount(): Observable<any> {
     return this.http.post(`${this.api}/api/increment-access-count`, {});
+  }
+
+  //for the technical assessment page
+  submitAssessment(data: any) {
+    return this.http.post(`${this.api}/api/clerk-assessment`, data);
+  }
+  submitDocumentAssessment(data: any) {
+    return this.http.post(`${this.api}/api/document-assessment`, data);
+  }
+  submitFilingAssessment(assessmentData: any): Observable<any> {
+    return this.http.post(`${this.api}/api/submit-filing-assessment`, assessmentData);
   }
 }
