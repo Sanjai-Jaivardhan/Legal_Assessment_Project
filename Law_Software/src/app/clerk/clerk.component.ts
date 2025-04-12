@@ -199,216 +199,169 @@ export class ClerkComponent {
   loadQuestions() {
     this.questions = [
       {
-        question: 'What is the primary role of a court clerk?',
-        options: [
-          'Presiding over trials',
-          'Enforcing law and order',
-          'Maintaining court records',
-          'Providing legal advice'
-        ],
-        answer: 'Maintaining court records',
-        explanation: 'Clerks are responsible for managing and maintaining official court records.',
-        reference: 'Judicial Service Manual - Sec. 3.2'
+        question: 'What is the first step a clerk must take when a funeral case is filed in the court?',
+        options: ['File the petition', 'Verify the death certificate', 'Set the hearing date', 'Notify the executor'],
+        answer: 'File the petition',
+        explanation: 'The clerk files the petition for probate as the first step in processing the case.',
+        reference: 'Probate Court Process, Section 1.2'
       },
       {
-        question: 'Which document initiates a civil case in court?',
-        options: ['Summon', 'Plea', 'Petition', 'Affidavit'],
-        answer: 'Petition',
-        explanation: 'A civil case typically begins with a petition or plaint.',
-        reference: 'Civil Procedure Code, Order VII Rule 1'
+        question: 'As an advocate handling a funeral case, what primary responsibility do you have during the probate process?',
+        options: ['Represent the deceased\'s family', 'Ensure proper legal documentation', 'Distribute the estate', 'Administer the will'],
+        answer: 'Ensure proper legal documentation',
+        explanation: 'The advocate ensures that all legal documents are properly submitted to the court, including the will and other probate papers.',
+        reference: 'Legal Procedures Handbook, Chapter 4'
       },
       {
-        question: 'Which tool helps schedule hearings?',
-        options: ['Calendar Register', 'Summon Sheet', 'Filing Docket', 'Index Register'],
-        answer: 'Calendar Register',
-        explanation: 'The calendar register is used to manage hearing dates.',
-        reference: 'Court Management Handbook'
+        question: 'Which document is most crucial for the clerk to process after a deceased person’s will is filed?',
+        options: ['Death certificate', 'Probate petition', 'Last will and testament', 'Affidavit of heirs'],
+        answer: 'Probate petition',
+        explanation: 'The clerk processes the probate petition to begin the court’s review of the will and initiate estate distribution.',
+        reference: 'Probate Process, Section 2.1'
       },
       {
-        question: 'What is issued by the clerk to inform parties about case dates?',
-        options: ['Warrant', 'Summons', 'Charge Sheet', 'Bail Order'],
-        answer: 'Summons',
-        explanation: 'A summon is a legal document issued to notify parties about court appearances.',
-        reference: 'CrPC Sec. 61'
+        question: 'What must the advocate provide to the court to validate the deceased’s will?',
+        options: ['Death certificate', 'Executor\'s affidavit', 'Probate petition', 'Witness testimony'],
+        answer: 'Witness testimony',
+        explanation: 'The advocate may need to present witness testimony confirming that the will was signed properly.',
+        reference: 'Legal Procedure for Will Validation, Chapter 5'
       },
       {
-        question: 'Which document is required to request a certified copy?',
-        options: ['RTI Request', 'Affidavit', 'Copy Application', 'Summon'],
-        answer: 'Copy Application',
-        explanation: 'A formal application must be submitted to obtain certified copies.',
-        reference: 'High Court Copying Rules'
+        question: 'In a funeral case, who is responsible for preparing the final distribution of the deceased’s assets?',
+        options: ['The clerk', 'The judge', 'The advocate', 'The executor'],
+        answer: 'The executor',
+        explanation: 'The executor is responsible for distributing the deceased’s assets according to the will, under court supervision.',
+        reference: 'Estate Administration Guide, Section 3.4'
       },
       {
-        question: 'Which act governs fees paid in court?',
-        options: ['Indian Stamp Act', 'Court Fees Act', 'CrPC', 'IPC'],
-        answer: 'Court Fees Act',
-        explanation: 'Court fees are regulated under the Court Fees Act.',
-        reference: 'Court Fees Act, 1870'
+        question: 'As an advocate, how do you ensure that the court recognizes the will as valid?',
+        options: ['Submit the will with the probate petition', 'Check for signatures', 'Verify the will\'s content', 'Notify the beneficiaries'],
+        answer: 'Submit the will with the probate petition',
+        explanation: 'The advocate submits the original will along with the probate petition for court validation.',
+        reference: 'Probate Court Procedures, Page 30'
       },
       {
-        question: 'Who assists the judge in maintaining decorum?',
-        options: ['Lawyer', 'Bailiff', 'Registrar', 'Clerk'],
-        answer: 'Registrar',
-        explanation: 'The registrar ensures the smooth running of the courtroom under the judge.',
-        reference: 'Judicial Administration Guide'
+        question: 'Which of the following is an action performed by the clerk during the funeral case?',
+        options: ['Prepare the estate inventory', 'Review legal contracts', 'Ensure document submission for probate', 'Defend the deceased\'s will'],
+        answer: 'Ensure document submission for probate',
+        explanation: 'The clerk ensures that all necessary documents, including the will, are submitted properly for the probate process.',
+        reference: 'Clerk Responsibilities in Probate, Section 4.1'
       },
       {
-        question: 'Which is an alternative dispute resolution (ADR) method?',
-        options: ['Appeal', 'Bail Hearing', 'Lok Adalat', 'Injunction'],
-        answer: 'Lok Adalat',
-        explanation: 'Lok Adalat provides an ADR mechanism to resolve disputes amicably.',
-        reference: 'Legal Services Authorities Act'
+        question: 'What role does the clerk play after the deceased’s will is submitted for probate?',
+        options: ['Arrange a hearing date', 'Initiate the asset distribution', 'Defend the estate\'s value', 'Create a legal defense for the executor'],
+        answer: 'Arrange a hearing date',
+        explanation: 'The clerk is responsible for setting a hearing date for the probate court to validate the will.',
+        reference: 'Court Process for Probate, Chapter 2'
       },
       {
-        question: 'What is the first step in criminal case initiation?',
-        options: ['Summons', 'FIR', 'Petition', 'Copy Application'],
-        answer: 'FIR',
-        explanation: 'FIR (First Information Report) starts the criminal investigation process.',
-        reference: 'CrPC Sec. 154'
+        question: 'What document should the advocate ensure is filed alongside the will during probate?',
+        options: ['Petition for probate', 'Notice of appearance', 'Executor\'s affidavit', 'Death certificate'],
+        answer: 'Petition for probate',
+        explanation: 'The petition for probate must be filed with the court along with the will to begin the probate process.',
+        reference: 'Legal Process for Estate Handling, Section 2.2'
       },
       {
-        question: 'Which document notifies a person to appear in court?',
-        options: ['Affidavit', 'Warrant', 'Summons', 'Subpoena'],
-        answer: 'Summons',
-        explanation: 'Summons is issued for appearance; warrant is for arrest.',
-        reference: 'CrPC Sec. 61'
-      },
-  
-      // Set 2
-      {
-        question: 'What is a docket used for?',
-        options: ['Evidence logging', 'Case summary tracking', 'Witness management', 'Judgment writing'],
-        answer: 'Case summary tracking',
-        explanation: 'Dockets contain a running summary of proceedings.',
-        reference: 'Judicial Forms Manual'
+        question: 'Which of the following is typically required by the clerk when processing probate for a deceased person?',
+        options: ['Inventory of the deceased’s estate', 'Witness affidavit', 'Final distribution form', 'Notice of appeal'],
+        answer: 'Inventory of the deceased’s estate',
+        explanation: 'The clerk ensures the inventory of the deceased’s estate is filed to assist in probate proceedings.',
+        reference: 'Estate Inventory Filing Requirements, Section 6.3'
       },
       {
-        question: 'Clerks prepare ________ for day-to-day case updates.',
-        options: ['Order Sheets', 'Affidavits', 'Judgments', 'Depositions'],
-        answer: 'Order Sheets',
-        explanation: 'Order sheets record court directions and dates.',
-        reference: 'Court Procedure Rules'
+        question: 'What is the responsibility of the advocate in informing the beneficiaries of the probate hearing?',
+        options: ['Notify them of their rights', 'Arrange transportation', 'Prepare the court documents', 'Negotiate the will’s distribution'],
+        answer: 'Notify them of their rights',
+        explanation: 'The advocate must inform the beneficiaries of their legal rights in the probate process to avoid future disputes.',
+        reference: 'Beneficiary Rights in Probate, Chapter 3'
       },
       {
-        question: 'To file a case, a ________ must be paid.',
-        options: ['Late fee', 'Admission charge', 'Court fee', 'Penalty'],
-        answer: 'Court fee',
-        explanation: 'Filing involves a mandatory court fee.',
-        reference: 'Court Fees Act'
+        question: 'What does the clerk verify regarding the will during the probate process?',
+        options: ['Asset valuation', 'Family inheritance claims', 'Signature authenticity', 'Witness testimony'],
+        answer: 'Signature authenticity',
+        explanation: 'The clerk verifies that the will has been properly signed and witnessed before proceeding with the probate process.',
+        reference: 'Will Validation Process, Section 3.2'
       },
       {
-        question: 'When parties resolve disputes outside court, it is called:',
-        options: ['Dismissal', 'Plea bargain', 'ADR', 'Litigation'],
-        answer: 'ADR',
-        explanation: 'Alternative Dispute Resolution (ADR) methods include mediation, arbitration.',
-        reference: 'Legal Services Authorities Act'
+        question: 'What action should the advocate take if the will is contested by family members?',
+        options: ['Defend the executor’s actions', 'File a motion for dismissal', 'Negotiate the estate division', 'File an objection on behalf of the beneficiaries'],
+        answer: 'Defend the executor’s actions',
+        explanation: 'The advocate represents the executor’s actions and defends the legality of the will against family contests.',
+        reference: 'Handling Will Contests, Page 45'
       },
       {
-        question: 'Which official signs certified copies?',
-        options: ['Lawyer', 'Registrar', 'Clerk', 'Magistrate'],
-        answer: 'Clerk',
-        explanation: 'Court clerks authenticate certified copies.',
-        reference: 'High Court Copying Rules'
-      },
-  
-      // Set 3
-      {
-        question: 'In criminal matters, who prepares charge sheets?',
-        options: ['Clerk', 'Police', 'Lawyer', 'Court'],
-        answer: 'Police',
-        explanation: 'Charge sheets are prepared by police post-investigation.',
-        reference: 'CrPC Sec. 173'
+        question: 'What document does the clerk issue to the executor after the will is validated?',
+        options: ['Letters of administration', 'Certificate of probate', 'Executor’s bond', 'Final will affidavit'],
+        answer: 'Certificate of probate',
+        explanation: 'The clerk issues a certificate of probate to the executor once the will is validated and probate is granted.',
+        reference: 'Issuing Probate Documents, Section 4.1'
       },
       {
-        question: 'What is the purpose of cause list?',
-        options: ['Check fines', 'List court holidays', 'Show daily hearings', 'Warrant list'],
-        answer: 'Show daily hearings',
-        explanation: 'Cause list shows cases to be heard on a particular day.',
-        reference: 'Court Management System'
+        question: 'In which case should the advocate challenge the validity of the will?',
+        options: ['If there’s an issue with the executor’s appointment', 'If the will contains unclear instructions', 'If the will is unsigned', 'If the beneficiaries dispute the terms'],
+        answer: 'If the will is unsigned',
+        explanation: 'If the will is unsigned, it lacks legal validity, and the advocate must challenge its validity in court.',
+        reference: 'Legal Validity of Wills, Section 2.3'
       },
       {
-        question: 'What is the role of diary register?',
-        options: ['To track correspondence', 'Log visitors', 'Record appeals', 'Maintain case flow'],
-        answer: 'Maintain case flow',
-        explanation: 'Diary register records filing and progress of cases.',
-        reference: 'Judicial Registers Manual'
+        question: 'What is the first action the clerk must take upon receiving a petition for probate?',
+        options: ['Verify the petition’s content', 'Set a date for the probate hearing', 'Contact the beneficiaries', 'Submit the petition to the judge'],
+        answer: 'Verify the petition’s content',
+        explanation: 'The clerk first ensures that the petition for probate is complete and accurate before moving forward.',
+        reference: 'Clerk Responsibilities in Probate, Chapter 5'
       },
       {
-        question: 'Certified copies are used for:',
-        options: ['New FIRs', 'Secondary evidence', 'Summons delivery', 'Investigation'],
-        answer: 'Secondary evidence',
-        explanation: 'Certified copies serve as admissible copies in related proceedings.',
-        reference: 'Indian Evidence Act'
-      },
-  
-      // Set 4
-      {
-        question: 'What is a return memo?',
-        options: ['Payment receipt', 'Warrant explanation', 'Rejection notice for documents', 'Order sheet'],
-        answer: 'Rejection notice for documents',
-        explanation: 'Return memo is issued if filing has errors or is incomplete.',
-        reference: 'Court Filing Manual'
+        question: 'What document must the advocate submit to initiate the legal process of estate distribution?',
+        options: ['Executor’s affidavit', 'Final estate report', 'Probate petition', 'Notice of distribution'],
+        answer: 'Probate petition',
+        explanation: 'The advocate must submit the probate petition, which officially starts the legal process for distributing the deceased’s estate.',
+        reference: 'Probate Initiation Process, Page 21'
       },
       {
-        question: 'Who is responsible for indexing case files?',
-        options: ['Judge', 'Court Officer', 'Registrar', 'Clerk'],
-        answer: 'Clerk',
-        explanation: 'Court clerks prepare the index to maintain proper file structure.',
-        reference: 'File Management Handbook'
+        question: 'Which role does the clerk perform in relation to the estate’s debts during the probate process?',
+        options: ['Assess the value of the estate', 'Contact creditors', 'File notices of debt', 'Prepare the final distribution statement'],
+        answer: 'Contact creditors',
+        explanation: 'The clerk may be responsible for ensuring that all debts owed by the estate are addressed before distributing the assets.',
+        reference: 'Handling Estate Debts, Section 4.2'
       },
       {
-        question: 'What happens if court fee is not paid?',
-        options: ['Immediate rejection', 'Delay in listing', 'Case remains dormant', 'All of the above'],
-        answer: 'All of the above',
-        explanation: 'Court fee is mandatory — non-payment can lead to rejection or delay.',
-        reference: 'Court Fees Act'
+        question: 'What must the clerk do if there are disputes between the beneficiaries?',
+        options: ['Issue a decree', 'Mediate the dispute', 'Notify the judge', 'Prepare the will for review'],
+        answer: 'Notify the judge',
+        explanation: 'The clerk must notify the judge of any disputes among the beneficiaries so that the court can address them accordingly.',
+        reference: 'Dispute Resolution in Probate, Section 6.4'
       },
       {
-        question: 'A court clerk CANNOT:',
-        options: ['Advise on law', 'File orders', 'Maintain cause lists', 'Issue certified copies'],
-        answer: 'Advise on law',
-        explanation: 'Clerks are not legally permitted to offer legal advice.',
-        reference: 'Judicial Ethics Handbook'
-      },
-  
-      // Set 5
-      {
-        question: 'In Lok Adalat, disputes are resolved by:',
-        options: ['Trial', 'Compromise', 'Police', 'Arrest'],
-        answer: 'Compromise',
-        explanation: 'Lok Adalat emphasizes compromise and mutual agreement.',
-        reference: 'Legal Services Authorities Act'
+        question: 'What is the primary responsibility of the clerk after the probate hearing?',
+        options: ['Finalize the estate inventory', 'Issue probate certificate', 'Oversee the asset distribution', 'Contact the deceased’s creditors'],
+        answer: 'Issue probate certificate',
+        explanation: 'Once the probate hearing concludes, the clerk issues the probate certificate, allowing the executor to begin estate distribution.',
+        reference: 'Post-Hearing Procedures, Page 31'
       },
       {
-        question: 'Clerks should update ________ daily.',
-        options: ['Cause list', 'Evidence box', 'Judge’s order', 'Witness register'],
-        answer: 'Cause list',
-        explanation: 'Cause list is the most frequently updated document.',
-        reference: 'Daily Judicial Procedure'
+        question: 'As an advocate, what must you do to ensure that all beneficiaries receive their entitled shares?',
+        options: ['Prepare the estate inventory', 'File a distribution request', 'Ensure proper asset distribution', 'Notify the court of the total estate value'],
+        answer: 'Ensure proper asset distribution',
+        explanation: 'The advocate ensures that all assets are properly distributed according to the will’s instructions and the beneficiaries’ rights.',
+        reference: 'Asset Distribution, Chapter 7'
       },
       {
-        question: 'What is entered into the order sheet?',
-        options: ['Verdict only', 'Procedural orders', 'Objections', 'Evidence'],
-        answer: 'Procedural orders',
-        explanation: 'Order sheet captures each hearing’s outcomes and directions.',
-        reference: 'Case File Structure Manual'
+        question: 'What is the role of the clerk in case of an appeal against the probate ruling?',
+        options: ['File the appeal papers', 'Schedule a new hearing date', 'Inform the judge of the appeal', 'Serve the court’s notice of appeal'],
+        answer: 'File the appeal papers',
+        explanation: 'The clerk is responsible for filing any appeal papers related to the probate ruling if a party contests the decision.',
+        reference: 'Appeal Process in Probate, Section 8.1'
       },
       {
-        question: 'Court Clerk ensures compliance with:',
-        options: ['Filing rules', 'Legal ethics', 'Trial verdicts', 'Defense strategies'],
-        answer: 'Filing rules',
-        explanation: 'Clerks verify that all filings are legally complete.',
-        reference: 'Court Filing SOP'
-      },
-      {
-        question: 'Who maintains the summons dispatch register?',
-        options: ['Court police', 'Magistrate', 'Court clerk', 'Court stenographer'],
-        answer: 'Court clerk',
-        explanation: 'Clerks track dispatch and return of summons.',
-        reference: 'Court Registers Handbook'
+        question: 'What should the clerk do to confirm the validity of a will that was submitted for probate?',
+        options: ['Obtain the death certificate', 'Verify signatures and witnesses', 'Review the final estate report', 'Notify the beneficiaries'],
+        answer: 'Verify signatures and witnesses',
+        explanation: 'The clerk must ensure that the will has been properly signed and witnessed according to legal requirements.',
+        reference: 'Validating a Will, Section 3.5'
       }
     ];
   }
+  
   
 
   loadSet(setIndex: number) {
