@@ -65,9 +65,7 @@ body {
 
 }
 
-.cta-button:hover {
-  background-color: #ffd700;
-}
+
 
 .welcome-image img {
   max-width: 100%;
@@ -218,9 +216,7 @@ body {
   --tw-bg-opacity: 1;
 }
 
-.navbar .nav-link:hover {
-  color: #ffd700;
-}
+
 
 /* Section Styles */
 .section {
@@ -351,7 +347,7 @@ button:hover {
 }
 
 .footer-section ul li a:hover {
-  color: #ffd700;
+  color: #5900ff00;
 }
 
 .social-links a {
@@ -362,7 +358,7 @@ button:hover {
 }
 
 .social-links a:hover {
-  color: #ffd700;
+  color: #5900ff00;
 }
 
 .footer-bottom {
@@ -408,5 +404,63 @@ button:hover {
 
   .footer-bottom {
     font-size: 0.8rem; /* Smaller footer text */
+  }
+}
+
+
+
+/* Styling for the navbar */
+/* Styling for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Space between title and right-aligned items */
+  align-items: center;
+  // background-color: #ff0000; /* Red background for the navbar */
+  padding: 1.8rem;
+  color: white;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  flex: 1; /* Ensures this takes up all the available space on the left */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 20px; /* Adds space between the Dashboard and Logout links */
+}
+
+.navbar a.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;    /* Center-align the navbar items */
+  }
+
+  .navbar-right {
+    flex-direction: column; /* Stack the Dashboard and Logout links vertically */
+    gap: 10px;
+    margin-top: 10px;
   }
 }

@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './div-of-court.component.scss'
 })
 export class DivOfCourtComponent {
-
+  goBack(): void {
+    window.history.back();
+  }
 }

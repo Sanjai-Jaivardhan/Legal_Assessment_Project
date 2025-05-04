@@ -15,6 +15,7 @@ import { CourtfilingsComponent } from './courtfilings/courtfilings.component';
 import { LawaccessComponent } from './lawaccess/lawaccess.component';
 import { CourtOfficerComponent } from './court-officer/court-officer.component';
 import { ClientdocumentComponent } from './clientdocument/clientdocument.component';
+import { ScenarioChatbotComponent } from './scenario-chatbot/scenario-chatbot.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
@@ -30,8 +31,12 @@ export const routes: Routes = [
   { path:'divisions',component:DivOfCourtComponent},
   { path:'courtfilings',component:CourtfilingsComponent},
   { path:'access',component:LawaccessComponent},
+  { path: 'scenario-chatbot', component: ScenarioChatbotComponent },
   { path:'court-officer',component:CourtOfficerComponent},
   { path:'documents',component:ClientdocumentComponent},
+  { path: 'judicial', component: AssessJudicialPageComponent },
+
+
   { path: '**',redirectTo: '/login'}
 ];
 

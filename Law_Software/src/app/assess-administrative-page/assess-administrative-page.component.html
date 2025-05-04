@@ -1,34 +1,50 @@
-<div class="administrative-law-container">
-    <div class="logo">
-        <img src="assets/images/logo-legal.jpg" alt="leg"
-           class="logo-img">
+<div class="administrative-page">
+  <div class="back-btn-wrapper">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+  </div>
+  <h1 class="title">Administrative  </h1>
+  <p class="subtitle">Access key administrative roles and processes across the court system</p>
+
+  <div class="card-grid">
+    <!-- Court Officer Card -->
+    <div class="administrative-card" [routerLink]="['/court-officer']">
+      <div class="icon-circle">👮‍♂️</div>
+      <h3 class="card-title">Court Officer</h3>
+      <p class="card-subtitle">Monitor courtroom operations and duties</p>
+      <button class="access-btn">Enter</button>
+    </div>
+
+    <!-- Court Filings Card -->
+    <div class="administrative-card" [routerLink]="['/courtfilings']">
+      <div class="icon-circle">🗂️</div>
+      <h3 class="card-title">Court Filings</h3>
+      <p class="card-subtitle">View and manage case filings</p>
+      <button class="access-btn">Access</button>
+    </div>
+
+    <!-- Register / Clerk Card -->
+    <div class="administrative-card" [routerLink]="['/clerk']">
+      <div class="icon-circle">📋</div>
+      <h3 class="card-title">Register / Clerk</h3>
+      <p class="card-subtitle">Manage registrations and clerk duties</p>
+      <button class="access-btn">Open</button>
+    </div>
+  </div>
+  <div class="description-section">
+    <div class="description-card">
+      <h2>Court Officer</h2>
+      <p>Assess tasks and responsibilities of court officers, such as managing courtroom procedures and ensuring legal protocols are followed during trials and hearings.</p>
     </div>
   
-    <h1 class="title">Administrative Law</h1>
-    <p class="description">
-        Administrative law oversees government actions, ensuring transparency, efficiency, and accountability. 
-        It protects citizens' rights while maintaining legal order.
-    </p>
-    <h2 class="subtitle">Ensuring Justice and Governance</h2>
-  
-    <div class="cards-container">
-      <div class="card">
-        <h2>Regulations</h2>
-        <p>How legal frameworks control administrative agencies.</p>
-      </div>
-      <div class="card">
-        <h2>Judicial Review</h2>
-        <p>The power of courts to check administrative decisions.</p>
-      </div>
-      <div class="card">
-        <h2>Public Rights</h2>
-        <p>Protecting citizens from administrative overreach.</p>
-      </div>
+    <div class="description-card">
+      <h2>Court Filings</h2>
+      <p>Evaluate the process of filing legal documents, understanding the submission flow, deadlines, and document verification for court-related procedures.</p>
     </div>
   
-    <div class="info-section">
-      <h3>Why Administrative Law Matters</h3>
-      <p>It ensures that government agencies act within legal limits and uphold justice for all.</p>
+    <div class="description-card">
+      <h2>Register / Clerk</h2>
+      <p>Monitor clerk-based duties like recording case details, managing court schedules, and assisting administrative operations within court divisions.</p>
     </div>
   </div>
   
+</div>

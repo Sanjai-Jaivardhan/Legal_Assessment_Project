@@ -1,14 +1,19 @@
 <!-- HTML: legal-case-simulator.component.html -->
+
 <nav class="navbar">
   <div class="container">
-    <a class="nav-link" href="#home">Home</a>
-    <a class="nav-link" href="#case-library">Case Library</a>
-    <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-    <a class="nav-link" href="#Aboutus">Aboutus</a>
-    <!-- <a class="nav-link" href="#help">Help </a> -->
-    <app-logout-page></app-logout-page>
+    <!-- Left-aligned: Title (Legal Assessment) -->
+    <span class="navbar-title">Legal Assessment</span>
+
+    <!-- Right-aligned: Dashboard and Logout Links -->
+    <div class="navbar-right">
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="nav-link" href="javascript:void(0);" (click)="logout()">Logout</a>
+    </div>
   </div>
 </nav>
+
+
 <div class="container">
 
    <!-- <section class="welcome-section" id="home">

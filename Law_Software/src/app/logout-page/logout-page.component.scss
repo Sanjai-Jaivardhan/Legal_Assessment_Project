@@ -3,7 +3,7 @@ button{
     background-color:red;
     border:none;
     text-decoration: none;
-  color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
   font-size: 1.6rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
@@ -14,8 +14,8 @@ button{
 
 /* Restrict global button styles */
 button {
-  color: inherit; /* Ensures it doesn't force white text everywhere */
-  background: none; /* Prevents unwanted red background globally */
+  color: inherit; 
+  background: none; 
   border: none;
   font-family: inherit;
   font-size: inherit;

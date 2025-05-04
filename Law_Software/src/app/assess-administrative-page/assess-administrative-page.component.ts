@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-assess-administrative-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './assess-administrative-page.component.html',
   styleUrl: './assess-administrative-page.component.scss'
 })
@@ -41,6 +43,12 @@ export class AssessAdministrativePageComponent {
   onCardClick(points: number) {
     this.totalPoints += points;
   }
+  goBack(): void {
+    window.history.back();
+  }
 }
+
+
+
 
 

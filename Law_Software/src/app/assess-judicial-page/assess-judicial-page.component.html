@@ -1,1 +1,41 @@
-<p>assess-judicial-page works!</p>
+<div class="judicial-page">
+    <div class="back-btn-wrapper">
+        <button class="back-btn" (click)="goBack()">← Back</button>
+      </div>
+    <h1 class="title">Judicial Digital Platform</h1>
+    <p class="subtitle">Access key legal services and databases across India</p>
+  
+    <!-- Description Section -->
+   
+  
+    <!-- Card Grid Section -->
+    <div class="card-grid">
+      <!-- ECourt Services Card -->
+      <div class="judicial-card" (click)="openExternalLink('https://ecourts.gov.in/')">
+        <div class="icon-circle">🏛️</div>
+        <h3 class="card-title">ECourt Services</h3>
+        <p class="card-subtitle">Search Case Status, FIRs, Hearings</p>
+        <button class="access-btn">Open Portal</button>
+      </div>
+  
+      <!-- Judgment Database Card -->
+      <div class="judicial-card" (click)="openExternalLink('https://indiankanoon.org/')">
+        <div class="icon-circle">⚖️</div>
+        <h3 class="card-title">Judgment Database</h3>
+        <p class="card-subtitle">Read Supreme & High Court Judgments</p>
+        <button class="access-btn">Access Now</button>
+      </div>
+    </div>
+     <div class="description-section">
+      <div class="description-card">
+        <h2>ECourt Services</h2>
+        <p>Utilize ECourt Services to assess and track the status of ongoing cases, FIRs, and more. This platform provides real-time updates and helps assess the progress of judicial matters efficiently.</p>
+      </div>
+  
+      <div class="description-card">
+        <h2>Judgment Database</h2>
+        <p>Access a comprehensive database of Supreme and High Court judgments. This tool is essential for legal assessments, offering the ability to analyze case precedents and judgments for better decision-making.</p>
+      </div>
+    </div>
+  </div>
+  

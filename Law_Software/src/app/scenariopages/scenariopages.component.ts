@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../authservice.service';
 import { LogoutPageComponent } from '../logout-page/logout-page.component';
 import { isPlatformBrowser } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface Scenario_Details {
   scenario_id: string;
@@ -21,7 +22,7 @@ export interface Scenario_Details {
 @Component({
   selector: 'app-scenariopages',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ScenarioDescriptionComponent, RouterModule,LogoutPageComponent],
+  imports: [CommonModule, MatDialogModule, ScenarioDescriptionComponent, RouterModule,LogoutPageComponent,    MatIconModule],
   templateUrl: './scenariopages.component.html',
   styleUrls: ['./scenariopages.component.scss']
 })
@@ -74,7 +75,23 @@ export class ScenariopagesComponent implements OnInit, OnDestroy {
       }
     }
   }
-
+  logout() {
+    this.authService.logout().subscribe(
+      response => {
+        console.log('Logout successful:', response);
+        this.authService.clearToken();
+        alert('You have been logged out successfully!');
+        this.router.navigate(['/login'], { replaceUrl: true }).then(() => {
+          window.history.pushState(null, '', '/login'); // Prevent back navigation
+        });
+      },
+      error => {
+        console.error('Logout failed:', error);
+        alert('Logout failed. Please try again.');
+      }
+    );
+  }
+  
   openDialog(): void {
     const dialogRef = this.dialog.open(ScenarioDescriptionComponent, {
       width: '1400px',
@@ -86,4 +103,19 @@ export class ScenariopagesComponent implements OnInit, OnDestroy {
       console.log('Dialog closed with result:', result);
     });
   }
+
+
+    isDarkMode = false;
+  
+    toggleTheme() {
+      this.isDarkMode = !this.isDarkMode;
+      const body = document.body;
+      if (this.isDarkMode) {
+        body.classList.add('dark-theme');
+      } else {
+        body.classList.remove('dark-theme');
+      }
+    }
+  
+  
 }

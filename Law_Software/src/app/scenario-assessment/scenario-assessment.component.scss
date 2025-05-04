@@ -184,6 +184,21 @@ img {
   align-items: center;
   // gap: 16px; /* Spacing between image and details */
 }
+.calendar-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // fill the tile height
+}
+
+mat-card-content {
+  flex: 1;
+  overflow: hidden; // prevent content overflow
+}
+
+mat-calendar {
+  max-width: 100%;
+  height: auto;
+}
 
 /* Circular Profile Picture */
 .Picture {
@@ -272,69 +287,7 @@ img {
     margin-bottom: 4px;
   }
 
-  // .Picture-judge{
-  //   width: 80px;
-  //   height: 80px;
-  //   border-radius: 50%;
-  //   margin-left:20px;
-  //   align-items: flex-start;
-  //   justify-content: left;
-  //   background-image: url('/assets/images/picture-profile45man.jpeg'); /* Path to your image */
-  //   background-size: cover;
-  //   background-position: center;
-  //   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
-  // }
-  // .profile-container {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 16px; /* Spacing between image and details */
-  // }
-
-
-  /* Styling for the profile image (circular with shadow) */
-  // .Picture-judge {
-  //   width: 100px;
-  //   gap:50px;
-  //   height: 100px;
-  //   border-radius: 50%;
-  //   margin-left:10px;
-  //   margin-right:20px;
-  //   justify-content: left;
-  //   background-size: cover;
-  //   background-position: center;
-  //   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.4);
-  //   cursor: pointer; /* Makes the image clickable */
-  //   transition: transform 0.3s ease; /* Zoom effect on hover */
-  // }
-
-  // /* Hover effect on the profile image */
-  // .Picture-judge:hover {
-  //   transform: scale(1.1); /* Zoom effect on hover */
-  // }
-
-  // /* Profile container for image and title */
-  // .profile-container {
-  //   display: flex;
-  //   align-items: center;
-  //   gap: 16px; /* Space between image and title */
-  //   cursor: pointer;
-  // }
-
-  // /* Title for each profile */
-  // .profile-container .title {
-  //   font-weight: bold;
-  //   text-align: center;
-  //   margin-top: 5px;
-  // }
-
-  // /* Description box (appears on the right side) */
-  // #description-box {
-  //   text-align: center;
-  //   padding: 20px;
-  //   // border: 1px solid #ccc;
-  //   background-color: #f9f9f9;
-  //   margin-left: 20px; /* Space for the description */
-  // }
+  
   .judge-profiles-container {
     display: flex;
     flex-wrap: wrap;

@@ -1,0 +1,39 @@
+<div class="client-page">
+    <div class="back-btn-wrapper">
+        <button class="back-btn" (click)="goBack()">← Back</button>
+      </div>
+    <h1 class="title">Client </h1>
+    <p class="subtitle">Manage your client-related information and documents</p>
+
+    <div class="card-grid">
+        <!-- Client Chatbot Card -->
+        <div class="client-card" [routerLink]="['/scenario-chatbot']">
+            <div class="icon-circle">💬</div>
+            <h3 class="card-title">Chatbot Assistance</h3>
+            <p class="card-subtitle">Get assistance with legal scenario queries</p>
+            <button class="access-btn">Start Chat</button>
+        </div>
+
+        <!-- Client Documents Card -->
+        <div class="client-card" [routerLink]="['/documents']">
+            <div class="icon-circle">📄</div>
+            <h3 class="card-title">Client Documents</h3>
+            <p class="card-subtitle">Upload, view, and manage client documents</p>
+            <button class="access-btn">View Documents</button>
+        </div>
+    </div>
+
+    <div class="description-section">
+        <!-- Chatbot Description -->
+        <div class="description-card">
+            <h2>Chatbot Assistance</h2>
+            <p>Engage with the chatbot for scenario-based queries and guidance to assist with your legal concerns.</p>
+        </div>
+
+        <!-- Client Documents Description -->
+        <div class="description-card">
+            <h2>Client Documents</h2>
+            <p>Upload and manage all necessary documents for legal procedures, making them easily accessible when needed.</p>
+        </div>
+    </div>
+</div>

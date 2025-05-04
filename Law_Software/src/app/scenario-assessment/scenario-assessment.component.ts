@@ -1,5 +1,5 @@
 import { Component,model } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material/core';
 import { ScenarioChatbotComponent } from '../scenario-chatbot/scenario-chatbot.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,14 +42,20 @@ export interface Tile {
     MatDialogModule,
     FormsModule,
     MatGridListModule,
-    RouterModule
+    RouterModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './scenario-assessment.component.html',
   styleUrls: ['./scenario-assessment.component.scss'] // Fixed typo here
 })
 export class ScenarioAssessmentComponent {
   constructor(public dialog: MatDialog,private trackService:DetailService,private router: Router, private http: HttpClient) {}
-  
+  selected: Date | null = null;
+
   openMonitoringDialog(): void {
     const dialogRef = this.dialog.open(CaseMonitorDialogComponent, {
       width: '800px',
@@ -62,6 +68,7 @@ export class ScenarioAssessmentComponent {
       dialogRef.close();
     }, 1000); // Auto-close after 3 seconds
   }
+  
   tiles: Tile[] = [
     { text: 'Home', color: '#aed581', cols: 1, rows: 1 },
     { text: 'Court', color: '#81d4fa', cols: 2, rows: 1 },
@@ -171,9 +178,7 @@ export class ScenarioAssessmentComponent {
   }
   hoverCard(){
   }
-  selected(){
 
-  }
   onDocumentFileClick(){
     this.trackService.incrementDocumentCount().subscribe({
       next: (res) => console.log('Document count updated:', res),

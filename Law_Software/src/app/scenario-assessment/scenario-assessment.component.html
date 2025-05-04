@@ -55,7 +55,7 @@
       <mat-card-title><b>CALENDAR</b></mat-card-title>
       <mat-card-content>
         <mat-calendar [(selected)]="selected"></mat-calendar>
-        <p>Selected date: {{ selected() }}</p>
+     <p>Selected date: {{ selected | date: 'fullDate' }}</p>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

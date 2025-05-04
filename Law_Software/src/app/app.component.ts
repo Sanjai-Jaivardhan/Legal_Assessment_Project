@@ -7,7 +7,8 @@ import { LogoutPageComponent } from './logout-page/logout-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ScenarioAssessmentComponent } from './scenario-assessment/scenario-assessment.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ClientPageComponent } from './client-page/client-page.component';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -37,6 +38,7 @@ import { InstructionPageComponent } from './instruction-page/instruction-page.co
     ScenarioAssessmentComponent,
     ScenariopagesComponent,
     ClerkComponent,
+    ClientPageComponent,
     MatCardModule,
     NgxChartsModule,
     DashboardPageComponent,
@@ -47,7 +49,8 @@ import { InstructionPageComponent } from './instruction-page/instruction-page.co
     LawaccessComponent,
     CourtOfficerComponent,
     ClientdocumentComponent,
-    InstructionPageComponent
+    InstructionPageComponent,
+    ReactiveFormsModule
     
   ],
   providers: [provideNativeDateAdapter()], 

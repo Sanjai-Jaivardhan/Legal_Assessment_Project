@@ -1,38 +1,66 @@
-<div class="container">
-    <header>
-        <h1>Coimbatore Court Divisions</h1>
-        <p>Explore the different types of courts in Coimbatore and their roles.</p>
-    </header>
-    
-    <div class="court-wrapper">
-        <div class="court-card">
-            <h2>District Courts</h2>
-            <p>These courts handle civil and criminal cases at the district level.</p>
-            <ul>
-                <li>Principal District Court</li>
-                <li>Additional District Courts</li>
-            </ul>
-        </div>
-        
-        <div class="court-card">
-            <h2>Subordinate Courts</h2>
-            <p>These courts deal with local disputes and minor criminal cases.</p>
-            <ul>
-                <li>Subordinate Courts in Coimbatore</li>
-                <li>District Munsif Courts</li>
-                <li>Judicial Magistrate Courts</li>
-            </ul>
-        </div>
-        
-        <div class="court-card">
-            <h2>Special Courts</h2>
-            <p>These courts handle specific cases like labor, family, and women-related cases.</p>
-            <ul>
-                <li>Labour Courts</li>
-                <li>Family Courts</li>
-                <li>Mahila Courts</li>
-                <li>Special Courts under various Acts</li>
-            </ul>
-        </div>
+<div class="client-page">
+    <div class="back-btn-wrapper">
+        <button class="back-btn" (click)="goBack()">← Back</button>
+      </div>
+    <h1 class="title"> Court Divisions</h1>
+    <p class="subtitle">Explore the different types of courts in Coimbatore and their roles</p>
+  
+    <div class="card-grid">
+      <!-- District Courts Card -->
+      <div class="client-card">
+        <div class="icon-circle">🏛️</div>
+        <h3 class="card-title">District Courts</h3>
+        <p class="card-subtitle">Civil and criminal cases at the district level</p>
+      </div>
+  
+      <!-- Subordinate Courts Card -->
+      <div class="client-card">
+        <div class="icon-circle">⚖️</div>
+        <h3 class="card-title">Subordinate Courts</h3>
+        <p class="card-subtitle">Local disputes and minor criminal cases</p>
+      </div>
+  
+      <!-- Special Courts Card -->
+      <div class="client-card">
+        <div class="icon-circle">👩‍⚖️</div>
+        <h3 class="card-title">Special Courts</h3>
+        <p class="card-subtitle">Cases like family, labor, and women-related matters</p>
+      </div>
     </div>
-</div>
+  
+    <div class="description-section">
+      <!-- District Courts Description -->
+      <div class="description-card">
+        <h2>District Courts</h2>
+        <p>These courts handle civil and criminal cases at the district level.</p>
+        <ul>
+          <li>Principal District Court</li>
+          <li>Additional District Courts</li>
+        </ul>
+      </div>
+  
+      <!-- Subordinate Courts Description -->
+      <div class="description-card">
+        <h2>Subordinate Courts</h2>
+        <p>These courts deal with local disputes and minor criminal cases.</p>
+        <ul>
+          <li>Subordinate Courts in Coimbatore</li>
+          <li>District Munsif Courts</li>
+          <li>Judicial Magistrate Courts</li>
+        </ul>
+      </div>
+  
+      <!-- Special Courts Description -->
+      <div class="description-card">
+        <h2>Special Courts</h2>
+        <p>These courts handle specific cases like labor, family, and women-related cases.</p>
+        <ul>
+          <!-- <li>Labour Courts</li>
+          <li>Family Courts</li>
+          <li>Mahila Courts</li> -->
+          <li>Special Courts under various Acts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
