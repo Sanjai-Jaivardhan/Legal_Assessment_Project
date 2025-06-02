@@ -13,10 +13,9 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'Legal_Assessment',
-    password: 'Sanjai@jaivardhan18',
-    port: 5432
-})
-
+    password: 'root123',
+    port: 5432,
+});
 app.post('/api/update-clerk-reward', async (req, res) => {
     try {
       const result = await pool.query(`SELECT * FROM clerk_page_details`);
